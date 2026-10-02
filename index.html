@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tények++, a Creascola diákhíradója</title>
+<meta name="description" content="Tények++: a Creascola diákhíradója. Nézd meg a legfrissebb adást, böngészd a korábbiakat, vagy küldj sztorit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font:"Archivo","Helvetica Neue",Arial,system-ui,sans-serif;
+  --bg:#F2F4FA;
+  --surface:#FFFFFF;
+  --ink:#0B1533;
+  --muted:#56607F;
+  --line:#D5DAEA;
+  --brand:#2440E6;
+  --on-brand:#FFFFFF;
+  --link:#2440E6;
+  --strap:#FFD21F;
+  --on-strap:#0B1533;
+  --band:#0B1533;
+  --on-band:#FFFFFF;
+  --slate-a:#2B48F0;
+  --slate-b:#101C5C;
+  --danger:#C4232F;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#080F2B;
+    --surface:#111A42;
+    --ink:#EEF1FC;
+    --muted:#A4AED0;
+    --line:#27336B;
+    --brand:#3C57F5;
+    --on-brand:#FFFFFF;
+    --link:#9DACFF;
+    --band:#2440E6;
+    --on-band:#FFFFFF;
+    --danger:#FF8A93;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#080F2B;
+  --surface:#111A42;
+  --ink:#EEF1FC;
+  --muted:#A4AED0;
+  --line:#27336B;
+  --brand:#3C57F5;
+  --on-brand:#FFFFFF;
+  --link:#9DACFF;
+  --band:#2440E6;
+  --on-band:#FFFFFF;
+  --danger:#FF8A93;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font);
+  font-size:1.0625rem;
+  line-height:1.55;
+}
+img{max-width:100%}
+a{color:var(--link)}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{text-wrap:balance}
+:focus-visible{outline:3px solid var(--link);outline-offset:3px;border-radius:4px}
+main{flex:1}
+main:focus{outline:none}
+.wrap{width:100%;max-width:72rem;margin-inline:auto;padding-inline:clamp(1rem,4vw,2.5rem)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:absolute;left:1rem;top:-4rem;background:var(--strap);color:var(--on-strap);padding:.6rem .9rem;border-radius:8px;font-weight:700;z-index:10}
+.skip:focus{top:calc(env(safe-area-inset-top,0px) + .5rem)}
+
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem;padding-block:1rem}
+.logo{display:inline-flex;align-items:center;gap:.16em;font-weight:900;font-stretch:125%;font-size:1.65rem;letter-spacing:-.02em;line-height:1;color:var(--ink);text-decoration:none;min-height:44px}
+.logo b{background:var(--strap);color:var(--on-strap);padding:.06em .2em .1em;border-radius:5px;font-weight:900;letter-spacing:0}
+.nav{display:flex;flex-wrap:wrap;align-items:center;gap:.15rem;margin-inline:-.65rem 0}
+.nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 .65rem;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:600}
+.nav a:hover{background:color-mix(in srgb,var(--ink) 8%,transparent)}
+.nav a[aria-current="page"]{box-shadow:inset 0 -3px 0 var(--strap)}
+.nav a.cta{background:var(--brand);color:var(--on-brand);margin-left:.5rem;padding:0 .95rem;font-weight:700}
+.nav a.cta:hover{background:color-mix(in srgb,var(--brand) 86%,#000)}
+.nav a.cta[aria-current="page"]{box-shadow:inset 0 -3px 0 var(--strap)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.7rem 1.25rem;border:0;border-radius:10px;background:var(--brand);color:var(--on-brand);font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
+.btn:hover{background:color-mix(in srgb,var(--brand) 86%,#000)}
+.btn.ink{background:#0B1533;color:#FFFFFF}
+.btn.ink:hover{background:#1B2A66}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost:hover{background:color-mix(in srgb,var(--ink) 7%,transparent)}
+
+.screen{position:relative;display:block;container-type:inline-size;aspect-ratio:16/9;border-radius:14px;overflow:hidden;isolation:isolate;background:linear-gradient(135deg,var(--slate-a),var(--slate-b));color:#FFFFFF;text-decoration:none}
+.screen::after{content:"++";position:absolute;right:-.03em;bottom:-.2em;z-index:-1;font-family:var(--font);font-weight:900;font-stretch:125%;font-size:54cqw;line-height:1;color:transparent;-webkit-text-stroke:.012em rgba(255,255,255,.2)}
+.screen .thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.screen .no{position:absolute;left:3.5cqw;top:3.5cqw;z-index:1;padding:.2em .7em;border-radius:999px;background:rgba(11,21,51,.72);font-weight:700;font-size:clamp(.78rem,3.3cqw,1rem);line-height:1.5}
+.play{position:absolute;inset:0;display:grid;place-items:center;width:100%;height:100%;padding:0;border:0;background:none;color:inherit;cursor:pointer}
+.disc{display:grid;place-items:center;width:clamp(3.25rem,15cqw,5.75rem);aspect-ratio:1;border-radius:50%;background:#FFFFFF;box-shadow:0 12px 32px rgba(6,12,45,.4);transition:transform .15s ease}
+.disc svg{width:36%;margin-left:7%;fill:#0B1533}
+button.play:hover .disc,a.screen:hover .disc{transform:scale(1.07)}
+button.play:focus-visible{outline:none}
+button.play:focus-visible .disc{outline:4px solid var(--strap);outline-offset:4px}
+.soon{position:absolute;inset:0;display:grid;place-items:center;padding:1rem;text-align:center;font-weight:700;font-size:clamp(.85rem,4cqw,1.2rem)}
+.soon span{padding:.35em .9em;border-radius:999px;background:rgba(11,21,51,.72)}
+.blocked{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:.85rem;padding:1rem;text-align:center;font-weight:700}
+.blocked .btn{background:#FFFFFF;color:#0B1533}
+.blocked .btn:hover{background:#E6EAFA}
+
+.strap-row{display:flex;flex-wrap:wrap;align-items:stretch;font-size:.9rem;font-weight:700;line-height:1.3}
+.strap{background:var(--strap);color:var(--on-strap);padding:.4rem .75rem}
+.strap-date{background:var(--surface);color:var(--ink);padding:.4rem .75rem;font-weight:600}
+
+.home{display:grid;gap:2.75rem;padding-block:.5rem 3.5rem}
+.chyron{position:relative;z-index:2;width:fit-content;max-width:min(46rem,calc(100% - .6rem));margin:-2.25rem 0 0 .6rem;transition:margin .35s ease}
+.chyron .strap-row{box-shadow:0 6px 18px rgba(6,12,45,.18);width:fit-content}
+.band{background:var(--band);color:var(--on-band);padding:.8rem 1rem .95rem;box-shadow:0 10px 28px rgba(6,12,45,.25)}
+.band h1{font-size:clamp(1.45rem,4.4vw,2.7rem);font-weight:800;font-stretch:112%;line-height:1.08;letter-spacing:-.012em}
+.band a{color:inherit;text-decoration:none}
+.band a:hover{text-decoration:underline;text-decoration-thickness:.08em;text-underline-offset:.14em}
+.hero.is-playing .chyron{margin:.9rem 0 0 0}
+.lead{max-width:62ch;margin-top:1.25rem;font-size:1.15rem}
+.textlink{display:inline-flex;align-items:center;min-height:44px;margin-top:.35rem;font-weight:700}
+.textlink.solo{margin-top:.9rem}
+
+.rundown h2{font-size:1.2rem;font-weight:800;font-stretch:112%;margin-bottom:.6rem}
+.rows{list-style:none;margin:0 0 1.25rem;padding:0;border-top:3px solid var(--ink)}
+.row{display:grid;grid-template-columns:2.4rem 1fr;gap:.85rem;padding:.9rem 0;border-bottom:1px solid var(--line);color:inherit;text-decoration:none}
+.row-no{font-weight:900;font-stretch:125%;font-size:1.55rem;line-height:1.1;color:var(--link)}
+.row-title{display:block;font-weight:700;line-height:1.25}
+.row:hover .row-title{text-decoration:underline;text-underline-offset:.15em}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:.4rem;font-size:.875rem;color:var(--muted)}
+.cat{padding:.05rem .6rem;border:1.5px solid var(--line);border-radius:999px;color:var(--ink);font-weight:600}
+
+.tipband{background:var(--strap);color:#0B1533}
+.tipband .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.25rem 2rem;padding-block:2.25rem}
+.tipband h2{font-size:clamp(1.5rem,4.5vw,2.4rem);font-weight:900;font-stretch:118%;line-height:1.08;letter-spacing:-.015em}
+.tipband p{max-width:44ch;margin-top:.5rem;font-weight:500}
+
+.page{padding-block:1.5rem 4rem}
+.page-title{font-size:clamp(2.2rem,7.5vw,4.25rem);font-weight:900;font-stretch:125%;line-height:1;letter-spacing:-.025em}
+.page-sub{max-width:56ch;margin-top:.9rem;font-size:1.15rem;color:var(--muted)}
+
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1rem;margin-block:1.75rem .75rem}
+.controls .search{flex:1 1 17rem;max-width:26rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{min-height:44px;padding:0 1rem;border:1.5px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.count{margin-bottom:1.25rem;font-size:.9rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,18.5rem),1fr));gap:2.25rem 1.5rem;list-style:none;margin:0;padding:0}
+.item a{display:block;color:inherit;text-decoration:none}
+.item h2{margin-top:.4rem;font-size:1.25rem;font-weight:800;line-height:1.2}
+.item a:hover h2{text-decoration:underline;text-underline-offset:.15em}
+.item .meta{margin-top:.8rem}
+.item .screen+h2{margin-top:.8rem}
+.empty{padding:2rem 1.25rem;border:1.5px dashed var(--line);border-radius:14px;color:var(--muted)}
+
+.episode{max-width:54rem}
+.back{display:inline-flex;align-items:center;min-height:44px;margin-bottom:.5rem;font-weight:700}
+.episode .strap-row{margin-top:1.25rem}
+.episode h1{margin-top:.9rem;font-size:clamp(1.75rem,5.2vw,3rem);font-weight:800;font-stretch:112%;line-height:1.08;letter-spacing:-.015em}
+.episode .screen+h1{margin-top:1.4rem}
+.pager{display:grid;gap:.75rem;margin-top:2.5rem;padding-top:1.25rem;border-top:3px solid var(--ink)}
+@media (min-width:40rem){.pager{grid-template-columns:1fr 1fr}.pager .next{text-align:right}}
+.pager a{display:block;padding:.6rem 0;color:inherit;text-decoration:none}
+.pager small{display:block;font-size:.875rem;color:var(--muted)}
+.pager strong{display:block;line-height:1.25}
+.pager a:hover strong{text-decoration:underline;text-underline-offset:.15em}
+
+.people{display:grid;gap:1.25rem;margin-top:2.5rem}
+@media (min-width:62rem){.people{grid-template-columns:1fr 1fr}}
+.person{display:grid;gap:1.25rem;align-content:start;padding:clamp(1.1rem,3vw,1.75rem);border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+@media (min-width:34rem){.person{grid-template-columns:7.5rem 1fr;gap:1.5rem}}
+.mono{position:relative;display:grid;place-items:center;container-type:inline-size;width:7.5rem;aspect-ratio:1;border-radius:14px;overflow:hidden;isolation:isolate;background:linear-gradient(135deg,var(--slate-a),var(--slate-b));color:#FFFFFF;font-weight:900;font-stretch:125%;font-size:2.6rem;letter-spacing:-.03em}
+.mono::after{content:"++";position:absolute;right:-.02em;bottom:-.22em;z-index:-1;font-size:80cqw;line-height:1;color:transparent;-webkit-text-stroke:.012em rgba(255,255,255,.2)}
+.person h2{font-size:clamp(1.6rem,4.5vw,2.1rem);font-weight:900;font-stretch:118%;line-height:1.05;letter-spacing:-.02em}
+.role{margin-top:.4rem;font-weight:700;color:var(--link)}
+.person .bio{max-width:52ch;margin-top:.9rem}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.25rem}
+
+.tip{display:grid;gap:2.5rem;margin-top:2rem}
+@media (min-width:58rem){.tip{grid-template-columns:minmax(0,1.5fr) minmax(16rem,1fr);gap:3.5rem;align-items:start}}
+.form{display:grid;gap:1.15rem}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:.35rem;margin:0;padding:.3rem;border:1.5px solid var(--line);border-radius:14px;background:var(--surface)}
+.seg label{position:relative;display:block}
+.seg input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.seg span{display:grid;place-items:center;min-height:46px;padding:.4rem .5rem;border-radius:10px;text-align:center;font-weight:700;line-height:1.2}
+.seg input:checked+span{background:var(--brand);color:var(--on-brand)}
+.seg input:focus-visible+span{outline:3px solid var(--link);outline-offset:2px}
+.field label{display:block;margin-bottom:.35rem;font-weight:700}
+.field label small{font-weight:500;font-size:.875rem;color:var(--muted)}
+input[type="text"],input[type="search"],input[type="url"],textarea{width:100%;padding:.75rem .9rem;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit}
+textarea{min-height:9.5rem;resize:vertical}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:1}
+input:focus-visible,textarea:focus-visible{outline:3px solid var(--link);outline-offset:1px;border-color:var(--link)}
+.field.bad input,.field.bad textarea{border-color:var(--danger)}
+.err{margin-top:.35rem;font-size:.9rem;font-weight:600;color:var(--danger)}
+.hint{font-size:.9rem;color:var(--muted)}
+.status{padding:1rem 1.1rem;border-left:5px solid var(--strap);border-radius:0 10px 10px 0;background:var(--surface)}
+.side{padding:1.4rem;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.side h2{font-size:1.2rem;font-weight:800;font-stretch:112%}
+.side p{margin-top:.5rem}
+.side .mail{display:inline-block;margin-top:.75rem;font-weight:700;overflow-wrap:anywhere}
+
+.foot{border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.4rem 2rem;padding-block:1.4rem}
+.foot strong{color:var(--ink)}
+
+@media (min-width:60rem){
+  .home{grid-template-columns:minmax(0,1.85fr) minmax(17rem,1fr);gap:3.25rem;align-items:start}
+  .chyron{margin:-3.4rem 0 0 1.5rem}
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero.intro .strap-row{animation:wipe .5s .2s cubic-bezier(.2,.7,.2,1) both}
+  .hero.intro .band{animation:wipe .65s .38s cubic-bezier(.2,.7,.2,1) both}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none !important;animation:none !important}
+}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Ugrás a tartalomhoz</a>
+
+<header class="wrap top">
+  <a class="logo" href="#/" aria-label="Tények++ főoldal">Tények<b>++</b></a>
+  <nav class="nav" aria-label="Fő menü">
+    <a href="#/" data-nav="/">Főoldal</a>
+    <a href="#/adasok" data-nav="/adasok">Adások</a>
+    <a href="#/stab" data-nav="/stab">Stáb</a>
+    <a class="cta" href="#/kuldj-sztorit" data-nav="/kuldj-sztorit">Küldj sztorit</a>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1"></main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p><strong>Tények++</strong>, a Creascola diákhíradója.</p>
+    <p>Diákprojekt, nem áll kapcsolatban egyetlen tévécsatornával sem.</p>
+  </div>
+</footer>
+
+<script>
+const EMAIL = "balazs.kiss@creascola.hu";
+
+const NEWS = [
+  {
+    id: "aradi-vertanuk",
+    title: "Aradi vértanúk",
+    youtube: "https://youtu.be/4OfmhSlN2JU"
+  },
+  {
+    id: "erdei-iskola-7-evfolyam",
+    title: "Erdei iskola, 7. évfolyam",
+    youtube: "https://youtu.be/Uu-Bblt1ZDE"
+  }
+];
+
+const ALL = "Összes";
+const PLAY_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5v17a1 1 0 0 0 1.5.86l14.5-8.5a1 1 0 0 0 0-1.72L6.5 2.64A1 1 0 0 0 5 3.5z"/></svg>';
+
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+const ytId = v => {
+  if (!v) return "";
+  const s = String(v).trim();
+  const m = s.match(/(?:v=|youtu\.be\/|embed\/|shorts\/|live\/)([\w-]{11})/);
+  if (m) return m[1];
+  return /^[\w-]{11}$/.test(s) ? s : "";
+};
+
+const eps = NEWS
+  .slice()
+  .sort((a, b) => (!a.date || !b.date ? 0 : a.date < b.date ? 1 : a.date > b.date ? -1 : 0))
+  .map((e, i, arr) => ({ ...e, no: arr.length - i, yt: ytId(e.youtube) }));
+
+const categories = [ALL, ...new Set(eps.map(e => e.category).filter(Boolean))];
+const fmtLong = new Intl.DateTimeFormat("hu-HU", { year: "numeric", month: "long", day: "numeric" });
+const fmtShort = new Intl.DateTimeFormat("hu-HU", { month: "short", day: "numeric" });
+const toDate = s => new Date(s + "T12:00:00");
+const longDate = e => !e.date ? "" : `<time datetime="${esc(e.date)}">${esc(fmtLong.format(toDate(e.date)))}</time>`;
+const shortDate = e => !e.date ? "" : `<time datetime="${esc(e.date)}">${esc(fmtShort.format(toDate(e.date)))}</time>`;
+const catTag = e => (e.category ? `<span class="cat">${esc(e.category)}</span>` : "");
+const epHref = e => `#/adas/${encodeURIComponent(e.id)}`;
+
+const state = { q: "", cat: ALL };
+const main = document.getElementById("main");
+let firstRender = true;
+
+function screen(ep, player) {
+  const thumb = ep.yt ? `<img class="thumb" src="https://i.ytimg.com/vi/${ep.yt}/hqdefault.jpg" alt="" loading="lazy">` : "";
+  const no = `<span class="no">${ep.no}. adás</span>`;
+  let mid = "";
+  if (!ep.yt) mid = `<span class="soon"><span>A videó hamarosan felkerül</span></span>`;
+  else if (player) mid = `<button class="play" type="button" data-play="${esc(ep.id)}" aria-label="Lejátszás: ${esc(ep.title)}"><span class="disc">${PLAY_ICON}</span></button>`;
+  else mid = `<span class="play" aria-hidden="true"><span class="disc">${PLAY_ICON}</span></span>`;
+  return `<div class="screen">${thumb}${no}${mid}</div>`;
+}
+
+function home() {
+  if (!eps.length) {
+    return `<div class="wrap page"><h1 class="page-title">Tények++</h1><p class="page-sub">Még nincs feltöltött adás. Addig is küldd el, miről szeretnél riportot látni.</p><p class="actions"><a class="btn" href="#/kuldj-sztorit">Küldj sztorit</a></p></div>`;
+  }
+  const [lead, ...rest] = eps;
+  const rows = rest.slice(0, 5).map(e => `
+    <li><a class="row" href="${epHref(e)}">
+      <span class="row-no" aria-hidden="true">${e.no}</span>
+      <span><span class="row-title">${esc(e.title)}</span>
+      ${e.category || e.date ? `<span class="meta">${catTag(e)}${shortDate(e)}</span>` : ""}</span>
+    </a></li>`).join("");
+  const rundown = rest.length ? `
+    <aside class="rundown" aria-labelledby="rundown-title">
+      <h2 id="rundown-title">Korábbi adások</h2>
+      <ul class="rows">${rows}</ul>
+      <a class="btn ghost" href="#/adasok">Összes adás</a>
+    </aside>` : "";
+  return `
+  <div class="wrap home">
+    <article class="hero${firstRender ? " intro" : ""}">
+      ${screen(lead, true)}
+      <div class="chyron">
+        <p class="strap-row"><span class="strap">Legfrissebb adás</span>${lead.date ? `<span class="strap-date">${longDate(lead)}</span>` : ""}</p>
+        <div class="band"><h1><a href="${epHref(lead)}">${esc(lead.title)}</a></h1></div>
+      </div>
+      ${lead.summary ? `<p class="lead">${esc(lead.summary)}</p>` : ""}
+      <a class="textlink${lead.summary ? "" : " solo"}" href="${epHref(lead)}">Az adás oldala</a>
+    </article>
+    ${rundown}
+  </div>
+  <section class="tipband" aria-labelledby="tipband-title">
+    <div class="wrap">
+      <div>
+        <h2 id="tipband-title">Történt valami, amiről tudnunk kéne?</h2>
+        <p>Küldd el a sztorid, vagy kérd, hogy készítsünk riportot egy témáról.</p>
+      </div>
+      <a class="btn ink" href="#/kuldj-sztorit">Küldj sztorit</a>
+    </div>
+  </section>`;
+}
+
+function filtered() {
+  const q = state.q.trim().toLocaleLowerCase("hu");
+  return eps.filter(e =>
+    (state.cat === ALL || e.category === state.cat) &&
+    (!q || `${e.title} ${e.summary || ""} ${e.category || ""}`.toLocaleLowerCase("hu").includes(q))
+  );
+}
+
+function gridHtml(list) {
+  if (!list.length) return `<p class="empty">Nincs találat. Próbálj más keresőszót.</p>`;
+  return `<ul class="grid">${list.map(e => `
+    <li class="item"><a href="${epHref(e)}">
+      ${screen(e, false)}
+      ${e.category || e.date ? `<p class="meta">${catTag(e)}${longDate(e)}</p>` : ""}
+      <h2>${esc(e.title)}</h2>
+    </a></li>`).join("")}</ul>`;
+}
+
+function refreshGrid() {
+  const list = filtered();
+  const grid = document.getElementById("grid");
+  const count = document.getElementById("count");
+  if (grid) grid.innerHTML = gridHtml(list);
+  if (count) count.textContent = `${list.length} adás`;
+}
+
+function archive() {
+  const list = filtered();
+  const chips = categories.map(c => `<button class="chip" type="button" data-cat="${esc(c)}" aria-pressed="${c === state.cat}">${esc(c)}</button>`).join("");
+  return `
+  <div class="wrap page">
+    <h1 class="page-title">Adások</h1>
+    <p class="page-sub">Minden eddigi Tények++ adás egy helyen.</p>
+    <div class="controls">
+      <div class="search">
+        <label class="vh" for="q">Keresés az adások között</label>
+        <input id="q" type="search" placeholder="Keresés az adások között" value="${esc(state.q)}" autocomplete="off">
+      </div>
+      ${categories.length > 2 ? `<div class="chips" role="group" aria-label="Szűrés rovat szerint">${chips}</div>` : ""}
+    </div>
+    <p class="count" id="count" role="status">${list.length} adás</p>
+    <div id="grid">${gridHtml(list)}</div>
+  </div>`;
+}
+
+function episode(ep) {
+  const i = eps.indexOf(ep);
+  const older = eps[i + 1];
+  const newer = eps[i - 1];
+  const yt = ep.yt ? `<a class="textlink" href="https://www.youtube.com/watch?v=${ep.yt}" target="_blank" rel="noopener">Megnyitás a YouTube-on</a>` : "";
+  const pager = older || newer ? `
+    <nav class="pager" aria-label="További adások">
+      ${older ? `<a class="prev" href="${epHref(older)}"><small>Előző adás</small><strong>${esc(older.title)}</strong></a>` : "<span></span>"}
+      ${newer ? `<a class="next" href="${epHref(newer)}"><small>Következő adás</small><strong>${esc(newer.title)}</strong></a>` : ""}
+    </nav>` : "";
+  return `
+  <div class="wrap page">
+    <article class="episode">
+      <a class="back" href="#/adasok">Vissza az adásokhoz</a>
+      ${screen(ep, true)}
+      ${ep.category || ep.date ? `<p class="strap-row">${ep.category ? `<span class="strap">${esc(ep.category)}</span>` : ""}${ep.date ? `<span class="strap-date">${longDate(ep)}</span>` : ""}</p>` : ""}
+      <h1>${esc(ep.title)}</h1>
+      ${ep.summary ? `<p class="lead">${esc(ep.summary)}</p>` : ""}
+      ${yt}
+      ${pager}
+    </article>
+  </div>`;
+}
+
+function staff() {
+  return `
+  <div class="wrap page">
+    <h1 class="page-title">Stáb</h1>
+    <p class="page-sub">A Tények++ a Creascola diákhíradója. Rövid videós adásokban mutatjuk meg, mi történik a suliban.</p>
+    <div class="people">
+      <article class="person">
+        <div class="mono" aria-hidden="true">KB</div>
+        <div>
+          <h2>Kiss Balázs</h2>
+          <p class="role">Szerkesztő és riporter</p>
+          <p class="bio">Ő állítja össze az adásokat, és ő készíti a riportokat. Ha témád van, vagy szerepelnél egy adásban, neki írj.</p>
+          <p class="actions">
+            <a class="btn" href="mailto:${EMAIL}">E-mail küldése</a>
+            <button class="btn ghost" type="button" data-copy>Cím másolása</button>
+          </p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="mono" aria-hidden="true">KO</div>
+        <div>
+          <h2>Kiss Olivér</h2>
+          <p class="role">Operatőr és produkciós asszisztens</p>
+          <p class="bio">Ő áll a kamera mögött, és segít abban, hogy minden forgatás összeálljon.</p>
+        </div>
+      </article>
+    </div>
+  </div>`;
+}
+
+function tip() {
+  return `
+  <div class="wrap page">
+    <h1 class="page-title">Küldj sztorit</h1>
+    <p class="page-sub">Láttál vagy hallottál valamit a suliban? Írd meg, vagy kérd, hogy készítsünk róla riportot.</p>
+    <div class="tip">
+      <div class="form">
+        <fieldset class="seg">
+          <legend class="vh">Mit szeretnél?</legend>
+          <label><input type="radio" name="kind" value="story" checked><span>Sztorit küldök</span></label>
+          <label><input type="radio" name="kind" value="request"><span>Riportot kérek</span></label>
+        </fieldset>
+        <div class="field" id="fw-name">
+          <label for="f-name">Neved</label>
+          <input id="f-name" type="text" autocomplete="name" aria-describedby="e-name">
+          <p class="err" id="e-name" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-class">Osztályod <small>(nem kötelező)</small></label>
+          <input id="f-class" type="text" placeholder="pl. 10.B" autocomplete="off">
+        </div>
+        <div class="field" id="fw-topic">
+          <label for="f-topic" id="l-topic">Miről van szó?</label>
+          <input id="f-topic" type="text" placeholder="Egy mondatban" autocomplete="off" aria-describedby="e-topic">
+          <p class="err" id="e-topic" hidden></p>
+        </div>
+        <div class="field" id="fw-details">
+          <label for="f-details">Részletek</label>
+          <textarea id="f-details" placeholder="Mi történt, mikor, hol, kik voltak ott?" aria-describedby="e-details"></textarea>
+          <p class="err" id="e-details" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-link">Link fotóhoz vagy videóhoz <small>(nem kötelező)</small></label>
+          <input id="f-link" type="url" placeholder="https://" autocomplete="off" inputmode="url">
+        </div>
+        <div>
+          <button class="btn" type="button" data-send>Megnyitás levelezőben</button>
+        </div>
+        <p class="hint">A gomb megnyitja a levelezőprogramodat egy kész levéllel. Elküldés előtt még átírhatod.</p>
+        <div class="status" id="tip-status" role="status" hidden></div>
+      </div>
+      <aside class="side" aria-labelledby="side-title">
+        <h2 id="side-title">Inkább simán írnál?</h2>
+        <p>Minden levél a szerkesztőhöz érkezik.</p>
+        <a class="mail" href="mailto:${EMAIL}">${EMAIL}</a>
+        <p class="actions"><button class="btn ghost" type="button" data-copy>Cím másolása</button></p>
+      </aside>
+    </div>
+  </div>`;
+}
+
+function missing(what) {
+  const text = what === "episode"
+    ? "Ezt az adást nem találjuk. Lehet, hogy átneveztük vagy töröltük."
+    : "Ez az oldal nem létezik. Lehet, hogy elírtad a címet.";
+  return `<div class="wrap page"><h1 class="page-title">Nincs ilyen oldal</h1><p class="page-sub">${text}</p><p class="actions"><a class="btn" href="#/adasok">Vissza az adásokhoz</a></p></div>`;
+}
+
+function route() {
+  const hash = location.hash;
+  if (hash && !hash.startsWith("#/")) return;
+  const seg = hash.slice(2).split("/").filter(Boolean);
+  let html, title = "", key = "";
+  if (!seg.length) { html = home(); key = "/"; }
+  else if (seg[0] === "adasok") { html = archive(); title = "Adások"; key = "/adasok"; }
+  else if (seg[0] === "adas") {
+    let id = seg[1] || "";
+    try { id = decodeURIComponent(id); } catch (e) {}
+    const ep = eps.find(e => e.id === id);
+    html = ep ? episode(ep) : missing("episode");
+    title = ep ? ep.title : "Nincs ilyen oldal";
+    key = "/adasok";
+  }
+  else if (seg[0] === "stab") { html = staff(); title = "Stáb"; key = "/stab"; }
+  else if (seg[0] === "kuldj-sztorit") { html = tip(); title = "Küldj sztorit"; key = "/kuldj-sztorit"; }
+  else { html = missing(); title = "Nincs ilyen oldal"; }
+  main.innerHTML = html;
+  document.title = title ? `${title} | Tények++` : "Tények++, a Creascola diákhíradója";
+  document.querySelectorAll("[data-nav]").forEach(a => {
+    if (a.dataset.nav === key) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
+  });
+  if (!firstRender) {
+    window.scrollTo(0, 0);
+    main.focus({ preventScroll: true });
+  }
+  firstRender = false;
+}
+
+function blocked(box, ep) {
+  box.removeAttribute("data-playing");
+  box.innerHTML = `<span class="no">${ep.no}. adás</span><div class="blocked"><p>Ezen az oldalon nem indul el a videó.</p><a class="btn" href="https://www.youtube.com/watch?v=${ep.yt}" target="_blank" rel="noopener">Megnyitás a YouTube-on</a></div>`;
+}
+
+function play(btn) {
+  const ep = eps.find(e => e.id === btn.dataset.play);
+  if (!ep || !ep.yt) return;
+  const box = btn.closest(".screen");
+  const hero = box.closest(".hero");
+  if (hero) hero.classList.add("is-playing");
+  if (location.protocol !== "http:" && location.protocol !== "https:") {
+    blocked(box, ep);
+    return;
+  }
+  box.dataset.playing = ep.id;
+  box.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${ep.yt}?autoplay=1&rel=0" title="${esc(ep.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+}
+
+document.addEventListener("securitypolicyviolation", e => {
+  const directive = e.effectiveDirective || e.violatedDirective || "";
+  if (!/frame-src|child-src|default-src/.test(directive)) return;
+  if (!/youtube/i.test(e.blockedURI || "")) return;
+  document.querySelectorAll(".screen[data-playing]").forEach(box => {
+    const ep = eps.find(x => x.id === box.dataset.playing);
+    if (ep) blocked(box, ep);
+  });
+});
+
+async function copyEmail(btn) {
+  let ok = false;
+  try {
+    await navigator.clipboard.writeText(EMAIL);
+    ok = true;
+  } catch (e) {
+    const t = document.createElement("textarea");
+    t.value = EMAIL;
+    t.setAttribute("readonly", "");
+    t.style.position = "fixed";
+    t.style.opacity = "0";
+    document.body.appendChild(t);
+    t.select();
+    try { ok = document.execCommand("copy"); } catch (e2) {}
+    t.remove();
+  }
+  if (!btn.dataset.label) btn.dataset.label = btn.textContent;
+  btn.textContent = ok ? "Cím kimásolva" : EMAIL;
+  clearTimeout(btn._t);
+  btn._t = setTimeout(() => { btn.textContent = btn.dataset.label; }, 2200);
+}
+
+function setError(name, message) {
+  const wrap = document.getElementById(`fw-${name}`);
+  const err = document.getElementById(`e-${name}`);
+  const input = document.getElementById(`f-${name}`);
+  wrap.classList.toggle("bad", !!message);
+  err.hidden = !message;
+  err.textContent = message || "";
+  if (message) input.setAttribute("aria-invalid", "true");
+  else input.removeAttribute("aria-invalid");
+}
+
+function updateKind() {
+  const request = document.querySelector('input[name="kind"]:checked').value === "request";
+  document.getElementById("l-topic").textContent = request ? "Miről készítsünk riportot?" : "Miről van szó?";
+  document.getElementById("f-details").placeholder = request ? "Miért érdekes, és kit érdemes megkérdezni?" : "Mi történt, mikor, hol, kik voltak ott?";
+}
+
+function send() {
+  const val = id => document.getElementById(id).value.trim();
+  const request = document.querySelector('input[name="kind"]:checked').value === "request";
+  const name = val("f-name"), cls = val("f-class"), topic = val("f-topic"), details = val("f-details"), link = val("f-link");
+  setError("name", name ? "" : "Írd be a neved.");
+  setError("topic", topic ? "" : "Írd le egy mondatban, miről van szó.");
+  setError("details", details.length >= 10 ? "" : "Írj legalább pár szót a részletekről.");
+  const firstBad = document.querySelector(".field.bad input, .field.bad textarea");
+  const status = document.getElementById("tip-status");
+  if (firstBad) {
+    status.hidden = true;
+    firstBad.focus();
+    return;
+  }
+  const subject = `[Tények++] ${request ? "Riportkérés" : "Sztori"}: ${topic}`;
+  const lines = [`Név: ${name}`];
+  if (cls) lines.push(`Osztály: ${cls}`);
+  lines.push("", request ? "Erről kérek riportot:" : "A sztori:", details);
+  if (link) lines.push("", `Link: ${link}`);
+  const url = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+  status.innerHTML = `Megnyitottuk a levelezőt a kész levéllel, már csak el kell küldened. Ha nem történt semmi, <a href="${esc(url)}">nyisd meg innen</a>, vagy írj közvetlenül a <strong>${EMAIL}</strong> címre.`;
+  status.hidden = false;
+  const a = document.createElement("a");
+  a.href = url;
+  a.style.display = "none";
+  document.body.appendChild(a);
+  try { a.click(); } catch (e) {}
+  a.remove();
+}
+
+document.addEventListener("click", e => {
+  const playBtn = e.target.closest("[data-play]");
+  if (playBtn) { play(playBtn); return; }
+  const chip = e.target.closest("[data-cat]");
+  if (chip) {
+    state.cat = chip.dataset.cat;
+    document.querySelectorAll("[data-cat]").forEach(c => c.setAttribute("aria-pressed", String(c === chip)));
+    refreshGrid();
+    return;
+  }
+  const copyBtn = e.target.closest("[data-copy]");
+  if (copyBtn) { copyEmail(copyBtn); return; }
+  if (e.target.closest("[data-send]")) send();
+});
+
+document.addEventListener("input", e => {
+  if (e.target.id === "q") {
+    state.q = e.target.value;
+    refreshGrid();
+    return;
+  }
+  const field = e.target.closest(".field.bad");
+  if (field && e.target.value.trim()) setError(field.id.replace("fw-", ""), "");
+});
+
+document.addEventListener("change", e => {
+  if (e.target.name === "kind") updateKind();
+});
+
+document.addEventListener("error", e => {
+  if (e.target instanceof HTMLImageElement && e.target.classList.contains("thumb")) e.target.remove();
+}, true);
+
+window.addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
