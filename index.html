@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#080F2B">
 <title>Tények++, a Creascola diákhíradója</title>
 <meta name="description" content="Tények++: a Creascola diákhíradója. Nézd meg a legfrissebb adást, böngészd a korábbiakat, vagy küldj sztorit.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,42 +12,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
 <style>
 :root{
+  color-scheme:dark;
   --font:"Archivo","Helvetica Neue",Arial,system-ui,sans-serif;
-  --bg:#F2F4FA;
-  --surface:#FFFFFF;
-  --ink:#0B1533;
-  --muted:#56607F;
-  --line:#D5DAEA;
-  --brand:#2440E6;
-  --on-brand:#FFFFFF;
-  --link:#2440E6;
-  --strap:#FFD21F;
-  --on-strap:#0B1533;
-  --band:#0B1533;
-  --on-band:#FFFFFF;
-  --slate-a:#2B48F0;
-  --slate-b:#101C5C;
-  --danger:#C4232F;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#080F2B;
-    --surface:#111A42;
-    --ink:#EEF1FC;
-    --muted:#A4AED0;
-    --line:#27336B;
-    --brand:#3C57F5;
-    --on-brand:#FFFFFF;
-    --link:#9DACFF;
-    --band:#2440E6;
-    --on-band:#FFFFFF;
-    --danger:#FF8A93;
-  }
-}
-:root[data-theme="dark"]{
   --bg:#080F2B;
   --surface:#111A42;
   --ink:#EEF1FC;
@@ -54,12 +22,19 @@
   --brand:#3C57F5;
   --on-brand:#FFFFFF;
   --link:#9DACFF;
+  --strap:#FFD21F;
+  --on-strap:#0B1533;
   --band:#2440E6;
   --on-band:#FFFFFF;
+  --slate-a:#2B48F0;
+  --slate-b:#101C5C;
   --danger:#FF8A93;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
 }
 *,*::before,*::after{box-sizing:inherit}
-html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+html{height:100%;background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
 body{
   margin:0;
   min-height:100%;
@@ -261,7 +236,7 @@ const NEWS = [
   {
     id: "aradi-vertanuk",
     title: "Aradi vértanúk",
-    youtube: "https://youtu.be/4OfmhSlN2JU"
+    youtube: "https://www.youtube.com/watch?v=N6xEsKJXi9M"
   },
   {
     id: "erdei-iskola-7-evfolyam",
