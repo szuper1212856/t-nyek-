@@ -210,6 +210,50 @@ input:focus-visible,textarea:focus-visible{outline:3px solid var(--link);outline
 .done h2{font-size:1.6rem;font-weight:900;font-stretch:118%;line-height:1.1}
 .done:focus{outline:none}
 .btn[disabled]{opacity:.65;cursor:progress}
+.notice{background:var(--strap);color:#0B1533}
+.notice .wrap{display:flex;align-items:center;gap:.75rem;padding-block:.55rem;font-size:.95rem;font-weight:600;line-height:1.35}
+.notice svg{flex:none;width:1.25rem;height:1.25rem}
+.notice p{flex:1}
+.notice strong{font-weight:800}
+.notice.done{background:var(--surface);color:var(--ink);border-bottom:1px solid var(--line)}
+.notice.done svg{color:var(--strap)}
+.notice-x{display:grid;place-items:center;flex:none;width:40px;height:40px;margin-right:-.5rem;border:0;border-radius:8px;background:transparent;color:inherit;font:inherit;font-size:1.35rem;cursor:pointer}
+.notice-x:hover{background:color-mix(in srgb,currentColor 12%,transparent)}
+body.maint-on .nav,body.maint-on .skip{display:none}
+.maint{display:grid;place-items:center;min-height:calc(100dvh - 11rem);padding-block:2.5rem 4rem}
+.maint-card{width:100%;max-width:36rem}
+.maint h1{margin-top:1.1rem;font-size:clamp(2.1rem,8vw,3.6rem);font-weight:900;font-stretch:125%;line-height:1;letter-spacing:-.025em}
+.maint .lead{margin-top:1rem}
+.mbar{height:10px;margin-top:2rem;border-radius:999px;background:var(--line);overflow:hidden}
+.mbar span{display:block;height:100%;border-radius:999px;background:var(--strap);transition:width .6s ease}
+.mleft{display:flex;justify-content:space-between;gap:1rem;margin-top:.6rem;font-size:.92rem;font-weight:600;color:var(--muted)}
+.msteps{display:grid;gap:.5rem;list-style:none;margin:1.75rem 0 0;padding:0}
+.msteps li{display:flex;align-items:center;gap:.7rem;font-weight:600;color:var(--muted)}
+.msteps li::before{content:"";flex:none;width:.8rem;height:.8rem;border-radius:50%;border:2px solid var(--line)}
+.msteps li.now{color:var(--ink)}
+.msteps li.now::before{border-color:var(--strap);background:radial-gradient(circle,var(--strap) 40%,transparent 45%)}
+.msteps li.ok{color:var(--ink)}
+.msteps li.ok::before{border-color:var(--ok,#5BD9A0);background:var(--ok,#5BD9A0)}
+.brandrow{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex:1 1 auto}
+.getapp{display:inline-flex;align-items:center;gap:.45rem;min-height:40px;padding:0 .9rem 0 .75rem;border:0;border-radius:999px;background:var(--strap);color:#0B1533;font:inherit;font-size:.92rem;font-weight:800;cursor:pointer;white-space:nowrap}
+.getapp svg{width:1.15rem;height:1.15rem}
+.getapp:hover{background:#F2C400}
+.getapp:focus-visible{outline:3px solid #FFFFFF;outline-offset:3px}
+.getapp[hidden],body.maint-on .getapp{display:none}
+@media (max-width:22.5rem){.getapp-more{display:none}.brandrow{gap:.5rem}}
+.sheet{width:min(30rem,calc(100% - 2rem));max-height:calc(100dvh - 2rem);margin:auto;padding:0;border:1px solid var(--line);border-radius:20px;background:var(--surface);color:var(--ink)}
+.sheet::backdrop{background:rgba(4,8,26,.72)}
+.sheet-in{display:grid;gap:1rem;padding:1.4rem 1.4rem 1.5rem}
+.sheet-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.sheet h2{font-size:1.45rem;font-weight:900;font-stretch:118%;line-height:1.1}
+.sheet-x{display:grid;place-items:center;flex:none;width:40px;height:40px;margin:-.4rem -.5rem 0 0;border:0;border-radius:10px;background:transparent;color:var(--muted);font:inherit;font-size:1.5rem;cursor:pointer}
+.sheet-x:hover{background:var(--surface-2,#18235A);color:var(--ink)}
+.sheet p{color:var(--muted)}
+.steps{display:grid;gap:.75rem;list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{display:flex;align-items:center;gap:.8rem;counter-increment:s;font-weight:600;line-height:1.35}
+.steps li::before{content:counter(s);display:grid;place-items:center;flex:none;width:2rem;height:2rem;border-radius:50%;background:var(--strap);color:#0B1533;font-weight:900}
+.steps .ico{display:inline-grid;place-items:center;vertical-align:-.3em;width:1.6rem;height:1.6rem;margin:0 .15rem;border-radius:6px;background:var(--bg);color:var(--link)}
+.steps .ico svg{width:1.05rem;height:1.05rem}
 .foot{border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
 .foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.4rem 2rem;padding-block:1.4rem}
 .foot strong{color:var(--ink)}
@@ -230,9 +274,13 @@ input:focus-visible,textarea:focus-visible{outline:3px solid var(--link);outline
 </head>
 <body>
 <a class="skip" href="#main">Ugrás a tartalomhoz</a>
+<div id="notice"></div>
 
 <header class="wrap top">
-  <a class="logo" href="#/" aria-label="Tények++ főoldal">Tények<b>++</b></a>
+  <div class="brandrow">
+    <a class="logo" href="#/" aria-label="Tények++ főoldal">Tények<b>++</b></a>
+    <button class="getapp" type="button" id="getapp" data-getapp hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10.5 5 5 5-5"/><path d="M5 20h14"/></svg>App<span class="getapp-more"> letöltése</span></button>
+  </div>
   <nav class="nav" aria-label="Fő menü">
     <a href="#/" data-nav="/">Főoldal</a>
     <a href="#/adasok" data-nav="/adasok">Adások</a>
@@ -242,6 +290,8 @@ input:focus-visible,textarea:focus-visible{outline:3px solid var(--link);outline
 </header>
 
 <main id="main" tabindex="-1"></main>
+
+<dialog class="sheet" id="sheet" aria-labelledby="sheet-title"><div class="sheet-in" id="sheet-in"></div></dialog>
 
 <footer class="foot">
   <div class="wrap">
@@ -577,8 +627,80 @@ function missing(what) {
   return `<div class="wrap page"><h1 class="page-title">Nincs ilyen oldal</h1><p class="page-sub">${text}</p><p class="actions"><a class="btn" href="#/adasok">Vissza az adásokhoz</a></p></div>`;
 }
 
+const MAINT = {
+  start: Date.parse("2026-11-27T23:00:00+01:00"),
+  end: Date.parse("2026-11-28T01:00:00+01:00"),
+  doneUntil: Date.parse("2026-11-29T00:00:00+01:00")
+};
+const MAINT_STEPS = ["Rendszer leállítása", "Új adatbázis bekapcsolása", "Értesítések és telepíthető alkalmazás", "Sztoribeküldés a szerkesztőségnek", "Végső ellenőrzés"];
+const MAINT_DISMISS = "tenyek-update-2026-11-28";
+const INFO_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2.5 20h19z"/><path d="M12 10v4.5M12 17.5v.01"/></svg>';
+const CHECK_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="m7.5 12.3 3 3 6-6.3"/></svg>';
+
+function maintPhase(now = Date.now()) {
+  if (now < MAINT.start) return "before";
+  if (now < MAINT.end) return "during";
+  if (now < MAINT.doneUntil) return "after";
+  return "off";
+}
+
+function renderNotice() {
+  const box = document.getElementById("notice");
+  const phase = maintPhase();
+  let dismissed = false;
+  try { dismissed = localStorage.getItem(MAINT_DISMISS) === "1"; } catch (e) {}
+  if (phase === "before") {
+    box.innerHTML = `<div class="notice" role="status"><div class="wrap">${INFO_ICON}<p><strong>Frissítés ma éjjel:</strong> 23:00 és 01:00 között új funkciókat telepítünk, ez idő alatt az oldal nem érhető el.</p></div></div>`;
+  } else if (phase === "after" && !dismissed) {
+    box.innerHTML = `<div class="notice done" role="status"><div class="wrap">${CHECK_ICON}<p><strong>Elkészült a frissítés!</strong> Mostantól értesítést kérhetsz az új adásokról, és a telefonodra is telepítheted a Tények++-t.</p><button class="notice-x" type="button" data-notice-x aria-label="Értesítés bezárása">×</button></div></div>`;
+  } else {
+    box.innerHTML = "";
+  }
+}
+
+function maintLeft(now = Date.now()) {
+  const mins = Math.max(1, Math.ceil((MAINT.end - now) / 60000));
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  return h ? `még ${h} óra${m ? ` ${m} perc` : ""}` : `még ${m} perc`;
+}
+
+function maintView() {
+  return `<div class="wrap maint"><section class="maint-card" aria-labelledby="maint-title">
+    <p class="strap-row"><span class="strap">Karbantartás</span><span class="strap-date">23:00 – 01:00</span></p>
+    <h1 id="maint-title">Hamarosan visszajövünk</h1>
+    <p class="lead">Épp új funkciókat telepítünk a Tények++-ra. Az oldal hajnali 1 órakor tér vissza, addig nem érhetők el az adások és a sztoribeküldés.</p>
+    <div class="mbar" role="progressbar" aria-label="A frissítés állapota" aria-valuemin="0" aria-valuemax="100" id="mbar"><span id="mbar-fill"></span></div>
+    <p class="mleft"><span id="mpct"></span><span id="mleft"></span></p>
+    <ul class="msteps" id="msteps"></ul>
+  </section></div>`;
+}
+
+function updateMaint() {
+  const fill = document.getElementById("mbar-fill");
+  if (!fill) return;
+  const now = Date.now();
+  const pct = Math.min(99, Math.max(1, Math.floor((now - MAINT.start) / (MAINT.end - MAINT.start) * 100)));
+  fill.style.width = `${pct}%`;
+  document.getElementById("mbar").setAttribute("aria-valuenow", String(pct));
+  document.getElementById("mpct").textContent = `${pct}%`;
+  document.getElementById("mleft").textContent = `Vissza 01:00-kor, ${maintLeft(now)}`;
+  const step = Math.min(MAINT_STEPS.length - 1, Math.floor(pct / (100 / MAINT_STEPS.length)));
+  document.getElementById("msteps").innerHTML = MAINT_STEPS.map((s, i) => `<li class="${i < step ? "ok" : i === step ? "now" : ""}">${s}</li>`).join("");
+}
+
 function route(quiet) {
   const hash = location.hash;
+  if (maintPhase() === "during") {
+    document.body.classList.add("maint-on");
+    main.innerHTML = maintView();
+    updateMaint();
+    document.title = "Karbantartás | Tények++";
+    document.querySelectorAll("[data-nav]").forEach(a => a.removeAttribute("aria-current"));
+    firstRender = false;
+    return;
+  }
+  document.body.classList.remove("maint-on");
   if (hash && !hash.startsWith("#/")) return;
   const seg = hash.slice(2).split("/").filter(Boolean);
   let html, title = "", key = "";
@@ -849,6 +971,34 @@ async function pushOff() {
   updateAppCard();
 }
 
+const SHARE_ICON = '<span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7.5 7.5 4.5-4.5 4.5 4.5"/><path d="M6 11H5v10h14V11h-1"/></svg></span>';
+const PLUS_ICON = '<span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></svg></span>';
+
+function updateGetApp() {
+  const btn = document.getElementById("getapp");
+  if (btn) btn.hidden = isStandalone() || !(isIOS || app.install);
+}
+
+function openGetApp() {
+  if (app.install) { installApp(); return; }
+  const sheet = document.getElementById("sheet");
+  document.getElementById("sheet-in").innerHTML = `
+    <div class="sheet-head"><h2 id="sheet-title">Tények++ a telefonodon</h2><button class="sheet-x" type="button" data-sheet-x aria-label="Bezárás">×</button></div>
+    <p>Add hozzá a főképernyőhöz, és úgy nyílik meg, mint egy app. Utána értesítést is kérhetsz az új adásokról.</p>
+    <ol class="steps">
+      <li><span>Koppints a ${SHARE_ICON} Megosztás gombra a böngésző alján vagy tetején.</span></li>
+      <li><span>Görgess le, és válaszd a ${PLUS_ICON} „Főképernyőhöz adás” pontot.</span></li>
+      <li><span>Koppints a „Hozzáadás” gombra, majd nyisd meg a Tények++ ikont.</span></li>
+    </ol>
+    <button class="btn" type="button" data-sheet-x>Rendben</button>`;
+  try { sheet.showModal(); } catch (e) { sheet.setAttribute("open", ""); }
+}
+
+function closeGetApp() {
+  const sheet = document.getElementById("sheet");
+  try { sheet.close(); } catch (e) { sheet.removeAttribute("open"); }
+}
+
 async function installApp() {
   const ev = app.install;
   if (!ev) return;
@@ -858,9 +1008,12 @@ async function installApp() {
     await ev.userChoice;
   } catch (e) {}
   updateAppCard();
+  updateGetApp();
 }
 
 document.addEventListener("click", e => {
+  if (e.target.closest("[data-getapp]")) { openGetApp(); return; }
+  if (e.target.closest("[data-sheet-x]") || e.target.id === "sheet") { closeGetApp(); return; }
   const playBtn = e.target.closest("[data-play]");
   if (playBtn) { play(playBtn); return; }
   const chip = e.target.closest("[data-cat]");
@@ -877,7 +1030,11 @@ document.addEventListener("click", e => {
   if (e.target.closest("[data-again]")) { route(true); return; }
   if (e.target.closest("[data-push-on]")) { pushOn(); return; }
   if (e.target.closest("[data-push-off]")) { pushOff(); return; }
-  if (e.target.closest("[data-install]")) installApp();
+  if (e.target.closest("[data-install]")) { installApp(); return; }
+  if (e.target.closest("[data-notice-x]")) {
+    try { localStorage.setItem(MAINT_DISMISS, "1"); } catch (err) {}
+    renderNotice();
+  }
 });
 
 document.addEventListener("input", e => {
@@ -900,15 +1057,33 @@ document.addEventListener("error", e => {
 
 window.addEventListener("hashchange", () => route());
 
+let lastPhase = maintPhase();
+function checkMaint() {
+  const phase = maintPhase();
+  if (phase !== lastPhase) {
+    const was = lastPhase;
+    lastPhase = phase;
+    renderNotice();
+    route(true);
+    if (was === "during") loadEpisodes();
+  } else if (phase === "during") {
+    updateMaint();
+  }
+}
+setInterval(checkMaint, 10000);
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") checkMaint(); });
+
 window.addEventListener("beforeinstallprompt", e => {
   e.preventDefault();
   app.install = e;
   updateAppCard();
+  updateGetApp();
 });
 
 window.addEventListener("appinstalled", () => {
   app.install = null;
   updateAppCard();
+  updateGetApp();
 });
 
 document.addEventListener("visibilitychange", () => {
@@ -927,6 +1102,8 @@ if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
 }
 
 boot();
+updateGetApp();
+renderNotice();
 route();
 loadEpisodes();
 </script>
