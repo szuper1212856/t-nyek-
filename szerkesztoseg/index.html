@@ -54,9 +54,7 @@ main:focus{outline:none}
 .logo{display:inline-flex;align-items:center;gap:.14em;font-weight:900;font-stretch:125%;font-size:1.3rem;letter-spacing:-.02em;line-height:1;color:var(--ink);text-decoration:none}
 .logo b{background:var(--strap);color:var(--on-strap);padding:.06em .2em .1em;border-radius:5px;letter-spacing:0}
 .tag{padding:.15rem .55rem;border:1.5px solid var(--line);border-radius:999px;font-size:.8rem;font-weight:700;color:var(--muted);white-space:nowrap}
-.who{display:flex;align-items:center;gap:.5rem;font-size:.9rem;color:var(--muted);min-width:0}
-.who span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:12rem}
-@media (max-width:30rem){.who span{display:none}}
+.who{font-size:.9rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:12rem}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;min-height:46px;padding:.6rem 1.1rem;border:0;border-radius:10px;background:var(--brand);color:var(--on-brand);font:inherit;font-weight:700;text-decoration:none;cursor:pointer;white-space:nowrap}
 .btn:hover{background:color-mix(in srgb,var(--brand) 86%,#000)}
@@ -68,36 +66,44 @@ main:focus{outline:none}
 .btn.yellow{background:var(--strap);color:var(--on-strap)}
 .btn.yellow:hover{background:#F2C400}
 .btn[disabled]{opacity:.6;cursor:progress}
-.btn svg{width:1.1em;height:1.1em}
+.iconbtn{display:inline-grid;place-items:center;width:40px;height:40px;flex:none;border:0;border-radius:10px;background:transparent;color:var(--muted);font:inherit;font-size:1.25rem;cursor:pointer}
+.iconbtn:hover{background:var(--surface-2);color:var(--ink)}
 
 .head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;margin:.75rem 0 1rem}
 .head h1{font-size:2rem;font-weight:900;font-stretch:122%;line-height:1;letter-spacing:-.02em}
 .sub{margin:-.4rem 0 1rem;color:var(--muted);font-size:.92rem}
+.back{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration:none}
 
 .list{display:grid;gap:.6rem;list-style:none;margin:0;padding:0}
-.card{display:grid;gap:.85rem;align-items:center;padding:.7rem;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:inherit;text-decoration:none}
-.card:hover{border-color:color-mix(in srgb,var(--link) 60%,var(--line))}
-.card.ep{grid-template-columns:7.5rem 1fr}
+.card{display:block;padding:.85rem 1rem;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:inherit;text-decoration:none}
+a.card:hover{border-color:color-mix(in srgb,var(--link) 60%,var(--line))}
+.card h2,.card h3{font-size:1.05rem;font-weight:800;line-height:1.25;overflow-wrap:anywhere}
+.card.ep{display:grid;grid-template-columns:7.5rem 1fr;gap:.85rem;align-items:center;padding:.7rem}
 .thumb{position:relative;aspect-ratio:16/9;border-radius:9px;overflow:hidden;background:linear-gradient(135deg,#2B48F0,#101C5C)}
 .thumb img{width:100%;height:100%;object-fit:cover}
-.card h2{font-size:1.05rem;font-weight:800;line-height:1.25;overflow-wrap:anywhere}
-.meta{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem .5rem;margin-top:.3rem;font-size:.82rem;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem .6rem;margin-top:.35rem;font-size:.84rem;color:var(--muted)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:.45rem}
+.card-top time,.card-top .when{font-size:.8rem;color:var(--muted);white-space:nowrap}
+.snip{margin-top:.25rem;color:var(--muted);font-size:.92rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.empty{padding:1.5rem 1.25rem;border:1.5px dashed var(--line);border-radius:14px;color:var(--muted);text-align:center}
+.empty.small{padding:.9rem 1rem;font-size:.92rem;text-align:left}
+
 .pill{display:inline-flex;align-items:center;gap:.35rem;padding:.1rem .55rem;border-radius:999px;border:1.5px solid var(--line);color:var(--ink);font-weight:700;font-size:.78rem;line-height:1.5;white-space:nowrap}
 .pill::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--dot,var(--muted))}
 .pill.plain::before{display:none}
 .s-beerkezett{--dot:#FFD21F}
 .s-otlet{--dot:#9DACFF}
+.s-tervezes{--dot:#6FD3FF}
 .s-forgatas{--dot:#FF9F5A}
 .s-vagas{--dot:#D38BFF}
 .s-kesz{--dot:#5BD9A0}
+.s-megjelent{--dot:#FFFFFF}
 .s-elvetve{--dot:#6B7499}
 .hidden-pill{--dot:#FF8A93}
-.card.story{padding:.85rem 1rem}
-.story-top{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
-.story-top time{font-size:.8rem;color:var(--muted);white-space:nowrap}
-.card.story h2{margin-top:.45rem}
-.card.story p.snip{margin-top:.25rem;color:var(--muted);font-size:.92rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.empty{padding:2rem 1.25rem;border:1.5px dashed var(--line);border-radius:14px;color:var(--muted);text-align:center}
+
+.progress{display:flex;align-items:center;gap:.5rem;margin-top:.55rem;font-size:.8rem;color:var(--muted)}
+.bar{flex:1;height:6px;border-radius:999px;background:var(--line);overflow:hidden}
+.bar span{display:block;height:100%;background:var(--ok);border-radius:999px}
 
 .chips{display:flex;gap:.4rem;overflow-x:auto;margin:0 -1rem 1rem;padding:0 1rem .25rem;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
@@ -108,8 +114,9 @@ main:focus{outline:none}
 .form{display:grid;gap:1.1rem}
 .field label,.field .lbl{display:block;margin-bottom:.35rem;font-weight:700}
 .field small{font-weight:500;color:var(--muted)}
-input[type="text"],input[type="email"],input[type="password"],input[type="url"],input[type="date"],textarea,select{width:100%;min-height:48px;padding:.7rem .85rem;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit}
+input[type="text"],input[type="email"],input[type="password"],input[type="url"],input[type="date"],input[type="datetime-local"],input[type="tel"],input[type="search"],textarea,select{width:100%;min-height:48px;padding:.7rem .85rem;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit}
 textarea{min-height:8rem;resize:vertical}
+textarea.tall{min-height:16rem}
 select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 1.15rem) 50%,calc(100% - .8rem) 50%;background-size:.35rem .35rem;background-repeat:no-repeat;padding-right:2.2rem}
 input::placeholder,textarea::placeholder{color:var(--muted);opacity:1}
 input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--link);outline-offset:1px;border-color:var(--link)}
@@ -126,12 +133,12 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 .switch input:checked::after{transform:translateX(1.2rem)}
 .switch strong{display:block;line-height:1.3}
 .switch span span{display:block;font-size:.85rem;color:var(--muted)}
-.bar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
-.bar .grow{flex:1}
-.back{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration:none}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.actions .grow{flex:1}
 .slug{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88rem;color:var(--muted);overflow-wrap:anywhere}
-.danger-zone{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.danger-zone{margin-top:.5rem;padding-top:1.25rem;border-top:1px solid var(--line)}
 .counter{float:right;font-weight:500;font-size:.82rem;color:var(--muted)}
+.title-input{font-size:1.5rem !important;font-weight:800;font-stretch:112%}
 
 .statusset{display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:0;border:0}
 .statusset label{position:relative}
@@ -141,7 +148,10 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 .statusset input:checked+span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .statusset input:focus-visible+span{outline:3px solid var(--link);outline-offset:2px}
 
-.info{display:grid;gap:.6rem;padding:1rem;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.section{display:grid;gap:.85rem;padding:1rem;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.section>h2{display:flex;align-items:center;justify-content:space-between;gap:.5rem;font-size:1.1rem;font-weight:800;font-stretch:110%}
+.section>h2 small{font-size:.85rem;font-weight:600;color:var(--muted)}
+.section .field input,.section .field textarea,.section .field select,.section input[type="text"],.section input[type="url"],.section select{background:var(--bg)}
 .info dl{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;margin:0;font-size:.95rem}
 .info dt{color:var(--muted)}
 .info dd{margin:0;overflow-wrap:anywhere}
@@ -149,20 +159,62 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 .kind{font-size:.85rem;font-weight:700;color:var(--strap);text-transform:uppercase;letter-spacing:.06em}
 .detail-title{margin:.35rem 0 1rem;font-size:1.7rem;font-weight:900;font-stretch:115%;line-height:1.1;overflow-wrap:anywhere}
 
+.checks{display:grid;gap:.15rem;list-style:none;margin:0;padding:0}
+.check{display:flex;align-items:center;gap:.6rem;min-height:44px;padding:0 .25rem 0 .5rem;border-radius:10px}
+.check:hover{background:var(--surface-2)}
+.check input{flex:none;width:1.3rem;height:1.3rem;margin:0;accent-color:var(--ok);cursor:pointer}
+.check label{flex:1;cursor:pointer;overflow-wrap:anywhere}
+.check.done label{color:var(--muted);text-decoration:line-through}
+.addrow{display:flex;gap:.5rem}
+.addrow input{flex:1;min-width:0}
+.res{display:flex;align-items:center;gap:.75rem;padding:.55rem .25rem .55rem .65rem;border-radius:12px;background:var(--bg);border:1px solid var(--line)}
+.res .ic{display:grid;place-items:center;width:2.2rem;height:2.2rem;flex:none;border-radius:9px;background:var(--surface-2);font-size:1.05rem}
+.res .txt{flex:1;min-width:0}
+.res .txt a,.res .txt strong{display:block;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.res .txt span{display:block;font-size:.8rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.resform{display:grid;gap:.5rem}
+@media (min-width:34rem){.resform{grid-template-columns:9rem 1fr 1fr auto}}
+
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-bottom:1.1rem}
+@media (min-width:40rem){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{display:block;padding:.85rem 1rem;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:inherit;text-decoration:none}
+.stat b{display:block;font-size:1.9rem;font-weight:900;font-stretch:118%;line-height:1}
+.stat span{display:block;margin-top:.3rem;font-size:.85rem;color:var(--muted);font-weight:600}
+.stat.hot{border-color:var(--strap)}
+.stat.hot b{color:var(--strap)}
+.quick{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+.stack{display:grid;gap:1.1rem}
+.date-tile{display:grid;place-items:center;width:3.2rem;flex:none;padding:.35rem 0;border-radius:10px;background:var(--surface-2);line-height:1.1;text-align:center}
+.date-tile b{font-size:1.3rem;font-weight:900}
+.date-tile span{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase}
+.card.row{display:flex;align-items:center;gap:.85rem}
+.card.row .grow{flex:1;min-width:0}
+
+.menu{display:grid;list-style:none;margin:0;padding:0;border-radius:16px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.menu li+li{border-top:1px solid var(--line)}
+.menu a,.menu button{display:flex;align-items:center;gap:.85rem;width:100%;min-height:58px;padding:.6rem 1rem;border:0;background:none;color:var(--ink);font:inherit;font-weight:700;text-align:left;text-decoration:none;cursor:pointer}
+.menu a:hover,.menu button:hover{background:var(--surface-2)}
+.menu .ic{display:grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:10px;background:var(--surface-2);font-size:1.1rem}
+.menu small{display:block;font-weight:500;color:var(--muted);font-size:.85rem}
+.menu .n{margin-left:auto;color:var(--muted);font-weight:600}
+
+.mail-preview{white-space:pre-wrap;overflow-wrap:anywhere;padding:1rem;border-radius:12px;background:var(--bg);border:1px solid var(--line);font-size:.95rem}
+.mail-preview strong{display:block;margin-bottom:.6rem}
+.ph{padding:0 .2rem;border-radius:4px;background:color-mix(in srgb,var(--strap) 25%,transparent);color:var(--strap)}
+.msg{padding:.8rem 1rem;border-left:5px solid var(--danger);border-radius:0 10px 10px 0;background:var(--surface-2);font-weight:600}
 .center{min-height:calc(100dvh - 6rem);display:grid;place-items:center;padding-block:2rem}
 .login{width:100%;max-width:24rem;display:grid;gap:1.1rem;padding:1.5rem;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
 .login h1{font-size:1.6rem;font-weight:900;font-stretch:118%;line-height:1.1}
 .login p{color:var(--muted)}
-.msg{padding:.8rem 1rem;border-left:5px solid var(--danger);border-radius:0 10px 10px 0;background:var(--surface-2);font-weight:600}
 .loading{padding-block:3rem;color:var(--muted);font-weight:600;text-align:center}
 
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:20;padding-bottom:env(safe-area-inset-bottom,0px);background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line)}
-.nav-in{display:grid;grid-template-columns:1fr 1fr;max-width:46rem;margin-inline:auto;height:var(--nav-h)}
-.nav a{position:relative;display:grid;place-items:center;align-content:center;gap:.15rem;color:var(--muted);text-decoration:none;font-size:.8rem;font-weight:700}
-.nav a svg{width:1.5rem;height:1.5rem}
+.nav-in{display:grid;grid-template-columns:repeat(5,1fr);max-width:46rem;margin-inline:auto;height:var(--nav-h)}
+.nav a{position:relative;display:grid;place-items:center;align-content:center;gap:.15rem;color:var(--muted);text-decoration:none;font-size:.72rem;font-weight:700}
+.nav a svg{width:1.45rem;height:1.45rem}
 .nav a[aria-current="page"]{color:var(--ink)}
-.nav a[aria-current="page"]::before{content:"";position:absolute;top:0;width:2.5rem;height:3px;border-radius:0 0 3px 3px;background:var(--strap)}
-.badge{position:absolute;top:.55rem;left:calc(50% + .45rem);min-width:1.25rem;height:1.25rem;padding:0 .35rem;border-radius:999px;background:var(--strap);color:var(--on-strap);font-size:.72rem;font-weight:800;line-height:1.25rem;text-align:center}
+.nav a[aria-current="page"]::before{content:"";position:absolute;top:0;width:2.2rem;height:3px;border-radius:0 0 3px 3px;background:var(--strap)}
+.badge{position:absolute;top:.5rem;left:calc(50% + .35rem);min-width:1.2rem;height:1.2rem;padding:0 .3rem;border-radius:999px;background:var(--strap);color:var(--on-strap);font-size:.7rem;font-weight:800;line-height:1.2rem;text-align:center}
 
 .toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,0px) + .9rem);z-index:30;transform:translate(-50%,1rem);width:max-content;max-width:calc(100% - 2rem);padding:.75rem 1.1rem;border-radius:12px;background:var(--ink);color:var(--bg);font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
 .toast.show{opacity:1;transform:translate(-50%,0)}
@@ -173,18 +225,21 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <body>
 <header class="wrap top" id="top" hidden>
   <div class="brand">
-    <a class="logo" href="#/adasok" aria-label="Tények++ Szerkesztőség, adások">Tények<b>++</b></a>
+    <a class="logo" href="#/" aria-label="Tények++ Szerkesztőség, áttekintés">Tények<b>++</b></a>
     <span class="tag">Szerkesztőség</span>
   </div>
-  <div class="who"><span id="who"></span><button class="btn ghost small" type="button" data-logout>Kilépés</button></div>
+  <span class="who" id="who"></span>
 </header>
 
 <main id="main" tabindex="-1"><div class="wrap"><p class="loading" role="status">Betöltés…</p></div></main>
 
 <nav class="nav" id="nav" aria-label="Fő menü" hidden>
   <div class="nav-in">
-    <a href="#/adasok" data-nav="adasok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m10 9.5 4.5 2.5-4.5 2.5z"/></svg>Adások</a>
+    <a href="#/" data-nav="attekintes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg>Áttekintés</a>
+    <a href="#/tervek" data-nav="tervek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m9 12 2 2 4-4"/></svg>Tervek</a>
     <a href="#/sztorik" data-nav="sztorik"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5h16v11H8.5L4 19.5z"/><path d="M8 9h8M8 12h5"/></svg>Sztorik<span class="badge" id="badge" hidden></span></a>
+    <a href="#/adasok" data-nav="adasok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m10 9.5 4.5 2.5-4.5 2.5z"/></svg>Adások</a>
+    <a href="#/tobb" data-nav="tobb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg>Több</a>
   </div>
 </nav>
 
@@ -195,16 +250,17 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <script>
 const CFG = window.TENYEK_CONFIG || {};
 const SITE = new URL("../", location.href).href;
-const STATUSES = [
-  ["beerkezett", "Beérkezett"],
-  ["otlet", "Ötlet"],
-  ["forgatas", "Forgatás"],
-  ["vagas", "Vágás"],
-  ["kesz", "Kész"],
-  ["elvetve", "Elvetve"]
-];
-const STATUS_LABEL = Object.fromEntries(STATUSES);
-const ACTIVE = ["beerkezett", "otlet", "forgatas", "vagas"];
+
+const STORY_STATUSES = [["beerkezett", "Beérkezett"], ["otlet", "Ötlet"], ["forgatas", "Forgatás"], ["vagas", "Vágás"], ["kesz", "Kész"], ["elvetve", "Elvetve"]];
+const STORY_LABEL = Object.fromEntries(STORY_STATUSES);
+const STORY_ACTIVE = ["beerkezett", "otlet", "forgatas", "vagas"];
+const PLAN_STATUSES = [["otlet", "Ötlet"], ["tervezes", "Tervezés"], ["forgatas", "Forgatás"], ["vagas", "Vágás"], ["kesz", "Kész"], ["megjelent", "Megjelent"]];
+const PLAN_LABEL = Object.fromEntries(PLAN_STATUSES);
+const KINDS = [["nyersanyag", "Nyersanyag", "🎞️"], ["forgatokonyv", "Forgatókönyv", "📝"], ["zene", "Zene", "🎵"], ["kep", "Kép", "🖼️"], ["grafika", "Grafika", "✨"], ["dokumentum", "Dokumentum", "📄"], ["egyeb", "Egyéb", "🔗"]];
+const KIND_LABEL = Object.fromEntries(KINDS.map(k => [k[0], k[1]]));
+const KIND_ICON = Object.fromEntries(KINDS.map(k => [k[0], k[2]]));
+const DEFAULT_CHECKLIST = ["Téma és szempontok kitalálva", "Interjúalanyok megkeresve", "Forgatási engedély megvan", "Forgatókönyv kész", "Forgatás", "Vágás", "Feltöltés YouTube-ra", "Közzététel az oldalon"];
+const PH_LABEL = { nev: "Címzett neve", tema: "Téma", datum: "Dátum", idopont: "Időpont", helyszin: "Helyszín", link: "Link", alairas: "Aláírás" };
 
 const main = document.getElementById("main");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -218,12 +274,21 @@ const slugify = s => String(s || "")
   .normalize("NFD").replace(/[̀-ͯ]/g, "")
   .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80).replace(/-+$/g, "");
 const fmtDate = new Intl.DateTimeFormat("hu-HU", { year: "numeric", month: "short", day: "numeric" });
+const fmtDay = new Intl.DateTimeFormat("hu-HU", { month: "long", day: "numeric", weekday: "long" });
 const fmtDateTime = new Intl.DateTimeFormat("hu-HU", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+const fmtTime = new Intl.DateTimeFormat("hu-HU", { hour: "2-digit", minute: "2-digit" });
+const fmtMonth = new Intl.DateTimeFormat("hu-HU", { month: "short" });
+const fmtLongDate = new Intl.DateTimeFormat("hu-HU", { year: "numeric", month: "long", day: "numeric" });
 const dayDate = s => fmtDate.format(new Date(s + "T12:00:00"));
-const todayIso = () => {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const pad = n => String(n).padStart(2, "0");
+const isoDay = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const todayIso = () => isoDay(new Date());
+const toLocalInput = iso => {
+  if (!iso) return "";
+  const d = new Date(iso);
+  return `${isoDay(d)}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
 };
+const fromLocalInput = v => v ? new Date(v).toISOString() : null;
 const ago = iso => {
   const diff = (Date.now() - new Date(iso).getTime()) / 1000;
   if (diff < 60) return "most";
@@ -234,8 +299,14 @@ const ago = iso => {
 };
 const safeHref = u => /^https?:\/\//i.test(String(u || "").trim()) ? String(u).trim() : "";
 const isEmail = s => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(s || "").trim());
+const uid = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random());
 
-const S = { sb: null, user: null, staffName: "", episodes: [], stories: [], subs: null, loaded: false, filter: "aktiv", lastLoad: 0, dirty: false };
+const S = {
+  sb: null, user: null, me: "", staff: [],
+  episodes: [], stories: [], plans: [], resources: [], notes: [], contacts: [], templates: [],
+  subs: null, loaded: false, lastLoad: 0, dirty: false,
+  storyFilter: "aktiv", planFilter: "aktiv", resFilter: "osszes", contactQ: ""
+};
 
 let toastTimer;
 function toast(text, bad) {
@@ -244,7 +315,7 @@ function toast(text, bad) {
   t.classList.toggle("bad", !!bad);
   t.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove("show"), bad ? 5000 : 3000);
+  toastTimer = setTimeout(() => t.classList.remove("show"), bad ? 5000 : 2600);
 }
 
 function chrome(on) {
@@ -267,7 +338,42 @@ function errText(error) {
   if (/Failed to fetch|NetworkError|Load failed/i.test(m)) return "Nincs kapcsolat a szerverrel. Ellenőrizd az internetet.";
   if (error && error.code === "23505") return "Ez az azonosító már foglalt. Adj meg másikat.";
   if (error && error.code === "42501") return "Ehhez nincs jogosultságod.";
+  if (error && error.code === "42P01") return "Hiányzik egy adatbázistábla. Futtasd le a newsroom.sql-t a Supabase-ben.";
   return m || "Ismeretlen hiba történt.";
+}
+
+const staffName = id => (S.staff.find(s => s.user_id === id) || {}).name || "";
+const firstName = n => String(n || "").split(" ").slice(-1)[0];
+const planById = id => S.plans.find(p => p.id === id);
+const epById = id => S.episodes.find(e => e.id === id);
+const epUrl = id => `${SITE}#/adas/${encodeURIComponent(id)}`;
+const checkProgress = p => {
+  const list = Array.isArray(p.checklist) ? p.checklist : [];
+  return { done: list.filter(c => c.done).length, all: list.length };
+};
+
+function replaceIn(list, row, key = "id") {
+  const i = list.findIndex(x => x[key] === row[key]);
+  if (i >= 0) list[i] = row; else list.unshift(row);
+}
+function removeFrom(list, id, key = "id") {
+  const i = list.findIndex(x => x[key] === id);
+  if (i >= 0) list.splice(i, 1);
+}
+
+async function dbInsert(table, row) {
+  const r = await S.sb.from(table).insert(row).select().single();
+  if (r.error) throw r.error;
+  return r.data;
+}
+async function dbUpdate(table, id, row, key = "id") {
+  const r = await S.sb.from(table).update(row).eq(key, id).select().single();
+  if (r.error) throw r.error;
+  return r.data;
+}
+async function dbDelete(table, id, key = "id") {
+  const r = await S.sb.from(table).delete().eq(key, id);
+  if (r.error) throw r.error;
 }
 
 function viewSetup() {
@@ -296,15 +402,28 @@ function viewNotStaff() {
 }
 
 async function loadAll() {
-  const [eps, stories, subs] = await Promise.all([
-    S.sb.from("episodes").select("*").order("aired_on", { ascending: false, nullsFirst: false }).order("created_at", { ascending: false }),
-    S.sb.from("stories").select("*").order("created_at", { ascending: false }),
+  const q = (t, build) => build(S.sb.from(t).select("*"));
+  const res = await Promise.all([
+    q("episodes", b => b.order("aired_on", { ascending: false, nullsFirst: false }).order("created_at", { ascending: false })),
+    q("stories", b => b.order("created_at", { ascending: false })),
+    q("plans", b => b.order("created_at", { ascending: false })),
+    q("resources", b => b.order("created_at", { ascending: false })),
+    q("notes", b => b.order("updated_at", { ascending: false })),
+    q("contacts", b => b.order("name")),
+    q("email_templates", b => b.order("created_at")),
+    S.sb.from("staff").select("user_id,name").order("name"),
     S.sb.rpc("push_count")
   ]);
-  if (eps.error) throw eps.error;
-  if (stories.error) throw stories.error;
+  const [eps, stories, plans, resources, notes, contacts, templates, staff, subs] = res;
+  for (const r of [eps, stories, plans, resources, notes, contacts, templates, staff]) if (r.error) throw r.error;
   S.episodes = eps.data || [];
   S.stories = stories.data || [];
+  S.plans = plans.data || [];
+  S.resources = resources.data || [];
+  S.notes = notes.data || [];
+  S.contacts = contacts.data || [];
+  S.templates = templates.data || [];
+  S.staff = staff.data || [];
   S.subs = subs.error ? null : subs.data;
   S.loaded = true;
   S.lastLoad = Date.now();
@@ -324,12 +443,195 @@ function epThumb(e) {
   return `<div class="thumb">${e.youtube_id ? `<img src="https://i.ytimg.com/vi/${esc(e.youtube_id)}/mqdefault.jpg" alt="" loading="lazy">` : ""}</div>`;
 }
 
+function dateTile(iso) {
+  const d = new Date(iso);
+  return `<span class="date-tile"><b>${d.getDate()}</b><span>${esc(fmtMonth.format(d).replace(".", ""))}</span></span>`;
+}
+
+function planCard(p) {
+  const pr = checkProgress(p);
+  const pct = pr.all ? Math.round(pr.done / pr.all * 100) : 0;
+  const meta = [];
+  if (p.air_date) meta.push(`Adás: ${dayDate(p.air_date)}`);
+  if (p.shoot_at) meta.push(`Forgatás: ${fmtDateTime.format(new Date(p.shoot_at))}`);
+  if (p.owner_id) meta.push(esc(staffName(p.owner_id)));
+  return `<li><a class="card" href="#/terv/${p.id}">
+    <div class="card-top"><span class="pill s-${p.status}">${PLAN_LABEL[p.status]}</span>${p.episode_id ? `<span class="when">Adás kész</span>` : ""}</div>
+    <h3>${esc(p.title)}</h3>
+    ${meta.length ? `<p class="meta">${meta.join(" · ")}</p>` : ""}
+    ${pr.all ? `<div class="progress"><div class="bar"><span style="width:${pct}%"></span></div>${pr.done}/${pr.all}</div>` : ""}
+  </a></li>`;
+}
+
+function viewOverview() {
+  const now = Date.now();
+  const today = todayIso();
+  const active = S.plans.filter(p => p.status !== "megjelent");
+  const newTips = S.stories.filter(s => s.status === "beerkezett").length;
+  const shoots = S.plans.filter(p => p.shoot_at && new Date(p.shoot_at).getTime() >= now - 3 * 3600 * 1000 && p.status !== "megjelent")
+    .sort((a, b) => new Date(a.shoot_at) - new Date(b.shoot_at)).slice(0, 5);
+  const airs = S.plans.filter(p => p.air_date && p.air_date >= today && p.status !== "megjelent")
+    .sort((a, b) => a.air_date.localeCompare(b.air_date)).slice(0, 5);
+  const myTodos = [];
+  S.plans.filter(p => p.owner_id === S.user.id && p.status !== "megjelent").forEach(p => {
+    (p.checklist || []).forEach((c, i) => { if (!c.done) myTodos.push({ p, c, i }); });
+  });
+  const pinned = S.notes.filter(n => n.pinned).slice(0, 4);
+  const shootHtml = shoots.length ? `<ul class="list">${shoots.map(p => `<li><a class="card row" href="#/terv/${p.id}">${dateTile(p.shoot_at)}<div class="grow"><h3>${esc(p.title)}</h3><p class="meta">${esc(fmtTime.format(new Date(p.shoot_at)))}${p.location ? ` · ${esc(p.location)}` : ""}${p.owner_id ? ` · ${esc(staffName(p.owner_id))}` : ""}</p></div></a></li>`).join("")}</ul>` : `<p class="empty small">Nincs kitűzött forgatás. Egy terv megnyitásával adhatsz meg időpontot.</p>`;
+  const airHtml = airs.length ? `<ul class="list">${airs.map(p => `<li><a class="card row" href="#/terv/${p.id}">${dateTile(p.air_date + "T12:00:00")}<div class="grow"><h3>${esc(p.title)}</h3><p class="meta"><span class="pill s-${p.status}">${PLAN_LABEL[p.status]}</span></p></div></a></li>`).join("")}</ul>` : `<p class="empty small">Nincs adásnapra ütemezett terv.</p>`;
+  const todoHtml = myTodos.length ? `<ul class="checks">${myTodos.slice(0, 8).map(({ p, c, i }) => `<li class="check"><input type="checkbox" id="ov-${p.id}-${i}" data-ov-check="${p.id}" data-i="${i}"><label for="ov-${p.id}-${i}">${esc(c.t)} <small style="color:var(--muted)">· ${esc(p.title)}</small></label></li>`).join("")}</ul>${myTodos.length > 8 ? `<p class="hint">És még ${myTodos.length - 8} teendő a terveidben.</p>` : ""}` : `<p class="empty small">Nincs nyitott teendőd. A tervekben te lehetsz a felelős, és akkor itt látod a feladataidat.</p>`;
+  const noteHtml = pinned.length ? `<ul class="list">${pinned.map(noteCard).join("")}</ul>` : "";
+  return `<div class="wrap">
+    <div class="head"><h1>Szia, ${esc(firstName(S.me))}!</h1></div>
+    <p class="sub">${esc(fmtDay.format(new Date()))}</p>
+    <div class="stats">
+      <a class="stat" href="#/tervek"><b>${active.length}</b><span>folyamatban lévő terv</span></a>
+      <a class="stat${newTips ? " hot" : ""}" href="#/sztorik"><b>${newTips}</b><span>új beküldés</span></a>
+      <a class="stat" href="#/adasok"><b>${S.episodes.length}</b><span>adás az oldalon</span></a>
+      <a class="stat" href="#/adasok"><b>${S.subs ?? "–"}</b><span>feliratkozott eszköz</span></a>
+    </div>
+    <div class="quick">
+      <a class="btn yellow small" href="#/terv/uj">+ Új terv</a>
+      <a class="btn ghost small" href="#/jegyzet/uj">+ Jegyzet</a>
+      <a class="btn ghost small" href="#/level">E-mail írása</a>
+    </div>
+    <div class="stack">
+      <section class="section"><h2>Közelgő forgatások</h2>${shootHtml}</section>
+      <section class="section"><h2>Teendőim <small>${myTodos.length || ""}</small></h2>${todoHtml}</section>
+      <section class="section"><h2>Hamarosan adásba</h2>${airHtml}</section>
+      ${pinned.length ? `<section class="section"><h2>Kitűzött jegyzetek</h2>${noteHtml}</section>` : ""}
+    </div>
+  </div>`;
+}
+
+function viewPlans() {
+  const filters = [["aktiv", "Aktív"], ...PLAN_STATUSES];
+  const count = k => k === "aktiv" ? S.plans.filter(p => p.status !== "megjelent").length : S.plans.filter(p => p.status === k).length;
+  const list = S.plans.filter(p => S.planFilter === "aktiv" ? p.status !== "megjelent" : p.status === S.planFilter)
+    .sort((a, b) => (a.air_date || "9999").localeCompare(b.air_date || "9999") || new Date(b.created_at) - new Date(a.created_at));
+  return `<div class="wrap">
+    <div class="head"><h1>Tervek</h1><a class="btn yellow" href="#/terv/uj">+ Új terv</a></div>
+    <p class="sub">A készülő adások: időpontok, teendők, forgatókönyv és anyagok egy helyen.</p>
+    <div class="chips" role="group" aria-label="Szűrés állapot szerint">${filters.map(([k, l]) => `<button class="chip" type="button" data-pfilter="${k}" aria-pressed="${S.planFilter === k}">${l}<span class="n">${count(k)}</span></button>`).join("")}</div>
+    ${list.length ? `<ul class="list">${list.map(planCard).join("")}</ul>` : `<p class="empty">${S.planFilter === "aktiv" ? "Még nincs készülő adás. Kezdj egy új tervet, vagy alakíts át egy beküldött sztorit." : "Ebben az állapotban nincs terv."}</p>`}
+  </div>`;
+}
+
+function statusSet(list, current, name = "status") {
+  return `<fieldset class="statusset"><legend class="vh">Állapot</legend>${list.map(([k, l]) => `<label class="s-${k}"><input type="radio" name="${name}" value="${k}" ${current === k ? "checked" : ""}><span>${l}</span></label>`).join("")}</fieldset>`;
+}
+
+function staffSelect(id, current) {
+  return `<select id="${id}"><option value="">Nincs kijelölve</option>${S.staff.map(s => `<option value="${esc(s.user_id)}" ${current === s.user_id ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select>`;
+}
+
+function planSelect(id, current) {
+  const list = S.plans.slice().sort((a, b) => (a.status === "megjelent") - (b.status === "megjelent"));
+  return `<select id="${id}"><option value="">Nincs</option>${list.map(p => `<option value="${esc(p.id)}" ${current === p.id ? "selected" : ""}>${esc(p.title)}${p.status === "megjelent" ? " (megjelent)" : ""}</option>`).join("")}</select>`;
+}
+
+function episodeSelect(id, current) {
+  return `<select id="${id}"><option value="">Nincs</option>${S.episodes.map(e => `<option value="${esc(e.id)}" ${current === e.id ? "selected" : ""}>${esc(e.title)}</option>`).join("")}</select>`;
+}
+
+function checklistHtml(p) {
+  const list = Array.isArray(p.checklist) ? p.checklist : [];
+  const pr = checkProgress(p);
+  return `<h2>Teendők <small>${pr.all ? `${pr.done}/${pr.all}` : ""}</small></h2>
+    ${list.length ? `<ul class="checks">${list.map((c, i) => `<li class="check${c.done ? " done" : ""}"><input type="checkbox" id="ck-${i}" data-check="${i}" ${c.done ? "checked" : ""}><label for="ck-${i}">${esc(c.t)}</label><button class="iconbtn" type="button" data-uncheck-del="${i}" aria-label="Teendő törlése: ${esc(c.t)}">×</button></li>`).join("")}</ul>` : `<p class="empty small">Nincs teendő.</p>`}
+    <div class="addrow"><label class="vh" for="ck-new">Új teendő</label><input id="ck-new" type="text" maxlength="200" placeholder="Új teendő" autocomplete="off"><button class="btn ghost small" type="button" data-check-add>Hozzáadás</button></div>`;
+}
+
+function resourceItem(r, showContext) {
+  const href = safeHref(r.url);
+  let ctx = "";
+  if (showContext) {
+    if (r.plan_id) ctx = (planById(r.plan_id) || {}).title || "";
+    else if (r.episode_id) ctx = (epById(r.episode_id) || {}).title || "";
+    else ctx = "Általános";
+  }
+  const sub = [KIND_LABEL[r.kind], ctx, r.note].filter(Boolean).map(esc).join(" · ");
+  return `<li class="res">
+    <span class="ic" aria-hidden="true">${KIND_ICON[r.kind] || "🔗"}</span>
+    <div class="txt">${href ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(r.label)}</a>` : `<strong>${esc(r.label)}</strong>`}<span>${sub || esc(r.url || "")}</span></div>
+    <button class="iconbtn" type="button" data-res-del="${r.id}" aria-label="Anyag törlése: ${esc(r.label)}">×</button>
+  </li>`;
+}
+
+function resourcesHtml(scope) {
+  const list = S.resources.filter(r => scope.plan_id ? r.plan_id === scope.plan_id : scope.episode_id ? r.episode_id === scope.episode_id : true);
+  return `<h2>Anyagok <small>${list.length || ""}</small></h2>
+    ${list.length ? `<ul class="list">${list.map(r => resourceItem(r, false)).join("")}</ul>` : `<p class="empty small">Linkeld ide a nyersanyagot (Drive, iCloud), a zenét, a forgatókönyvet vagy bármit, ami az adáshoz kell.</p>`}
+    <div class="resform" data-res-scope='${esc(JSON.stringify(scope))}'>
+      <label class="vh" for="rs-kind">Típus</label><select id="rs-kind">${KINDS.map(k => `<option value="${k[0]}">${k[2]} ${k[1]}</option>`).join("")}</select>
+      <label class="vh" for="rs-label">Megnevezés</label><input id="rs-label" type="text" maxlength="160" placeholder="Megnevezés" autocomplete="off">
+      <label class="vh" for="rs-url">Link</label><input id="rs-url" type="url" inputmode="url" maxlength="1000" placeholder="https://" autocomplete="off">
+      <button class="btn ghost small" type="button" data-res-add>Hozzáadás</button>
+    </div>`;
+}
+
+function noteCard(n) {
+  const plan = n.plan_id ? planById(n.plan_id) : null;
+  const meta = [`${ago(n.updated_at)}${n.updated_by ? `, ${esc(staffName(n.updated_by))}` : ""}`];
+  if (plan) meta.push(esc(plan.title));
+  return `<li><a class="card" href="#/jegyzet/${n.id}">
+    <div class="card-top"><h3>${n.pinned ? "📌 " : ""}${esc(n.title)}</h3></div>
+    ${n.body ? `<p class="snip">${esc(n.body)}</p>` : ""}
+    <p class="meta">${meta.join(" · ")}</p>
+  </a></li>`;
+}
+
+function viewPlan(p) {
+  const isNew = !p;
+  const x = p || { title: "", status: "otlet", air_date: "", shoot_at: null, location: "", owner_id: S.user.id, outline: "", checklist: [] };
+  const linkedStories = isNew ? [] : S.stories.filter(s => s.plan_id === x.id);
+  const linkedNotes = isNew ? [] : S.notes.filter(n => n.plan_id === x.id);
+  const ep = x.episode_id ? epById(x.episode_id) : null;
+  return `<div class="wrap">
+    <a class="back" href="#/tervek">← Tervek</a>
+    <form class="form" id="plan-form" data-id="${isNew ? "" : esc(x.id)}" novalidate>
+      <div class="field" id="fw-ptitle"><label class="vh" for="f-ptitle">Cím</label><input class="title-input" id="f-ptitle" type="text" maxlength="160" placeholder="Az adás címe" autocomplete="off" value="${esc(x.title)}"><p class="err" hidden></p></div>
+      ${statusSet(PLAN_STATUSES, x.status)}
+      <section class="section">
+        <h2>Időpontok és felelős</h2>
+        <div class="row2">
+          <div class="field"><label for="f-air">Adás tervezett napja</label><input id="f-air" type="date" value="${esc(x.air_date || "")}"></div>
+          <div class="field"><label for="f-shoot">Forgatás</label><input id="f-shoot" type="datetime-local" value="${esc(toLocalInput(x.shoot_at))}"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="f-loc">Helyszín</label><input id="f-loc" type="text" maxlength="160" placeholder="pl. aula, 204-es terem" autocomplete="off" value="${esc(x.location || "")}"></div>
+          <div class="field"><label for="f-owner">Felelős</label>${staffSelect("f-owner", x.owner_id)}</div>
+        </div>
+      </section>
+      ${isNew ? `<label class="switch"><input type="checkbox" id="f-defcheck" checked><span><strong>Alap teendőlista</strong><span>${DEFAULT_CHECKLIST.length} lépés a témától a közzétételig. Később szerkesztheted.</span></span></label>` : `<section class="section" id="checklist">${checklistHtml(x)}</section>`}
+      <section class="section">
+        <h2>Forgatókönyv és vázlat</h2>
+        <div class="field"><label class="vh" for="f-outline">Forgatókönyv és vázlat</label><textarea class="tall" id="f-outline" maxlength="20000" placeholder="Felvezetés, kérdések az interjúhoz, snittlista, zárás…">${esc(x.outline || "")}</textarea></div>
+      </section>
+      <div class="actions"><button class="btn" type="submit" id="plan-save">${isNew ? "Terv létrehozása" : "Mentés"}</button>${isNew ? "" : `<a class="btn ghost" href="#/level?terv=${x.id}">E-mail írása</a>`}</div>
+      ${isNew ? "" : `
+      <section class="section" id="resources">${resourcesHtml({ plan_id: x.id })}</section>
+      <section class="section">
+        <h2>Jegyzetek <small>${linkedNotes.length || ""}</small></h2>
+        ${linkedNotes.length ? `<ul class="list">${linkedNotes.map(noteCard).join("")}</ul>` : ""}
+        <div><a class="btn ghost small" href="#/jegyzet/uj?terv=${x.id}">+ Jegyzet ehhez a tervhez</a></div>
+      </section>
+      ${linkedStories.length ? `<section class="section"><h2>Beküldött sztorik</h2><ul class="list">${linkedStories.map(s => `<li><a class="card" href="#/sztori/${s.id}"><h3>${esc(s.topic)}</h3><p class="meta">${esc(s.name || "Saját ötlet")}${s.class_name ? ` (${esc(s.class_name)})` : ""}</p></a></li>`).join("")}</ul></section>` : ""}
+      <section class="section">
+        <h2>Közzététel</h2>
+        ${ep ? `<p>Ebből a tervből elkészült adás: <a href="#/adas/${encodeURIComponent(ep.id)}">${esc(ep.title)}</a></p>` : `<p class="hint" style="margin:0">Ha kész a videó és fent van YouTube-on, tedd ki az oldalra. A terv állapota „Megjelent” lesz.</p><div><a class="btn yellow" href="#/adas/uj?terv=${x.id}">Adás közzététele</a></div>`}
+      </section>
+      <div class="danger-zone actions"><span class="grow"></span><button class="btn danger" type="button" data-del-plan="${esc(x.id)}">Terv törlése</button></div>`}
+    </form>
+  </div>`;
+}
+
 function viewEpisodes() {
   const items = S.episodes.map(e => `
     <li><a class="card ep" href="#/adas/${encodeURIComponent(e.id)}">
       ${epThumb(e)}
       <div>
-        <h2>${esc(e.title)}</h2>
+        <h3>${esc(e.title)}</h3>
         <p class="meta">
           ${e.published ? "" : `<span class="pill hidden-pill">Rejtett</span>`}
           <span>${e.aired_on ? dayDate(e.aired_on) : "Nincs dátum"}</span>
@@ -347,15 +649,15 @@ function viewEpisodes() {
   </div>`;
 }
 
-function viewEpisodeForm(ep) {
+function viewEpisodeForm(ep, fromPlan) {
   const isNew = !ep;
-  const e = ep || { id: "", title: "", youtube_id: "", aired_on: todayIso(), category: "", summary: "", published: true, notified_at: null };
+  const e = ep || { id: "", title: fromPlan ? fromPlan.title : "", youtube_id: "", aired_on: (fromPlan && fromPlan.air_date) || todayIso(), category: "", summary: "", published: true, notified_at: null };
   const cats = [...new Set(S.episodes.map(x => x.category).filter(Boolean))];
   const showNotify = !e.notified_at;
   return `<div class="wrap">
-    <a class="back" href="#/adasok">← Adások</a>
+    <a class="back" href="${fromPlan ? `#/terv/${fromPlan.id}` : "#/adasok"}">← ${fromPlan ? esc(fromPlan.title) : "Adások"}</a>
     <div class="head"><h1>${isNew ? "Új adás" : "Adás szerkesztése"}</h1></div>
-    <form class="form" id="ep-form" data-id="${esc(e.id)}" novalidate>
+    <form class="form" id="ep-form" data-id="${esc(e.id)}" data-plan="${fromPlan ? esc(fromPlan.id) : ""}" novalidate>
       <div class="field" id="fw-yt">
         <label for="f-yt">YouTube-link</label>
         <input id="f-yt" type="url" inputmode="url" autocomplete="off" placeholder="https://www.youtube.com/watch?v=…" value="${e.youtube_id ? `https://www.youtube.com/watch?v=${esc(e.youtube_id)}` : ""}">
@@ -372,7 +674,7 @@ function viewEpisodeForm(ep) {
         <input id="f-slug" type="text" maxlength="80" autocomplete="off" autocapitalize="off" spellcheck="false" value="">
         <p class="hint slug" id="slug-url"></p>
         <p class="err" hidden></p>
-      </div>` : `<div class="field"><span class="lbl">Az adás címe az oldalon</span><a class="slug" href="${esc(SITE)}#/adas/${encodeURIComponent(e.id)}" target="_blank" rel="noopener">${esc(SITE)}#/adas/${esc(e.id)}</a></div>`}
+      </div>` : `<div class="field"><span class="lbl">Az adás címe az oldalon</span><a class="slug" href="${esc(epUrl(e.id))}" target="_blank" rel="noopener">${esc(epUrl(e.id))}</a></div>`}
       <div class="row2">
         <div class="field"><label for="f-date">Adás dátuma <small>(nem kötelező)</small></label><input id="f-date" type="date" value="${esc(e.aired_on || "")}"></div>
         <div class="field"><label for="f-cat">Rovat <small>(nem kötelező)</small></label><input id="f-cat" type="text" maxlength="40" list="cats" autocomplete="off" value="${esc(e.category || "")}"><datalist id="cats">${cats.map(c => `<option value="${esc(c)}">`).join("")}</datalist></div>
@@ -383,11 +685,12 @@ function viewEpisodeForm(ep) {
       </div>
       <label class="switch"><input type="checkbox" id="f-pub" ${e.published ? "checked" : ""}><span><strong>Közzétéve</strong><span>Kikapcsolva csak a stáb látja.</span></span></label>
       ${showNotify ? `<label class="switch" id="notify-row"><input type="checkbox" id="f-notify" ${isNew ? "checked" : ""}><span><strong>Értesítés a nézőknek mentéskor</strong><span>${S.subs !== null ? `${S.subs} feliratkozott eszköz kapja meg.` : "Minden feliratkozott eszköz megkapja."}</span></span></label>` : ""}
-      <div class="bar">
+      <div class="actions">
         <button class="btn" type="submit" id="ep-save">${isNew ? "Adás mentése" : "Változások mentése"}</button>
-        ${isNew ? "" : `<a class="btn ghost" href="${esc(SITE)}#/adas/${encodeURIComponent(e.id)}" target="_blank" rel="noopener">Megnézem</a>`}
+        ${isNew ? "" : `<a class="btn ghost" href="${esc(epUrl(e.id))}" target="_blank" rel="noopener">Megnézem</a>`}
       </div>
-      ${isNew ? "" : `<div class="danger-zone bar">
+      ${isNew ? "" : `<section class="section" id="resources">${resourcesHtml({ episode_id: e.id })}</section>
+      <div class="danger-zone actions">
         ${e.published ? `<button class="btn ghost" type="button" data-notify="${esc(e.id)}">${e.notified_at ? "Értesítés újraküldése" : "Értesítés küldése"}</button>` : ""}
         <span class="grow"></span>
         <button class="btn danger" type="button" data-del-ep="${esc(e.id)}">Adás törlése</button>
@@ -399,49 +702,37 @@ function viewEpisodeForm(ep) {
 
 function storyCounts() {
   const c = { aktiv: 0 };
-  STATUSES.forEach(([k]) => { c[k] = 0; });
+  STORY_STATUSES.forEach(([k]) => { c[k] = 0; });
   S.stories.forEach(s => {
     c[s.status] = (c[s.status] || 0) + 1;
-    if (ACTIVE.includes(s.status)) c.aktiv++;
+    if (STORY_ACTIVE.includes(s.status)) c.aktiv++;
   });
   return c;
 }
 
 function viewStories() {
   const c = storyCounts();
-  const filters = [["aktiv", "Aktív"], ...STATUSES];
-  const chips = filters.map(([k, l]) => `<button class="chip" type="button" data-filter="${k}" aria-pressed="${S.filter === k}">${l}<span class="n">${c[k] || 0}</span></button>`).join("");
-  const list = S.stories.filter(s => S.filter === "aktiv" ? ACTIVE.includes(s.status) : s.status === S.filter);
+  const filters = [["aktiv", "Aktív"], ...STORY_STATUSES];
+  const list = S.stories.filter(s => S.storyFilter === "aktiv" ? STORY_ACTIVE.includes(s.status) : s.status === S.storyFilter);
   const items = list.map(s => `
-    <li><a class="card story" href="#/sztori/${s.id}">
-      <div class="story-top">
-        <span class="pill s-${s.status}">${STATUS_LABEL[s.status]}</span>
-        <time datetime="${esc(s.created_at)}">${ago(s.created_at)}</time>
-      </div>
-      <h2>${esc(s.topic)}</h2>
+    <li><a class="card" href="#/sztori/${s.id}">
+      <div class="card-top"><span class="pill s-${s.status}">${STORY_LABEL[s.status]}</span><time datetime="${esc(s.created_at)}">${ago(s.created_at)}</time></div>
+      <h3>${esc(s.topic)}</h3>
       ${s.details ? `<p class="snip">${esc(s.details)}</p>` : ""}
-      <p class="meta">${s.source === "sajat" ? "Saját ötlet" : `${s.kind === "request" ? "Riportkérés" : "Beküldött sztori"}${s.name ? ` · ${esc(s.name)}` : ""}${s.class_name ? ` (${esc(s.class_name)})` : ""}`}</p>
+      <p class="meta">${s.source === "sajat" ? "Saját ötlet" : `${s.kind === "request" ? "Riportkérés" : "Beküldött sztori"}${s.name ? ` · ${esc(s.name)}` : ""}${s.class_name ? ` (${esc(s.class_name)})` : ""}`}${s.plan_id && planById(s.plan_id) ? ` · Tervben` : ""}</p>
     </a></li>`).join("");
-  const emptyText = S.filter === "aktiv" ? "Nincs folyamatban lévő sztori. Ha valaki beküld egyet az oldalon, itt jelenik meg." : "Ebben az állapotban nincs sztori.";
+  const emptyText = S.storyFilter === "aktiv" ? "Nincs folyamatban lévő sztori. Ha valaki beküld egyet az oldalon, itt jelenik meg." : "Ebben az állapotban nincs sztori.";
   return `<div class="wrap">
     <div class="head"><h1>Sztorik</h1><a class="btn yellow" href="#/sztori/uj">+ Saját ötlet</a></div>
-    <div class="chips" role="group" aria-label="Szűrés állapot szerint">${chips}</div>
+    <div class="chips" role="group" aria-label="Szűrés állapot szerint">${filters.map(([k, l]) => `<button class="chip" type="button" data-filter="${k}" aria-pressed="${S.storyFilter === k}">${l}<span class="n">${c[k] || 0}</span></button>`).join("")}</div>
     ${list.length ? `<ul class="list">${items}</ul>` : `<p class="empty">${emptyText}</p>`}
   </div>`;
-}
-
-function statusSet(current) {
-  return `<fieldset class="statusset"><legend class="vh">Állapot</legend>${STATUSES.map(([k, l]) => `<label class="s-${k}"><input type="radio" name="status" value="${k}" ${current === k ? "checked" : ""}><span>${l}</span></label>`).join("")}</fieldset>`;
-}
-
-function episodeSelect(current) {
-  return `<select id="f-ep"><option value="">Nincs</option>${S.episodes.map(e => `<option value="${esc(e.id)}" ${current === e.id ? "selected" : ""}>${esc(e.title)}</option>`).join("")}</select>`;
 }
 
 function viewStory(s) {
   const isNew = !s;
   const own = isNew || s.source === "sajat";
-  const st = s || { status: "otlet", topic: "", details: "", link: "", note: "", episode_id: null };
+  const st = s || { status: "otlet", topic: "", details: "", link: "", note: "", episode_id: null, plan_id: null };
   let info = "";
   if (!own) {
     const link = safeHref(st.link);
@@ -451,26 +742,260 @@ function viewStory(s) {
       ["Beküldve", fmtDateTime.format(new Date(st.created_at))],
       st.link ? ["Link", link ? `<a href="${esc(link)}" target="_blank" rel="noopener noreferrer">${esc(link)}</a>` : esc(st.link)] : null
     ].filter(Boolean);
-    info = `<div class="info">
+    info = `<div class="section info">
       <dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>
       ${st.details ? `<p class="body-text">${esc(st.details)}</p>` : ""}
     </div>`;
   }
+  const plan = st.plan_id ? planById(st.plan_id) : null;
   return `<div class="wrap">
     <a class="back" href="#/sztorik">← Sztorik</a>
     ${own ? `<div class="head"><h1>${isNew ? "Saját ötlet" : "Ötlet szerkesztése"}</h1></div>` : `<p class="kind">${st.kind === "request" ? "Riportkérés" : "Beküldött sztori"}</p><h1 class="detail-title">${esc(st.topic)}</h1>`}
     <form class="form" id="story-form" data-id="${isNew ? "" : esc(st.id)}" data-own="${own}" novalidate>
       ${info}
+      ${!isNew ? `<div class="section">${plan ? `<p>Ebből terv lett: <a href="#/terv/${plan.id}">${esc(plan.title)}</a></p>` : `<p class="hint" style="margin:0">Ha foglalkoztok vele, csinálj belőle tervet: kap teendőlistát, időpontokat és helyet a forgatókönyvnek.</p><div><button class="btn yellow small" type="button" data-story-plan="${esc(st.id)}">Terv készítése belőle</button></div>`}</div>` : ""}
       ${own ? `<div class="field" id="fw-topic"><label for="f-topic">Téma</label><input id="f-topic" type="text" maxlength="200" autocomplete="off" value="${esc(st.topic)}"><p class="err" hidden></p></div>
       <div class="field"><label for="f-details">Részletek <small>(nem kötelező)</small></label><textarea id="f-details" maxlength="4000">${esc(st.details || "")}</textarea></div>
       <div class="field"><label for="f-link">Link <small>(nem kötelező)</small></label><input id="f-link" type="url" inputmode="url" maxlength="500" autocomplete="off" value="${esc(st.link || "")}"></div>` : ""}
-      <div class="field"><span class="lbl">Állapot</span>${statusSet(st.status)}</div>
+      <div class="field"><span class="lbl">Állapot</span>${statusSet(STORY_STATUSES, st.status)}</div>
       <div class="field"><label for="f-note">Jegyzet a stábnak <small>(nem kötelező)</small></label><textarea id="f-note" maxlength="4000" placeholder="Kit kérdezzünk meg, mikor forgatunk, mi hiányzik még…">${esc(st.note || "")}</textarea></div>
-      <div class="field"><label for="f-ep">Kapcsolódó adás</label>${episodeSelect(st.episode_id)}</div>
-      <div class="bar"><button class="btn" type="submit" id="story-save">${isNew ? "Ötlet mentése" : "Mentés"}</button></div>
-      ${isNew ? "" : `<div class="danger-zone bar"><span class="grow"></span><button class="btn danger" type="button" data-del-story="${esc(st.id)}">Törlés</button></div>`}
+      <div class="field"><label for="f-ep">Kapcsolódó adás</label>${episodeSelect("f-ep", st.episode_id)}</div>
+      <div class="actions"><button class="btn" type="submit" id="story-save">${isNew ? "Ötlet mentése" : "Mentés"}</button></div>
+      ${isNew ? "" : `<div class="danger-zone actions"><span class="grow"></span><button class="btn danger" type="button" data-del-story="${esc(st.id)}">Törlés</button></div>`}
     </form>
   </div>`;
+}
+
+function viewMore() {
+  const rows = [
+    ["#/jegyzetek", "🗒️", "Jegyzetek", "Közös ötletek, kérdéslisták, megbeszélések", S.notes.length],
+    ["#/sablonok", "✉️", "E-mail sablonok", "Levelek tanároknak: engedély, interjú, köszönet", S.templates.length],
+    ["#/kapcsolatok", "👥", "Kapcsolatok", "Tanárok és interjúalanyok elérhetősége", S.contacts.length],
+    ["#/anyagok", "🎞️", "Anyagok", "Nyersanyagok, zenék, grafikák minden adáshoz", S.resources.length]
+  ];
+  return `<div class="wrap">
+    <div class="head"><h1>Több</h1></div>
+    <ul class="menu">${rows.map(([h, i, t, s, n]) => `<li><a href="${h}"><span class="ic" aria-hidden="true">${i}</span><span>${t}<small>${s}</small></span><span class="n">${n}</span></a></li>`).join("")}</ul>
+    <p class="sub" style="margin:1.5rem 0 .6rem">Fiók</p>
+    <ul class="menu">
+      <li><a href="${esc(SITE)}" target="_blank" rel="noopener"><span class="ic" aria-hidden="true">🌐</span><span>A Tények++ oldal megnyitása</span></a></li>
+      <li><button type="button" data-logout><span class="ic" aria-hidden="true">↩︎</span><span>Kilépés<small>${esc(S.me)}</small></span></button></li>
+    </ul>
+  </div>`;
+}
+
+function viewNotes() {
+  const list = S.notes.slice().sort((a, b) => (b.pinned - a.pinned) || new Date(b.updated_at) - new Date(a.updated_at));
+  return `<div class="wrap">
+    <a class="back" href="#/tobb">← Több</a>
+    <div class="head"><h1>Jegyzetek</h1><a class="btn yellow" href="#/jegyzet/uj">+ Új jegyzet</a></div>
+    ${list.length ? `<ul class="list">${list.map(noteCard).join("")}</ul>` : `<p class="empty">Ide írhattok közös jegyzeteket: ötletlistát, interjúkérdéseket, megbeszélések összefoglalóját. Mindketten látjátok és szerkeszthetitek.</p>`}
+  </div>`;
+}
+
+function viewNote(n, presetPlan) {
+  const isNew = !n;
+  const x = n || { title: "", body: "", pinned: false, plan_id: presetPlan || null };
+  const back = x.plan_id && isNew ? `#/terv/${x.plan_id}` : "#/jegyzetek";
+  return `<div class="wrap">
+    <a class="back" href="${back}">← ${x.plan_id && isNew ? "Terv" : "Jegyzetek"}</a>
+    <form class="form" id="note-form" data-id="${isNew ? "" : esc(x.id)}" novalidate>
+      <div class="field" id="fw-ntitle"><label class="vh" for="f-ntitle">Cím</label><input class="title-input" id="f-ntitle" type="text" maxlength="160" placeholder="Jegyzet címe" autocomplete="off" value="${esc(x.title)}"><p class="err" hidden></p></div>
+      <div class="field"><label class="vh" for="f-nbody">Szöveg</label><textarea class="tall" id="f-nbody" maxlength="20000" placeholder="Írj ide bármit…">${esc(x.body || "")}</textarea></div>
+      <div class="field"><label for="f-nplan">Kapcsolódó terv</label>${planSelect("f-nplan", x.plan_id)}</div>
+      <label class="switch"><input type="checkbox" id="f-npin" ${x.pinned ? "checked" : ""}><span><strong>Kitűzés</strong><span>A kitűzött jegyzetek az Áttekintésen is megjelennek.</span></span></label>
+      ${isNew ? "" : `<p class="hint">Utoljára módosította: ${esc(staffName(x.updated_by) || "ismeretlen")}, ${fmtDateTime.format(new Date(x.updated_at))}</p>`}
+      <div class="actions"><button class="btn" type="submit" id="note-save">${isNew ? "Jegyzet mentése" : "Mentés"}</button><span class="grow"></span>${isNew ? "" : `<button class="btn danger" type="button" data-del-note="${esc(x.id)}">Törlés</button>`}</div>
+    </form>
+  </div>`;
+}
+
+function viewContacts() {
+  const q = S.contactQ.trim().toLocaleLowerCase("hu");
+  const list = S.contacts.filter(c => !q || `${c.name} ${c.role || ""} ${c.email || ""}`.toLocaleLowerCase("hu").includes(q));
+  return `<div class="wrap">
+    <a class="back" href="#/tobb">← Több</a>
+    <div class="head"><h1>Kapcsolatok</h1><a class="btn yellow" href="#/kapcsolat/uj">+ Új</a></div>
+    ${S.contacts.length > 4 ? `<div class="field" style="margin-bottom:1rem"><label class="vh" for="c-q">Keresés</label><input id="c-q" type="search" placeholder="Keresés név, szerep vagy e-mail alapján" value="${esc(S.contactQ)}" autocomplete="off"></div>` : ""}
+    <div id="contact-list">${contactListHtml(list)}</div>
+  </div>`;
+}
+
+function contactListHtml(list) {
+  if (!S.contacts.length) return `<p class="empty">Vedd fel a tanárokat és az interjúalanyokat, így egy koppintással írhatsz nekik sablonból.</p>`;
+  if (!list.length) return `<p class="empty">Nincs találat.</p>`;
+  return `<ul class="list">${list.map(c => `<li><a class="card" href="#/kapcsolat/${c.id}"><h3>${esc(c.name)}</h3><p class="meta">${[c.role, c.email].filter(Boolean).map(esc).join(" · ") || "Nincs megadva elérhetőség"}</p></a></li>`).join("")}</ul>`;
+}
+
+function viewContact(c) {
+  const isNew = !c;
+  const x = c || { name: "", role: "", email: "", phone: "", note: "" };
+  return `<div class="wrap">
+    <a class="back" href="#/kapcsolatok">← Kapcsolatok</a>
+    <div class="head"><h1>${isNew ? "Új kapcsolat" : esc(x.name)}</h1></div>
+    <form class="form" id="contact-form" data-id="${isNew ? "" : esc(x.id)}" novalidate>
+      ${isNew ? "" : `<div class="actions">${isEmail(x.email) ? `<a class="btn yellow small" href="#/level?kontakt=${x.id}">E-mail sablonból</a><a class="btn ghost small" href="mailto:${esc(x.email.trim())}">Üres e-mail</a>` : ""}${x.phone ? `<a class="btn ghost small" href="tel:${esc(x.phone.replace(/[^\d+]/g, ""))}">Hívás</a>` : ""}</div>`}
+      <div class="field" id="fw-cname"><label for="f-cname">Név</label><input id="f-cname" type="text" maxlength="120" autocomplete="off" placeholder="pl. Kovács Anna tanárnő" value="${esc(x.name)}"><p class="err" hidden></p></div>
+      <div class="field"><label for="f-crole">Szerep <small>(nem kötelező)</small></label><input id="f-crole" type="text" maxlength="120" autocomplete="off" placeholder="pl. osztályfőnök, 9.A · igazgatóhelyettes" value="${esc(x.role || "")}"></div>
+      <div class="row2">
+        <div class="field" id="fw-cemail"><label for="f-cemail">E-mail</label><input id="f-cemail" type="email" inputmode="email" maxlength="200" autocomplete="off" value="${esc(x.email || "")}"><p class="err" hidden></p></div>
+        <div class="field"><label for="f-cphone">Telefon <small>(nem kötelező)</small></label><input id="f-cphone" type="tel" inputmode="tel" maxlength="40" autocomplete="off" value="${esc(x.phone || "")}"></div>
+      </div>
+      <div class="field"><label for="f-cnote">Megjegyzés <small>(nem kötelező)</small></label><textarea id="f-cnote" maxlength="2000" placeholder="pl. hétfőn és szerdán ér rá, a tanáriban található">${esc(x.note || "")}</textarea></div>
+      <div class="actions"><button class="btn" type="submit" id="contact-save">${isNew ? "Kapcsolat mentése" : "Mentés"}</button><span class="grow"></span>${isNew ? "" : `<button class="btn danger" type="button" data-del-contact="${esc(x.id)}">Törlés</button>`}</div>
+    </form>
+  </div>`;
+}
+
+function viewTemplates() {
+  return `<div class="wrap">
+    <a class="back" href="#/tobb">← Több</a>
+    <div class="head"><h1>E-mail sablonok</h1><a class="btn yellow" href="#/sablon/uj">+ Új sablon</a></div>
+    <p class="sub">Válassz sablont, és kitöltjük a címzettel és a terv adataival. A levelet a saját leveleződ nyitja meg.</p>
+    ${S.templates.length ? `<ul class="list">${S.templates.map(t => `<li class="card"><h3>${esc(t.name)}</h3><p class="meta">${esc(t.subject)}</p><div class="actions" style="margin-top:.75rem"><a class="btn small" href="#/level?sablon=${t.id}">Levél írása</a><a class="btn ghost small" href="#/sablon/${t.id}">Szerkesztés</a></div></li>`).join("")}</ul>` : `<p class="empty">Még nincs sablon.</p>`}
+  </div>`;
+}
+
+function viewTemplate(t) {
+  const isNew = !t;
+  const x = t || { name: "", subject: "", body: "Kedves {{nev}}!\n\n\n\nÜdvözlettel:\n{{alairas}}\nTények++ szerkesztőség" };
+  return `<div class="wrap">
+    <a class="back" href="#/sablonok">← Sablonok</a>
+    <div class="head"><h1>${isNew ? "Új sablon" : "Sablon szerkesztése"}</h1></div>
+    <form class="form" id="tpl-form" data-id="${isNew ? "" : esc(x.id)}" novalidate>
+      <div class="field" id="fw-tname"><label for="f-tname">Sablon neve</label><input id="f-tname" type="text" maxlength="120" autocomplete="off" value="${esc(x.name)}"><p class="err" hidden></p></div>
+      <div class="field" id="fw-tsubj"><label for="f-tsubj">Tárgy</label><input id="f-tsubj" type="text" maxlength="300" autocomplete="off" value="${esc(x.subject)}"><p class="err" hidden></p></div>
+      <div class="field" id="fw-tbody"><label for="f-tbody">Szöveg</label><textarea class="tall" id="f-tbody" maxlength="10000">${esc(x.body)}</textarea><p class="err" hidden></p>
+        <p class="hint">Helyettesíthető mezők: ${Object.keys(PH_LABEL).map(k => `<span class="ph">{{${k}}}</span>`).join(" ")}. A {{alairas}} a te neved lesz, a téma, dátum, időpont, helyszín és link a kiválasztott tervből töltődik ki.</p>
+      </div>
+      <div class="actions"><button class="btn" type="submit" id="tpl-save">Mentés</button>${isNew ? "" : `<a class="btn ghost" href="#/level?sablon=${x.id}">Levél írása</a>`}<span class="grow"></span>${isNew ? "" : `<button class="btn danger" type="button" data-del-tpl="${esc(x.id)}">Törlés</button>`}</div>
+    </form>
+  </div>`;
+}
+
+function placeholders(t) {
+  const set = [];
+  `${t.subject}\n${t.body}`.replace(/\{\{\s*(\w+)\s*\}\}/g, (_, k) => { if (!set.includes(k)) set.push(k); });
+  return set;
+}
+
+function planValues(p) {
+  if (!p) return {};
+  const v = { tema: p.title };
+  if (p.shoot_at) {
+    const d = new Date(p.shoot_at);
+    v.datum = fmtLongDate.format(d);
+    v.idopont = fmtTime.format(d);
+  } else if (p.air_date) {
+    v.datum = fmtLongDate.format(new Date(p.air_date + "T12:00:00"));
+  }
+  if (p.location) v.helyszin = p.location;
+  if (p.episode_id) v.link = epUrl(p.episode_id);
+  return v;
+}
+
+function viewCompose(params) {
+  const tpl = S.templates.find(t => t.id === params.get("sablon")) || S.templates[0];
+  const contact = S.contacts.find(c => c.id === params.get("kontakt"));
+  const plan = planById(params.get("terv"));
+  if (!tpl) return `<div class="wrap"><a class="back" href="#/sablonok">← Sablonok</a><p class="empty" style="margin-top:1rem">Előbb hozz létre egy e-mail sablont.</p></div>`;
+  return `<div class="wrap">
+    <a class="back" href="${plan ? `#/terv/${plan.id}` : "#/sablonok"}">← ${plan ? esc(plan.title) : "Sablonok"}</a>
+    <div class="head"><h1>E-mail írása</h1></div>
+    <form class="form" id="compose" novalidate>
+      <div class="field"><label for="m-tpl">Sablon</label><select id="m-tpl">${S.templates.map(t => `<option value="${t.id}" ${t.id === tpl.id ? "selected" : ""}>${esc(t.name)}</option>`).join("")}</select></div>
+      <div class="row2">
+        <div class="field"><label for="m-contact">Címzett a kapcsolatok közül</label><select id="m-contact"><option value="">Kézzel adom meg</option>${S.contacts.map(c => `<option value="${c.id}" ${contact && contact.id === c.id ? "selected" : ""}>${esc(c.name)}</option>`).join("")}</select></div>
+        <div class="field"><label for="m-to">E-mail-cím</label><input id="m-to" type="email" inputmode="email" autocomplete="off" value="${esc(contact ? contact.email || "" : "")}"></div>
+      </div>
+      <div class="field"><label for="m-plan">Terv <small>(kitölti a témát, időpontot, helyszínt)</small></label>${planSelect("m-plan", plan ? plan.id : "")}</div>
+      <section class="section" id="m-fields"></section>
+      <div class="field"><span class="lbl">Előnézet</span><div class="mail-preview" id="m-preview"></div></div>
+      <div class="actions"><a class="btn" id="m-open" href="#">Megnyitás levelezőben</a><button class="btn ghost" type="button" data-copy-mail>Szöveg másolása</button></div>
+      <p class="hint">A levél a saját levelezőprogramodban nyílik meg; ott még átírhatod, mielőtt elküldöd.</p>
+    </form>
+  </div>`;
+}
+
+function wireCompose() {
+  const form = document.getElementById("compose");
+  if (!form) return;
+  const vals = {};
+  const tplSel = document.getElementById("m-tpl");
+  const cSel = document.getElementById("m-contact");
+  const pSel = document.getElementById("m-plan");
+  const to = document.getElementById("m-to");
+  const fieldsBox = document.getElementById("m-fields");
+  const auto = () => {
+    const c = S.contacts.find(x => x.id === cSel.value);
+    const out = { alairas: S.me, ...planValues(planById(pSel.value)) };
+    if (c) out.nev = c.name;
+    return out;
+  };
+  const current = () => S.templates.find(t => t.id === tplSel.value);
+  const buildFields = () => {
+    const keys = placeholders(current()).filter(k => k !== "alairas");
+    const a = auto();
+    keys.forEach(k => { if (a[k] !== undefined) vals[k] = a[k]; });
+    fieldsBox.hidden = !keys.length;
+    fieldsBox.innerHTML = `<h2>Kitöltendő mezők</h2>${keys.map(k => `<div class="field"><label for="ph-${k}">${esc(PH_LABEL[k] || k)}</label><input id="ph-${k}" data-ph="${k}" type="text" autocomplete="off" value="${esc(vals[k] || "")}"></div>`).join("")}`;
+    preview();
+  };
+  const fill = (str, html) => str.replace(/\{\{\s*(\w+)\s*\}\}/g, (_, k) => {
+    const v = k === "alairas" ? (vals.alairas || S.me) : vals[k];
+    if (v) return html ? esc(v) : v;
+    return html ? `<span class="ph">{{${k}}}</span>` : `{{${k}}}`;
+  });
+  const preview = () => {
+    const t = current();
+    const subject = fill(t.subject, false);
+    const body = fill(t.body, false);
+    document.getElementById("m-preview").innerHTML = `<strong>${fill(esc(t.subject), true)}</strong>${fill(esc(t.body), true)}`;
+    const addr = to.value.trim();
+    document.getElementById("m-open").href = `mailto:${encodeURIComponent(addr).replace(/%40/g, "@")}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    form.dataset.text = `${subject}\n\n${body}`;
+  };
+  vals.alairas = S.me;
+  tplSel.addEventListener("change", buildFields);
+  cSel.addEventListener("change", () => {
+    const c = S.contacts.find(x => x.id === cSel.value);
+    if (c) { to.value = c.email || ""; vals.nev = c.name; }
+    buildFields();
+  });
+  pSel.addEventListener("change", () => {
+    Object.assign(vals, planValues(planById(pSel.value)));
+    buildFields();
+  });
+  to.addEventListener("input", preview);
+  fieldsBox.addEventListener("input", e => {
+    const k = e.target.dataset.ph;
+    if (k) { vals[k] = e.target.value; preview(); }
+  });
+  buildFields();
+}
+
+function viewLibrary() {
+  const filters = [["osszes", "Összes", ""], ...KINDS];
+  const list = S.resources.filter(r => S.resFilter === "osszes" || r.kind === S.resFilter);
+  return `<div class="wrap">
+    <a class="back" href="#/tobb">← Több</a>
+    <div class="head"><h1>Anyagok</h1></div>
+    <p class="sub">Minden link egy helyen. Az általános anyagok (intró, outró, logó, zenék) ide kerülnek, az adásokhoz tartozók a tervnél is látszanak.</p>
+    <section class="section" id="resources" style="margin-bottom:1rem">${resourcesHtml({}).replace(/<h2>[\s\S]*?<\/h2>[\s\S]*?(?=<div class="resform")/, "<h2>Általános anyag hozzáadása</h2>")}</section>
+    <div class="chips" role="group" aria-label="Szűrés típus szerint">${filters.map(([k, l]) => `<button class="chip" type="button" data-rfilter="${k}" aria-pressed="${S.resFilter === k}">${l}</button>`).join("")}</div>
+    ${list.length ? `<ul class="list">${list.map(r => resourceItem(r, true)).join("")}</ul>` : `<p class="empty">Nincs anyag ebben a kategóriában.</p>`}
+  </div>`;
+}
+
+function missing(text, back) {
+  return `<div class="wrap"><a class="back" href="${back}">← Vissza</a><p class="empty" style="margin-top:1rem">${text}</p></div>`;
+}
+
+function parseHash() {
+  const raw = location.hash.slice(1) || "/";
+  const [path, query] = raw.split("?");
+  const seg = path.split("/").filter(Boolean).map(s => { try { return decodeURIComponent(s); } catch (e) { return s; } });
+  return { seg, params: new URLSearchParams(query || "") };
 }
 
 function go(hash) {
@@ -478,33 +1003,30 @@ function go(hash) {
   else location.hash = hash;
 }
 
-function missing(text) {
-  return `<div class="wrap"><p class="empty" style="margin-top:2rem">${text}</p></div>`;
-}
-
 function render(quiet) {
   if (!S.user || !S.loaded) return;
-  const seg = location.hash.slice(2).split("/").filter(Boolean);
-  let route = seg[0] || "adasok";
+  const { seg, params } = parseHash();
+  const r = seg[0] || "";
+  const id = seg[1] || "";
   let html;
-  let nav = "adasok";
-  const id = seg[1] ? decodeURIComponent(seg[1]) : "";
-  if (route === "adasok") html = viewEpisodes();
-  else if (route === "adas") {
-    if (id === "uj") html = viewEpisodeForm(null);
-    else {
-      const ep = S.episodes.find(e => e.id === id);
-      html = ep ? viewEpisodeForm(ep) : missing("Ez az adás nem létezik, vagy törölték.");
-    }
-  } else if (route === "sztorik") { html = viewStories(); nav = "sztorik"; }
-  else if (route === "sztori") {
-    nav = "sztorik";
-    if (id === "uj") html = viewStory(null);
-    else {
-      const st = S.stories.find(s => s.id === id);
-      html = st ? viewStory(st) : missing("Ez a sztori nem létezik, vagy törölték.");
-    }
-  } else { html = viewEpisodes(); }
+  let nav = "attekintes";
+  if (r === "" || r === "attekintes") html = viewOverview();
+  else if (r === "tervek") { nav = "tervek"; html = viewPlans(); }
+  else if (r === "terv") { nav = "tervek"; html = id === "uj" ? viewPlan(null) : planById(id) ? viewPlan(planById(id)) : missing("Ez a terv nem létezik, vagy törölték.", "#/tervek"); }
+  else if (r === "sztorik") { nav = "sztorik"; html = viewStories(); }
+  else if (r === "sztori") { nav = "sztorik"; const st = S.stories.find(s => s.id === id); html = id === "uj" ? viewStory(null) : st ? viewStory(st) : missing("Ez a sztori nem létezik, vagy törölték.", "#/sztorik"); }
+  else if (r === "adasok") { nav = "adasok"; html = viewEpisodes(); }
+  else if (r === "adas") { nav = "adasok"; html = id === "uj" ? viewEpisodeForm(null, planById(params.get("terv"))) : epById(id) ? viewEpisodeForm(epById(id)) : missing("Ez az adás nem létezik, vagy törölték.", "#/adasok"); }
+  else if (r === "tobb") { nav = "tobb"; html = viewMore(); }
+  else if (r === "jegyzetek") { nav = "tobb"; html = viewNotes(); }
+  else if (r === "jegyzet") { nav = "tobb"; const n = S.notes.find(x => x.id === id); html = id === "uj" ? viewNote(null, params.get("terv")) : n ? viewNote(n) : missing("Ez a jegyzet nem létezik, vagy törölték.", "#/jegyzetek"); }
+  else if (r === "kapcsolatok") { nav = "tobb"; html = viewContacts(); }
+  else if (r === "kapcsolat") { nav = "tobb"; const c = S.contacts.find(x => x.id === id); html = id === "uj" ? viewContact(null) : c ? viewContact(c) : missing("Ez a kapcsolat nem létezik, vagy törölték.", "#/kapcsolatok"); }
+  else if (r === "sablonok") { nav = "tobb"; html = viewTemplates(); }
+  else if (r === "sablon") { nav = "tobb"; const t = S.templates.find(x => x.id === id); html = id === "uj" ? viewTemplate(null) : t ? viewTemplate(t) : missing("Ez a sablon nem létezik, vagy törölték.", "#/sablonok"); }
+  else if (r === "level") { nav = "tobb"; html = viewCompose(params); }
+  else if (r === "anyagok") { nav = "tobb"; html = viewLibrary(); }
+  else html = viewOverview();
   chrome(true);
   main.innerHTML = html;
   document.querySelectorAll("[data-nav]").forEach(a => {
@@ -513,6 +1035,7 @@ function render(quiet) {
   });
   S.dirty = false;
   wireForms();
+  wireCompose();
   if (!quiet) {
     window.scrollTo(0, 0);
     main.focus({ preventScroll: true });
@@ -524,11 +1047,21 @@ function setFieldError(id, message) {
   if (!wrap) return;
   const err = wrap.querySelector(".err");
   wrap.classList.toggle("bad", !!message);
-  err.hidden = !message;
-  err.textContent = message || "";
+  if (err) { err.hidden = !message; err.textContent = message || ""; }
+}
+
+function busy(btn, on, label) {
+  if (!btn) return;
+  if (on) { btn.dataset.label = btn.textContent; btn.disabled = true; btn.textContent = label || "Mentés…"; }
+  else { btn.disabled = false; btn.textContent = btn.dataset.label || btn.textContent; }
 }
 
 function wireForms() {
+  document.querySelectorAll("#main form").forEach(f => {
+    if (f.id === "compose") return;
+    f.addEventListener("input", e => { if (!e.target.closest(".resform, .addrow, .checks")) S.dirty = true; });
+    f.addEventListener("change", e => { if (!e.target.closest(".resform, .addrow, .checks")) S.dirty = true; });
+  });
   const ep = document.getElementById("ep-form");
   if (ep) {
     const yt = document.getElementById("f-yt");
@@ -544,7 +1077,7 @@ function wireForms() {
         slug.value = uniqueSlug(slugify(title.value));
         if (slug.value) setFieldError("fw-slug", "");
       }
-      document.getElementById("slug-url").textContent = slug.value ? `${SITE}#/adas/${slug.value}` : "";
+      document.getElementById("slug-url").textContent = slug.value ? epUrl(slug.value) : "";
     };
     const updSum = () => { document.getElementById("sum-count").textContent = `${sum.value.length}/600`; };
     const updPreview = () => {
@@ -558,17 +1091,24 @@ function wireForms() {
     sum.addEventListener("input", updSum);
     pub.addEventListener("change", updNotify);
     updSlug(); updSum(); updNotify();
-    ep.addEventListener("input", () => { S.dirty = true; });
     ep.addEventListener("submit", e => { e.preventDefault(); saveEpisode(ep); });
   }
-  const story = document.getElementById("story-form");
-  if (story) {
-    story.addEventListener("input", () => { S.dirty = true; });
-    story.addEventListener("change", () => { S.dirty = true; });
-    story.addEventListener("submit", e => { e.preventDefault(); saveStory(story); });
-    const topic = document.getElementById("f-topic");
-    if (topic) topic.addEventListener("input", () => setFieldError("fw-topic", ""));
-  }
+  const bind = (id, fn) => { const f = document.getElementById(id); if (f) f.addEventListener("submit", e => { e.preventDefault(); fn(f); }); };
+  bind("story-form", saveStory);
+  bind("plan-form", savePlan);
+  bind("note-form", saveNote);
+  bind("contact-form", saveContact);
+  bind("tpl-form", saveTemplate);
+  const cq = document.getElementById("c-q");
+  if (cq) cq.addEventListener("input", () => {
+    S.contactQ = cq.value;
+    const q = cq.value.trim().toLocaleLowerCase("hu");
+    document.getElementById("contact-list").innerHTML = contactListHtml(S.contacts.filter(c => !q || `${c.name} ${c.role || ""} ${c.email || ""}`.toLocaleLowerCase("hu").includes(q)));
+  });
+  const ckNew = document.getElementById("ck-new");
+  if (ckNew) ckNew.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); addCheck(); } });
+  const rsUrl = document.getElementById("rs-url");
+  if (rsUrl) rsUrl.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); addResource(); } });
 }
 
 function uniqueSlug(base) {
@@ -579,12 +1119,142 @@ function uniqueSlug(base) {
   return s;
 }
 
+const val = id => (document.getElementById(id)?.value || "").trim();
+
+async function savePlan(form) {
+  const isNew = !form.dataset.id;
+  const title = val("f-ptitle");
+  setFieldError("fw-ptitle", title ? "" : "Adj címet a tervnek.");
+  if (!title) { document.getElementById("f-ptitle").focus(); return; }
+  const row = {
+    title,
+    status: form.querySelector('input[name="status"]:checked')?.value || "otlet",
+    air_date: val("f-air") || null,
+    shoot_at: fromLocalInput(val("f-shoot")),
+    location: val("f-loc") || null,
+    owner_id: val("f-owner") || null,
+    outline: document.getElementById("f-outline").value || null
+  };
+  if (isNew) row.checklist = document.getElementById("f-defcheck").checked ? DEFAULT_CHECKLIST.map(t => ({ id: uid(), t, done: false })) : [];
+  const btn = document.getElementById("plan-save");
+  busy(btn, true);
+  try {
+    const saved = isNew ? await dbInsert("plans", row) : await dbUpdate("plans", form.dataset.id, row);
+    replaceIn(S.plans, saved);
+    S.dirty = false;
+    toast(isNew ? "Terv létrehozva." : "Mentve.");
+    go(`#/terv/${saved.id}`);
+  } catch (e) {
+    busy(btn, false);
+    toast(errText(e), true);
+  }
+}
+
+function currentPlan() {
+  const f = document.getElementById("plan-form");
+  return f && f.dataset.id ? planById(f.dataset.id) : null;
+}
+
+async function saveChecklist(p, list) {
+  const prev = p.checklist;
+  p.checklist = list;
+  const box = document.getElementById("checklist");
+  if (box) box.innerHTML = checklistHtml(p);
+  const ckNew = document.getElementById("ck-new");
+  if (ckNew) ckNew.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); addCheck(); } });
+  try {
+    const saved = await dbUpdate("plans", p.id, { checklist: list });
+    p.updated_at = saved.updated_at;
+  } catch (e) {
+    p.checklist = prev;
+    if (box) box.innerHTML = checklistHtml(p);
+    toast(errText(e), true);
+  }
+}
+
+function addCheck() {
+  const p = currentPlan();
+  const input = document.getElementById("ck-new");
+  const t = input.value.trim();
+  if (!p || !t) { input.focus(); return; }
+  saveChecklist(p, [...(p.checklist || []), { id: uid(), t: t.slice(0, 200), done: false }]).then(() => document.getElementById("ck-new")?.focus());
+}
+
+async function addResource() {
+  const box = document.querySelector(".resform");
+  if (!box) return;
+  const scope = JSON.parse(box.dataset.resScope || "{}");
+  const label = val("rs-label");
+  const url = val("rs-url");
+  if (!label && !url) { document.getElementById("rs-label").focus(); return; }
+  const row = { kind: val("rs-kind") || "egyeb", label: label || url.replace(/^https?:\/\//, "").slice(0, 160), url: url || null, plan_id: scope.plan_id || null, episode_id: scope.episode_id || null };
+  try {
+    const saved = await dbInsert("resources", row);
+    S.resources.unshift(saved);
+    toast("Anyag hozzáadva.");
+    refreshResources(scope);
+  } catch (e) {
+    toast(errText(e), true);
+  }
+}
+
+function refreshResources(scope) {
+  if (location.hash.startsWith("#/anyagok")) { const keep = S.dirty; render(true); S.dirty = keep; return; }
+  const sec = document.getElementById("resources");
+  if (sec) sec.innerHTML = resourcesHtml(scope);
+  const rsUrl = document.getElementById("rs-url");
+  if (rsUrl) rsUrl.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); addResource(); } });
+}
+
+async function deleteResource(id) {
+  const r = S.resources.find(x => x.id === id);
+  if (!r || !confirm(`Törlöd ezt az anyagot a listából?\n\n${r.label}\n\nMagát a fájlt nem törli.`)) return;
+  try {
+    await dbDelete("resources", id);
+    removeFrom(S.resources, id);
+    refreshResources(r.plan_id ? { plan_id: r.plan_id } : r.episode_id ? { episode_id: r.episode_id } : {});
+  } catch (e) { toast(errText(e), true); }
+}
+
+async function deletePlan(id) {
+  const p = planById(id);
+  if (!p || !confirm(`Biztosan törlöd ezt a tervet?\n\n${p.title}\n\nA teendőlista, a forgatókönyv és a hozzá tartozó anyaglinkek is törlődnek. A jegyzetek és sztorik megmaradnak.`)) return;
+  try {
+    await dbDelete("plans", id);
+    toast("Terv törölve.");
+    S.dirty = false;
+    await reload(true);
+    go("#/tervek");
+  } catch (e) { toast(errText(e), true); }
+}
+
+async function storyToPlan(storyId) {
+  const s = S.stories.find(x => x.id === storyId);
+  if (!s) return;
+  const lines = [];
+  if (s.details) lines.push(s.details);
+  if (s.name || s.contact) lines.push("", `Beküldő: ${[s.name, s.class_name, s.contact].filter(Boolean).join(", ")}`);
+  if (s.link) lines.push(`Link: ${s.link}`);
+  try {
+    const plan = await dbInsert("plans", { title: s.topic.slice(0, 160), status: "otlet", owner_id: S.user.id, outline: lines.join("\n") || null, checklist: DEFAULT_CHECKLIST.map(t => ({ id: uid(), t, done: false })) });
+    S.plans.unshift(plan);
+    const upd = await dbUpdate("stories", s.id, { plan_id: plan.id, status: s.status === "beerkezett" ? "otlet" : s.status });
+    replaceIn(S.stories, upd);
+    setBadge();
+    if (s.link && safeHref(s.link)) {
+      const r = await dbInsert("resources", { plan_id: plan.id, kind: "egyeb", label: "Beküldött link", url: s.link });
+      S.resources.unshift(r);
+    }
+    toast("Terv létrehozva a sztoriból.");
+    go(`#/terv/${plan.id}`);
+  } catch (e) { toast(errText(e), true); }
+}
+
 async function saveEpisode(form) {
   const isNew = !form.dataset.id;
-  const v = id => (document.getElementById(id)?.value || "").trim();
-  const youtube_id = ytId(v("f-yt"));
-  const title = v("f-title");
-  const id = isNew ? v("f-slug") : form.dataset.id;
+  const youtube_id = ytId(val("f-yt"));
+  const title = val("f-title");
+  const id = isNew ? val("f-slug") : form.dataset.id;
   setFieldError("fw-yt", youtube_id ? "" : "Másold be a videó YouTube-linkjét.");
   setFieldError("fw-title", title ? "" : "Adj címet az adásnak.");
   if (isNew) setFieldError("fw-slug", /^[a-z0-9]+([-_][a-z0-9]+)*$/.test(id) ? "" : "Csak kisbetű, szám, kötőjel és alulvonás lehet benne.");
@@ -592,57 +1262,58 @@ async function saveEpisode(form) {
   if (bad) { bad.focus(); return; }
   const published = document.getElementById("f-pub").checked;
   const notify = !!document.getElementById("f-notify")?.checked && published;
-  const row = {
-    title,
-    youtube_id,
-    aired_on: v("f-date") || null,
-    category: v("f-cat") || null,
-    summary: v("f-sum") || null,
-    published
-  };
+  const row = { title, youtube_id, aired_on: val("f-date") || null, category: val("f-cat") || null, summary: val("f-sum") || null, published };
   const btn = document.getElementById("ep-save");
-  btn.disabled = true;
-  btn.textContent = "Mentés…";
-  const res = isNew
-    ? await S.sb.from("episodes").insert({ id, ...row })
-    : await S.sb.from("episodes").update(row).eq("id", id);
+  busy(btn, true);
+  const res = isNew ? await S.sb.from("episodes").insert({ id, ...row }) : await S.sb.from("episodes").update(row).eq("id", id);
   if (res.error) {
-    btn.disabled = false;
-    btn.textContent = isNew ? "Adás mentése" : "Változások mentése";
+    busy(btn, false);
     if (res.error.code === "23505") { setFieldError("fw-slug", errText(res.error)); document.getElementById("f-slug").focus(); }
     else toast(errText(res.error), true);
     return;
+  }
+  const planId = form.dataset.plan;
+  if (isNew && planId) {
+    try {
+      await dbUpdate("plans", planId, { episode_id: id, status: "megjelent" });
+      await S.sb.from("resources").update({ episode_id: id }).eq("plan_id", planId).is("episode_id", null);
+    } catch (e) {}
   }
   S.dirty = false;
   toast(isNew ? "Adás elmentve." : "Változások elmentve.");
   if (notify) await sendNotification(id, true);
   await reload(true);
-  go(isNew ? "#/adasok" : `#/adas/${encodeURIComponent(id)}`);
+  go(isNew ? (planId ? `#/terv/${planId}` : "#/adasok") : `#/adas/${encodeURIComponent(id)}`);
 }
 
 async function sendNotification(id, silentConfirm) {
-  const ep = S.episodes.find(e => e.id === id);
+  const ep = epById(id);
   if (!silentConfirm && ep && ep.notified_at && !confirm("Erről az adásról már ment ki értesítés. Biztosan újra elküldöd mindenkinek?")) return;
   const btn = document.querySelector(`[data-notify="${CSS.escape(id)}"]`);
   if (btn) { btn.disabled = true; btn.textContent = "Küldés…"; }
   try {
     const { data, error } = await S.sb.functions.invoke("notify-episode", { body: { episodeId: id } });
     if (error) {
+      const status = error.context && error.context.status;
       let detail = "";
-      try { detail = (await error.context.json()).error || ""; } catch (e) {}
-      throw new Error(detail || error.message);
+      try {
+        const text = await error.context.text();
+        try { detail = JSON.parse(text).error || text; } catch (e) { detail = text; }
+      } catch (e) {}
+      if (status === 404) throw new Error("Az értesítő funkció nincs telepítve a Supabase-ben.");
+      if (!status) throw new Error("Nem sikerült elérni az értesítő funkciót. Ellenőrizd az internetet.");
+      throw new Error(detail || `Hiba (${status})`);
     }
     toast(data.sent ? `Értesítés elküldve ${data.sent} eszközre.` : "Még nincs feliratkozott eszköz, így senki nem kapott értesítést.");
   } catch (e) {
-    const m = String(e.message || e);
-    toast(/Failed to send a request|not found|404/i.test(m) ? "Az értesítő funkció még nincs telepítve a Supabase-ben." : `Az értesítés nem ment ki: ${m}`, true);
+    toast(`Az értesítés nem ment ki: ${String(e.message || e)}`, true);
   }
   if (btn) { btn.disabled = false; btn.textContent = "Értesítés újraküldése"; }
   if (!silentConfirm) reload(true);
 }
 
 async function deleteEpisode(id) {
-  const ep = S.episodes.find(e => e.id === id);
+  const ep = epById(id);
   if (!confirm(`Biztosan törlöd ezt az adást?\n\n${ep ? ep.title : id}\n\nAz oldalról is eltűnik. A YouTube-videót nem törli.`)) return;
   const { error } = await S.sb.from("episodes").delete().eq("id", id);
   if (error) { toast(errText(error), true); return; }
@@ -655,46 +1326,134 @@ async function deleteEpisode(id) {
 async function saveStory(form) {
   const isNew = !form.dataset.id;
   const own = form.dataset.own === "true";
-  const v = id => (document.getElementById(id)?.value || "").trim();
   const row = {
     status: form.querySelector('input[name="status"]:checked')?.value || "otlet",
-    note: v("f-note") || null,
-    episode_id: v("f-ep") || null
+    note: val("f-note") || null,
+    episode_id: val("f-ep") || null
   };
   if (own) {
-    row.topic = v("f-topic");
-    row.details = v("f-details") || null;
-    row.link = v("f-link") || null;
+    row.topic = val("f-topic");
+    row.details = val("f-details") || null;
+    row.link = val("f-link") || null;
     setFieldError("fw-topic", row.topic ? "" : "Írd le röviden, miről szól.");
     if (!row.topic) { document.getElementById("f-topic").focus(); return; }
   }
   const btn = document.getElementById("story-save");
-  btn.disabled = true;
-  btn.textContent = "Mentés…";
-  const res = isNew
-    ? await S.sb.from("stories").insert({ ...row, source: "sajat", kind: "story" })
-    : await S.sb.from("stories").update(row).eq("id", form.dataset.id);
-  if (res.error) {
-    btn.disabled = false;
-    btn.textContent = isNew ? "Ötlet mentése" : "Mentés";
-    toast(errText(res.error), true);
-    return;
+  busy(btn, true);
+  try {
+    const saved = isNew ? await dbInsert("stories", { ...row, source: "sajat", kind: "story" }) : await dbUpdate("stories", form.dataset.id, row);
+    replaceIn(S.stories, saved);
+    setBadge();
+    S.dirty = false;
+    toast(isNew ? "Ötlet elmentve." : "Mentve.");
+    go("#/sztorik");
+  } catch (e) {
+    busy(btn, false);
+    toast(errText(e), true);
   }
-  S.dirty = false;
-  toast(isNew ? "Ötlet elmentve." : "Mentve.");
-  await reload(true);
-  go("#/sztorik");
 }
 
 async function deleteStory(id) {
   const st = S.stories.find(s => s.id === id);
   if (!confirm(`Biztosan törlöd ezt a sztorit?\n\n${st ? st.topic : ""}\n\nEzt nem lehet visszavonni.`)) return;
-  const { error } = await S.sb.from("stories").delete().eq("id", id);
-  if (error) { toast(errText(error), true); return; }
-  toast("Sztori törölve.");
-  S.dirty = false;
-  await reload(true);
-  go("#/sztorik");
+  try {
+    await dbDelete("stories", id);
+    removeFrom(S.stories, id);
+    setBadge();
+    toast("Sztori törölve.");
+    S.dirty = false;
+    go("#/sztorik");
+  } catch (e) { toast(errText(e), true); }
+}
+
+async function saveNote(form) {
+  const isNew = !form.dataset.id;
+  const title = val("f-ntitle");
+  setFieldError("fw-ntitle", title ? "" : "Adj címet a jegyzetnek.");
+  if (!title) { document.getElementById("f-ntitle").focus(); return; }
+  const row = { title, body: document.getElementById("f-nbody").value || null, plan_id: val("f-nplan") || null, pinned: document.getElementById("f-npin").checked };
+  const btn = document.getElementById("note-save");
+  busy(btn, true);
+  try {
+    const saved = isNew ? await dbInsert("notes", row) : await dbUpdate("notes", form.dataset.id, row);
+    replaceIn(S.notes, saved);
+    S.dirty = false;
+    toast("Jegyzet mentve.");
+    go(isNew && saved.plan_id ? `#/terv/${saved.plan_id}` : "#/jegyzetek");
+  } catch (e) {
+    busy(btn, false);
+    toast(errText(e), true);
+  }
+}
+
+async function deleteRow(table, list, id, message, back) {
+  if (!confirm(message)) return;
+  try {
+    await dbDelete(table, id);
+    removeFrom(list, id);
+    S.dirty = false;
+    toast("Törölve.");
+    go(back);
+  } catch (e) { toast(errText(e), true); }
+}
+
+async function saveContact(form) {
+  const isNew = !form.dataset.id;
+  const name = val("f-cname");
+  const email = val("f-cemail");
+  setFieldError("fw-cname", name ? "" : "Add meg a nevet.");
+  setFieldError("fw-cemail", !email || isEmail(email) ? "" : "Ez nem tűnik érvényes e-mail-címnek.");
+  const bad = form.querySelector(".field.bad input");
+  if (bad) { bad.focus(); return; }
+  const row = { name, role: val("f-crole") || null, email: email || null, phone: val("f-cphone") || null, note: val("f-cnote") || null };
+  const btn = document.getElementById("contact-save");
+  busy(btn, true);
+  try {
+    const saved = isNew ? await dbInsert("contacts", row) : await dbUpdate("contacts", form.dataset.id, row);
+    replaceIn(S.contacts, saved);
+    S.contacts.sort((a, b) => a.name.localeCompare(b.name, "hu"));
+    S.dirty = false;
+    toast("Kapcsolat mentve.");
+    go(`#/kapcsolat/${saved.id}`);
+  } catch (e) {
+    busy(btn, false);
+    toast(errText(e), true);
+  }
+}
+
+async function saveTemplate(form) {
+  const isNew = !form.dataset.id;
+  const row = { name: val("f-tname"), subject: val("f-tsubj"), body: document.getElementById("f-tbody").value.trim() };
+  setFieldError("fw-tname", row.name ? "" : "Adj nevet a sablonnak.");
+  setFieldError("fw-tsubj", row.subject ? "" : "Add meg a levél tárgyát.");
+  setFieldError("fw-tbody", row.body ? "" : "Írd meg a levél szövegét.");
+  const bad = form.querySelector(".field.bad input, .field.bad textarea");
+  if (bad) { bad.focus(); return; }
+  const btn = document.getElementById("tpl-save");
+  busy(btn, true);
+  try {
+    const saved = isNew ? await dbInsert("email_templates", row) : await dbUpdate("email_templates", form.dataset.id, row);
+    replaceIn(S.templates, saved);
+    if (isNew) { S.templates.splice(S.templates.indexOf(saved), 1); S.templates.push(saved); }
+    S.dirty = false;
+    toast("Sablon mentve.");
+    go("#/sablonok");
+  } catch (e) {
+    busy(btn, false);
+    toast(errText(e), true);
+  }
+}
+
+async function copyText(text, btn) {
+  let ok = false;
+  try { await navigator.clipboard.writeText(text); ok = true; } catch (e) {
+    const t = document.createElement("textarea");
+    t.value = text; t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
+    document.body.appendChild(t); t.select();
+    try { ok = document.execCommand("copy"); } catch (e2) {}
+    t.remove();
+  }
+  toast(ok ? "Kimásolva." : "Nem sikerült a másolás.", !ok);
 }
 
 async function enter(user) {
@@ -702,9 +1461,6 @@ async function enter(user) {
   const { data: ok, error } = await S.sb.rpc("is_staff");
   if (error) { viewLogin(errText(error)); return; }
   if (!ok) { viewNotStaff(); return; }
-  const me = await S.sb.from("staff").select("name").eq("user_id", user.id).maybeSingle();
-  S.staffName = (me.data && me.data.name) || user.email;
-  document.getElementById("who").textContent = S.staffName;
   try {
     await loadAll();
   } catch (e) {
@@ -712,6 +1468,8 @@ async function enter(user) {
     main.innerHTML = `<div class="wrap center"><div class="login"><h1>Nem sikerült betölteni</h1><p class="msg">${esc(errText(e))}</p><button class="btn" type="button" data-retry>Újra</button></div></div>`;
     return;
   }
+  S.me = staffName(user.id) || user.email;
+  document.getElementById("who").textContent = S.me;
   render();
 }
 
@@ -720,8 +1478,7 @@ async function login(form) {
   const password = form.querySelector("#l-pass").value;
   if (!email || !password) { viewLogin("Add meg az e-mail-címed és a jelszavad."); return; }
   const btn = form.querySelector("#l-btn");
-  btn.disabled = true;
-  btn.textContent = "Belépés…";
+  busy(btn, true, "Belépés…");
   const { data, error } = await S.sb.auth.signInWithPassword({ email, password });
   if (error) { viewLogin(errText(error)); document.getElementById("l-email").value = email; return; }
   await enter(data.user);
@@ -729,10 +1486,7 @@ async function login(form) {
 
 async function logout() {
   await S.sb.auth.signOut();
-  S.user = null;
-  S.loaded = false;
-  S.episodes = [];
-  S.stories = [];
+  Object.assign(S, { user: null, loaded: false, episodes: [], stories: [], plans: [], resources: [], notes: [], contacts: [], templates: [] });
   viewLogin();
 }
 
@@ -742,16 +1496,56 @@ document.addEventListener("submit", e => {
 
 document.addEventListener("click", e => {
   const t = e.target;
-  if (t.closest("[data-logout]")) { logout(); return; }
-  if (t.closest("[data-retry]")) { location.reload(); return; }
-  const f = t.closest("[data-filter]");
-  if (f) { S.filter = f.dataset.filter; render(true); return; }
-  const n = t.closest("[data-notify]");
-  if (n) { sendNotification(n.dataset.notify, false); return; }
-  const de = t.closest("[data-del-ep]");
-  if (de) { deleteEpisode(de.dataset.delEp); return; }
-  const ds = t.closest("[data-del-story]");
-  if (ds) { deleteStory(ds.dataset.delStory); return; }
+  const on = sel => t.closest(sel);
+  let el;
+  if (on("[data-logout]")) { logout(); return; }
+  if (on("[data-retry]")) { location.reload(); return; }
+  if ((el = on("[data-filter]"))) { S.storyFilter = el.dataset.filter; render(true); return; }
+  if ((el = on("[data-pfilter]"))) { S.planFilter = el.dataset.pfilter; render(true); return; }
+  if ((el = on("[data-rfilter]"))) { S.resFilter = el.dataset.rfilter; render(true); return; }
+  if ((el = on("[data-notify]"))) { sendNotification(el.dataset.notify, false); return; }
+  if ((el = on("[data-del-ep]"))) { deleteEpisode(el.dataset.delEp); return; }
+  if ((el = on("[data-del-story]"))) { deleteStory(el.dataset.delStory); return; }
+  if ((el = on("[data-del-plan]"))) { deletePlan(el.dataset.delPlan); return; }
+  if ((el = on("[data-story-plan]"))) { el.disabled = true; storyToPlan(el.dataset.storyPlan); return; }
+  if ((el = on("[data-del-note]"))) { const n = S.notes.find(x => x.id === el.dataset.delNote); deleteRow("notes", S.notes, el.dataset.delNote, `Biztosan törlöd ezt a jegyzetet?\n\n${n ? n.title : ""}`, "#/jegyzetek"); return; }
+  if ((el = on("[data-del-contact]"))) { const c = S.contacts.find(x => x.id === el.dataset.delContact); deleteRow("contacts", S.contacts, el.dataset.delContact, `Biztosan törlöd ezt a kapcsolatot?\n\n${c ? c.name : ""}`, "#/kapcsolatok"); return; }
+  if ((el = on("[data-del-tpl]"))) { const x = S.templates.find(y => y.id === el.dataset.delTpl); deleteRow("email_templates", S.templates, el.dataset.delTpl, `Biztosan törlöd ezt a sablont?\n\n${x ? x.name : ""}`, "#/sablonok"); return; }
+  if (on("[data-check-add]")) { addCheck(); return; }
+  if ((el = on("[data-uncheck-del]"))) {
+    const p = currentPlan();
+    if (p) saveChecklist(p, p.checklist.filter((_, i) => i !== Number(el.dataset.uncheckDel)));
+    return;
+  }
+  if (on("[data-res-add]")) { addResource(); return; }
+  if ((el = on("[data-res-del]"))) { deleteResource(el.dataset.resDel); return; }
+  if ((el = on("[data-copy-mail]"))) { copyText(document.getElementById("compose").dataset.text || "", el); return; }
+  if ((el = on("#m-open"))) {
+    if (!document.getElementById("m-to").value.trim()) { e.preventDefault(); toast("Add meg a címzett e-mail-címét.", true); document.getElementById("m-to").focus(); }
+    return;
+  }
+});
+
+document.addEventListener("change", async e => {
+  const t = e.target;
+  if (t.matches("[data-check]")) {
+    const p = currentPlan();
+    if (!p) return;
+    const i = Number(t.dataset.check);
+    saveChecklist(p, p.checklist.map((c, j) => j === i ? { ...c, done: t.checked } : c));
+    return;
+  }
+  if (t.matches("[data-ov-check]")) {
+    const p = planById(t.dataset.ovCheck);
+    if (!p) return;
+    const i = Number(t.dataset.i);
+    const list = p.checklist.map((c, j) => j === i ? { ...c, done: t.checked } : c);
+    const prev = p.checklist;
+    p.checklist = list;
+    t.closest(".check").classList.toggle("done", t.checked);
+    try { await dbUpdate("plans", p.id, { checklist: list }); toast("Kipipálva."); }
+    catch (err) { p.checklist = prev; t.checked = !t.checked; toast(errText(err), true); }
+  }
 });
 
 window.addEventListener("hashchange", () => render());
