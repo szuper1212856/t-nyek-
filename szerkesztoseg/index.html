@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#080F2B">
+<meta name="robots" content="noindex, nofollow">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Szerkesztőség">
+<title>Szerkesztőség | Tények++</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="../icons/staff-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../icons/staff-apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --font:"Archivo","Helvetica Neue",Arial,system-ui,sans-serif;
+  --bg:#080F2B;
+  --surface:#111A42;
+  --surface-2:#18235A;
+  --ink:#EEF1FC;
+  --muted:#A4AED0;
+  --line:#27336B;
+  --brand:#3C57F5;
+  --on-brand:#FFFFFF;
+  --link:#9DACFF;
+  --strap:#FFD21F;
+  --on-strap:#0B1533;
+  --ok:#5BD9A0;
+  --danger:#FF8A93;
+  --nav-h:4.25rem;
+  box-sizing:border-box;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100dvh;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:1.0625rem;line-height:1.5;padding-top:env(safe-area-inset-top,0px)}
+body.has-nav{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,0px) + 1.5rem)}
+h1,h2,h3,p{margin:0}
+a{color:var(--link)}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--link);outline-offset:2px;border-radius:6px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.wrap{width:100%;max-width:46rem;margin-inline:auto;padding-inline:1rem}
+main:focus{outline:none}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding-block:.85rem}
+.brand{display:flex;align-items:center;gap:.6rem;min-width:0}
+.logo{display:inline-flex;align-items:center;gap:.14em;font-weight:900;font-stretch:125%;font-size:1.3rem;letter-spacing:-.02em;line-height:1;color:var(--ink);text-decoration:none}
+.logo b{background:var(--strap);color:var(--on-strap);padding:.06em .2em .1em;border-radius:5px;letter-spacing:0}
+.tag{padding:.15rem .55rem;border:1.5px solid var(--line);border-radius:999px;font-size:.8rem;font-weight:700;color:var(--muted);white-space:nowrap}
+.who{display:flex;align-items:center;gap:.5rem;font-size:.9rem;color:var(--muted);min-width:0}
+.who span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:12rem}
+@media (max-width:30rem){.who span{display:none}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;min-height:46px;padding:.6rem 1.1rem;border:0;border-radius:10px;background:var(--brand);color:var(--on-brand);font:inherit;font-weight:700;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{background:color-mix(in srgb,var(--brand) 86%,#000)}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost:hover{background:color-mix(in srgb,var(--ink) 7%,transparent)}
+.btn.small{min-height:40px;padding:.4rem .8rem;font-size:.92rem}
+.btn.danger{background:transparent;color:var(--danger);border:1.5px solid color-mix(in srgb,var(--danger) 45%,transparent)}
+.btn.danger:hover{background:color-mix(in srgb,var(--danger) 12%,transparent)}
+.btn.yellow{background:var(--strap);color:var(--on-strap)}
+.btn.yellow:hover{background:#F2C400}
+.btn[disabled]{opacity:.6;cursor:progress}
+.btn svg{width:1.1em;height:1.1em}
+
+.head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;margin:.75rem 0 1rem}
+.head h1{font-size:2rem;font-weight:900;font-stretch:122%;line-height:1;letter-spacing:-.02em}
+.sub{margin:-.4rem 0 1rem;color:var(--muted);font-size:.92rem}
+
+.list{display:grid;gap:.6rem;list-style:none;margin:0;padding:0}
+.card{display:grid;gap:.85rem;align-items:center;padding:.7rem;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:inherit;text-decoration:none}
+.card:hover{border-color:color-mix(in srgb,var(--link) 60%,var(--line))}
+.card.ep{grid-template-columns:7.5rem 1fr}
+.thumb{position:relative;aspect-ratio:16/9;border-radius:9px;overflow:hidden;background:linear-gradient(135deg,#2B48F0,#101C5C)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.card h2{font-size:1.05rem;font-weight:800;line-height:1.25;overflow-wrap:anywhere}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem .5rem;margin-top:.3rem;font-size:.82rem;color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:.35rem;padding:.1rem .55rem;border-radius:999px;border:1.5px solid var(--line);color:var(--ink);font-weight:700;font-size:.78rem;line-height:1.5;white-space:nowrap}
+.pill::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--dot,var(--muted))}
+.pill.plain::before{display:none}
+.s-beerkezett{--dot:#FFD21F}
+.s-otlet{--dot:#9DACFF}
+.s-forgatas{--dot:#FF9F5A}
+.s-vagas{--dot:#D38BFF}
+.s-kesz{--dot:#5BD9A0}
+.s-elvetve{--dot:#6B7499}
+.hidden-pill{--dot:#FF8A93}
+.card.story{padding:.85rem 1rem}
+.story-top{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.story-top time{font-size:.8rem;color:var(--muted);white-space:nowrap}
+.card.story h2{margin-top:.45rem}
+.card.story p.snip{margin-top:.25rem;color:var(--muted);font-size:.92rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.empty{padding:2rem 1.25rem;border:1.5px dashed var(--line);border-radius:14px;color:var(--muted);text-align:center}
+
+.chips{display:flex;gap:.4rem;overflow-x:auto;margin:0 -1rem 1rem;padding:0 1rem .25rem;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;display:inline-flex;align-items:center;gap:.4rem;min-height:40px;padding:0 .9rem;border:1.5px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:inherit;font-size:.92rem;font-weight:700;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.chip .n{font-weight:600;opacity:.7}
+
+.form{display:grid;gap:1.1rem}
+.field label,.field .lbl{display:block;margin-bottom:.35rem;font-weight:700}
+.field small{font-weight:500;color:var(--muted)}
+input[type="text"],input[type="email"],input[type="password"],input[type="url"],input[type="date"],textarea,select{width:100%;min-height:48px;padding:.7rem .85rem;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit}
+textarea{min-height:8rem;resize:vertical}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 1.15rem) 50%,calc(100% - .8rem) 50%;background-size:.35rem .35rem;background-repeat:no-repeat;padding-right:2.2rem}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:1}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--link);outline-offset:1px;border-color:var(--link)}
+.field.bad input,.field.bad textarea{border-color:var(--danger)}
+.err{margin-top:.35rem;font-size:.88rem;font-weight:600;color:var(--danger)}
+.hint{margin-top:.35rem;font-size:.85rem;color:var(--muted)}
+.row2{display:grid;gap:1.1rem}
+@media (min-width:34rem){.row2{grid-template-columns:1fr 1fr}}
+.preview{margin-top:.6rem;max-width:18rem}
+.switch{display:flex;align-items:flex-start;gap:.75rem;padding:.85rem 1rem;border-radius:12px;background:var(--surface);border:1px solid var(--line);cursor:pointer}
+.switch input{appearance:none;flex:none;position:relative;width:2.9rem;height:1.7rem;margin:0;border-radius:999px;background:var(--line);cursor:pointer;transition:background .15s}
+.switch input::after{content:"";position:absolute;top:.2rem;left:.2rem;width:1.3rem;height:1.3rem;border-radius:50%;background:#fff;transition:transform .15s}
+.switch input:checked{background:var(--brand)}
+.switch input:checked::after{transform:translateX(1.2rem)}
+.switch strong{display:block;line-height:1.3}
+.switch span span{display:block;font-size:.85rem;color:var(--muted)}
+.bar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.bar .grow{flex:1}
+.back{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration:none}
+.slug{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88rem;color:var(--muted);overflow-wrap:anywhere}
+.danger-zone{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.counter{float:right;font-weight:500;font-size:.82rem;color:var(--muted)}
+
+.statusset{display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:0;border:0}
+.statusset label{position:relative}
+.statusset input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.statusset span{display:inline-flex;align-items:center;gap:.4rem;min-height:42px;padding:0 .85rem;border:1.5px solid var(--line);border-radius:999px;font-weight:700;font-size:.92rem}
+.statusset span::before{content:"";width:.55rem;height:.55rem;border-radius:50%;background:var(--dot)}
+.statusset input:checked+span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.statusset input:focus-visible+span{outline:3px solid var(--link);outline-offset:2px}
+
+.info{display:grid;gap:.6rem;padding:1rem;border-radius:14px;background:var(--surface);border:1px solid var(--line)}
+.info dl{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;margin:0;font-size:.95rem}
+.info dt{color:var(--muted)}
+.info dd{margin:0;overflow-wrap:anywhere}
+.body-text{white-space:pre-wrap;overflow-wrap:anywhere}
+.kind{font-size:.85rem;font-weight:700;color:var(--strap);text-transform:uppercase;letter-spacing:.06em}
+.detail-title{margin:.35rem 0 1rem;font-size:1.7rem;font-weight:900;font-stretch:115%;line-height:1.1;overflow-wrap:anywhere}
+
+.center{min-height:calc(100dvh - 6rem);display:grid;place-items:center;padding-block:2rem}
+.login{width:100%;max-width:24rem;display:grid;gap:1.1rem;padding:1.5rem;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.login h1{font-size:1.6rem;font-weight:900;font-stretch:118%;line-height:1.1}
+.login p{color:var(--muted)}
+.msg{padding:.8rem 1rem;border-left:5px solid var(--danger);border-radius:0 10px 10px 0;background:var(--surface-2);font-weight:600}
+.loading{padding-block:3rem;color:var(--muted);font-weight:600;text-align:center}
+
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;padding-bottom:env(safe-area-inset-bottom,0px);background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+.nav-in{display:grid;grid-template-columns:1fr 1fr;max-width:46rem;margin-inline:auto;height:var(--nav-h)}
+.nav a{position:relative;display:grid;place-items:center;align-content:center;gap:.15rem;color:var(--muted);text-decoration:none;font-size:.8rem;font-weight:700}
+.nav a svg{width:1.5rem;height:1.5rem}
+.nav a[aria-current="page"]{color:var(--ink)}
+.nav a[aria-current="page"]::before{content:"";position:absolute;top:0;width:2.5rem;height:3px;border-radius:0 0 3px 3px;background:var(--strap)}
+.badge{position:absolute;top:.55rem;left:calc(50% + .45rem);min-width:1.25rem;height:1.25rem;padding:0 .35rem;border-radius:999px;background:var(--strap);color:var(--on-strap);font-size:.72rem;font-weight:800;line-height:1.25rem;text-align:center}
+
+.toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,0px) + .9rem);z-index:30;transform:translate(-50%,1rem);width:max-content;max-width:calc(100% - 2rem);padding:.75rem 1.1rem;border-radius:12px;background:var(--ink);color:var(--bg);font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.bad{background:var(--danger);color:#2A0710}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none !important}}
+</style>
+</head>
+<body>
+<header class="wrap top" id="top" hidden>
+  <div class="brand">
+    <a class="logo" href="#/adasok" aria-label="Tények++ Szerkesztőség, adások">Tények<b>++</b></a>
+    <span class="tag">Szerkesztőség</span>
+  </div>
+  <div class="who"><span id="who"></span><button class="btn ghost small" type="button" data-logout>Kilépés</button></div>
+</header>
+
+<main id="main" tabindex="-1"><div class="wrap"><p class="loading" role="status">Betöltés…</p></div></main>
+
+<nav class="nav" id="nav" aria-label="Fő menü" hidden>
+  <div class="nav-in">
+    <a href="#/adasok" data-nav="adasok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m10 9.5 4.5 2.5-4.5 2.5z"/></svg>Adások</a>
+    <a href="#/sztorik" data-nav="sztorik"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5h16v11H8.5L4 19.5z"/><path d="M8 9h8M8 12h5"/></svg>Sztorik<span class="badge" id="badge" hidden></span></a>
+  </div>
+</nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2/dist/umd/supabase.js"></script>
+<script>
+const CFG = window.TENYEK_CONFIG || {};
+const SITE = new URL("../", location.href).href;
+const STATUSES = [
+  ["beerkezett", "Beérkezett"],
+  ["otlet", "Ötlet"],
+  ["forgatas", "Forgatás"],
+  ["vagas", "Vágás"],
+  ["kesz", "Kész"],
+  ["elvetve", "Elvetve"]
+];
+const STATUS_LABEL = Object.fromEntries(STATUSES);
+const ACTIVE = ["beerkezett", "otlet", "forgatas", "vagas"];
+
+const main = document.getElementById("main");
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const ytId = v => {
+  const s = String(v || "").trim();
+  const m = s.match(/(?:v=|youtu\.be\/|embed\/|shorts\/|live\/)([\w-]{11})/);
+  if (m) return m[1];
+  return /^[\w-]{11}$/.test(s) ? s : "";
+};
+const slugify = s => String(s || "")
+  .normalize("NFD").replace(/[̀-ͯ]/g, "")
+  .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80).replace(/-+$/g, "");
+const fmtDate = new Intl.DateTimeFormat("hu-HU", { year: "numeric", month: "short", day: "numeric" });
+const fmtDateTime = new Intl.DateTimeFormat("hu-HU", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+const dayDate = s => fmtDate.format(new Date(s + "T12:00:00"));
+const todayIso = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+};
+const ago = iso => {
+  const diff = (Date.now() - new Date(iso).getTime()) / 1000;
+  if (diff < 60) return "most";
+  if (diff < 3600) return `${Math.floor(diff / 60)} perce`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)} órája`;
+  if (diff < 86400 * 7) return `${Math.floor(diff / 86400)} napja`;
+  return fmtDate.format(new Date(iso));
+};
+const safeHref = u => /^https?:\/\//i.test(String(u || "").trim()) ? String(u).trim() : "";
+const isEmail = s => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(s || "").trim());
+
+const S = { sb: null, user: null, staffName: "", episodes: [], stories: [], subs: null, loaded: false, filter: "aktiv", lastLoad: 0, dirty: false };
+
+let toastTimer;
+function toast(text, bad) {
+  const t = document.getElementById("toast");
+  t.textContent = text;
+  t.classList.toggle("bad", !!bad);
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), bad ? 5000 : 3000);
+}
+
+function chrome(on) {
+  document.getElementById("top").hidden = !on;
+  document.getElementById("nav").hidden = !on;
+  document.body.classList.toggle("has-nav", on);
+}
+
+function setBadge() {
+  const n = S.stories.filter(s => s.status === "beerkezett").length;
+  const b = document.getElementById("badge");
+  b.hidden = !n;
+  b.textContent = n > 99 ? "99+" : String(n);
+}
+
+function errText(error) {
+  const m = String((error && (error.message || error.error_description)) || error || "");
+  if (/Invalid login credentials/i.test(m)) return "Hibás e-mail-cím vagy jelszó.";
+  if (/Email not confirmed/i.test(m)) return "Ezt az e-mail-címet még nem erősítették meg.";
+  if (/Failed to fetch|NetworkError|Load failed/i.test(m)) return "Nincs kapcsolat a szerverrel. Ellenőrizd az internetet.";
+  if (error && error.code === "23505") return "Ez az azonosító már foglalt. Adj meg másikat.";
+  if (error && error.code === "42501") return "Ehhez nincs jogosultságod.";
+  return m || "Ismeretlen hiba történt.";
+}
+
+function viewSetup() {
+  chrome(false);
+  main.innerHTML = `<div class="wrap center"><div class="login"><h1>Még nincs beállítva</h1><p>Töltsd ki a Supabase adatokat a <strong>config.js</strong> fájlban (az oldal gyökerében), majd töltsd fel újra.</p></div></div>`;
+}
+
+function viewLogin(message) {
+  chrome(false);
+  main.innerHTML = `<div class="wrap center">
+    <form class="login" id="login-form" novalidate>
+      <div><span class="logo">Tények<b>++</b></span></div>
+      <h1>Szerkesztőség</h1>
+      <p>Lépj be a stábfiókoddal.</p>
+      ${message ? `<p class="msg" role="alert">${esc(message)}</p>` : ""}
+      <div class="field"><label for="l-email">E-mail</label><input id="l-email" type="email" autocomplete="username" inputmode="email" required></div>
+      <div class="field"><label for="l-pass">Jelszó</label><input id="l-pass" type="password" autocomplete="current-password" required></div>
+      <button class="btn" type="submit" id="l-btn">Belépés</button>
+    </form>
+  </div>`;
+}
+
+function viewNotStaff() {
+  chrome(false);
+  main.innerHTML = `<div class="wrap center"><div class="login"><h1>Nincs hozzáférésed</h1><p>Ez a fiók nincs hozzáadva a stábhoz. Kérd meg a szerkesztőt, hogy vegyen fel a <strong>staff</strong> táblába.</p><button class="btn ghost" type="button" data-logout>Kilépés</button></div></div>`;
+}
+
+async function loadAll() {
+  const [eps, stories, subs] = await Promise.all([
+    S.sb.from("episodes").select("*").order("aired_on", { ascending: false, nullsFirst: false }).order("created_at", { ascending: false }),
+    S.sb.from("stories").select("*").order("created_at", { ascending: false }),
+    S.sb.rpc("push_count")
+  ]);
+  if (eps.error) throw eps.error;
+  if (stories.error) throw stories.error;
+  S.episodes = eps.data || [];
+  S.stories = stories.data || [];
+  S.subs = subs.error ? null : subs.data;
+  S.loaded = true;
+  S.lastLoad = Date.now();
+  setBadge();
+}
+
+async function reload(quiet) {
+  try {
+    await loadAll();
+    if (!S.dirty) render(true);
+  } catch (e) {
+    if (!quiet) toast(errText(e), true);
+  }
+}
+
+function epThumb(e) {
+  return `<div class="thumb">${e.youtube_id ? `<img src="https://i.ytimg.com/vi/${esc(e.youtube_id)}/mqdefault.jpg" alt="" loading="lazy">` : ""}</div>`;
+}
+
+function viewEpisodes() {
+  const items = S.episodes.map(e => `
+    <li><a class="card ep" href="#/adas/${encodeURIComponent(e.id)}">
+      ${epThumb(e)}
+      <div>
+        <h2>${esc(e.title)}</h2>
+        <p class="meta">
+          ${e.published ? "" : `<span class="pill hidden-pill">Rejtett</span>`}
+          <span>${e.aired_on ? dayDate(e.aired_on) : "Nincs dátum"}</span>
+          ${e.category ? `<span>· ${esc(e.category)}</span>` : ""}
+          ${e.notified_at ? `<span>· Értesítés kiment</span>` : ""}
+        </p>
+      </div>
+    </a></li>`).join("");
+  const stats = [`${S.episodes.length} adás`];
+  if (S.subs !== null) stats.push(`${S.subs} feliratkozott eszköz`);
+  return `<div class="wrap">
+    <div class="head"><h1>Adások</h1><a class="btn yellow" href="#/adas/uj">+ Új adás</a></div>
+    <p class="sub">${stats.join(" · ")}</p>
+    ${S.episodes.length ? `<ul class="list">${items}</ul>` : `<p class="empty">Még nincs adás. Adj hozzá egyet a YouTube-linkjével.</p>`}
+  </div>`;
+}
+
+function viewEpisodeForm(ep) {
+  const isNew = !ep;
+  const e = ep || { id: "", title: "", youtube_id: "", aired_on: todayIso(), category: "", summary: "", published: true, notified_at: null };
+  const cats = [...new Set(S.episodes.map(x => x.category).filter(Boolean))];
+  const showNotify = !e.notified_at;
+  return `<div class="wrap">
+    <a class="back" href="#/adasok">← Adások</a>
+    <div class="head"><h1>${isNew ? "Új adás" : "Adás szerkesztése"}</h1></div>
+    <form class="form" id="ep-form" data-id="${esc(e.id)}" novalidate>
+      <div class="field" id="fw-yt">
+        <label for="f-yt">YouTube-link</label>
+        <input id="f-yt" type="url" inputmode="url" autocomplete="off" placeholder="https://www.youtube.com/watch?v=…" value="${e.youtube_id ? `https://www.youtube.com/watch?v=${esc(e.youtube_id)}` : ""}">
+        <p class="err" hidden></p>
+        <div class="preview" id="yt-preview">${e.youtube_id ? epThumb(e) : ""}</div>
+      </div>
+      <div class="field" id="fw-title">
+        <label for="f-title">Cím</label>
+        <input id="f-title" type="text" maxlength="160" autocomplete="off" value="${esc(e.title)}">
+        <p class="err" hidden></p>
+      </div>
+      ${isNew ? `<div class="field" id="fw-slug">
+        <label for="f-slug">Azonosító <small>(az adás címe az oldalon)</small></label>
+        <input id="f-slug" type="text" maxlength="80" autocomplete="off" autocapitalize="off" spellcheck="false" value="">
+        <p class="hint slug" id="slug-url"></p>
+        <p class="err" hidden></p>
+      </div>` : `<div class="field"><span class="lbl">Az adás címe az oldalon</span><a class="slug" href="${esc(SITE)}#/adas/${encodeURIComponent(e.id)}" target="_blank" rel="noopener">${esc(SITE)}#/adas/${esc(e.id)}</a></div>`}
+      <div class="row2">
+        <div class="field"><label for="f-date">Adás dátuma <small>(nem kötelező)</small></label><input id="f-date" type="date" value="${esc(e.aired_on || "")}"></div>
+        <div class="field"><label for="f-cat">Rovat <small>(nem kötelező)</small></label><input id="f-cat" type="text" maxlength="40" list="cats" autocomplete="off" value="${esc(e.category || "")}"><datalist id="cats">${cats.map(c => `<option value="${esc(c)}">`).join("")}</datalist></div>
+      </div>
+      <div class="field">
+        <label for="f-sum">Leírás <small>(nem kötelező)</small><span class="counter" id="sum-count"></span></label>
+        <textarea id="f-sum" maxlength="600" placeholder="Egy-két mondat az adásról">${esc(e.summary || "")}</textarea>
+      </div>
+      <label class="switch"><input type="checkbox" id="f-pub" ${e.published ? "checked" : ""}><span><strong>Közzétéve</strong><span>Kikapcsolva csak a stáb látja.</span></span></label>
+      ${showNotify ? `<label class="switch" id="notify-row"><input type="checkbox" id="f-notify" ${isNew ? "checked" : ""}><span><strong>Értesítés a nézőknek mentéskor</strong><span>${S.subs !== null ? `${S.subs} feliratkozott eszköz kapja meg.` : "Minden feliratkozott eszköz megkapja."}</span></span></label>` : ""}
+      <div class="bar">
+        <button class="btn" type="submit" id="ep-save">${isNew ? "Adás mentése" : "Változások mentése"}</button>
+        ${isNew ? "" : `<a class="btn ghost" href="${esc(SITE)}#/adas/${encodeURIComponent(e.id)}" target="_blank" rel="noopener">Megnézem</a>`}
+      </div>
+      ${isNew ? "" : `<div class="danger-zone bar">
+        ${e.published ? `<button class="btn ghost" type="button" data-notify="${esc(e.id)}">${e.notified_at ? "Értesítés újraküldése" : "Értesítés küldése"}</button>` : ""}
+        <span class="grow"></span>
+        <button class="btn danger" type="button" data-del-ep="${esc(e.id)}">Adás törlése</button>
+      </div>
+      ${e.notified_at ? `<p class="hint">Értesítés kiment: ${fmtDateTime.format(new Date(e.notified_at))}</p>` : ""}`}
+    </form>
+  </div>`;
+}
+
+function storyCounts() {
+  const c = { aktiv: 0 };
+  STATUSES.forEach(([k]) => { c[k] = 0; });
+  S.stories.forEach(s => {
+    c[s.status] = (c[s.status] || 0) + 1;
+    if (ACTIVE.includes(s.status)) c.aktiv++;
+  });
+  return c;
+}
+
+function viewStories() {
+  const c = storyCounts();
+  const filters = [["aktiv", "Aktív"], ...STATUSES];
+  const chips = filters.map(([k, l]) => `<button class="chip" type="button" data-filter="${k}" aria-pressed="${S.filter === k}">${l}<span class="n">${c[k] || 0}</span></button>`).join("");
+  const list = S.stories.filter(s => S.filter === "aktiv" ? ACTIVE.includes(s.status) : s.status === S.filter);
+  const items = list.map(s => `
+    <li><a class="card story" href="#/sztori/${s.id}">
+      <div class="story-top">
+        <span class="pill s-${s.status}">${STATUS_LABEL[s.status]}</span>
+        <time datetime="${esc(s.created_at)}">${ago(s.created_at)}</time>
+      </div>
+      <h2>${esc(s.topic)}</h2>
+      ${s.details ? `<p class="snip">${esc(s.details)}</p>` : ""}
+      <p class="meta">${s.source === "sajat" ? "Saját ötlet" : `${s.kind === "request" ? "Riportkérés" : "Beküldött sztori"}${s.name ? ` · ${esc(s.name)}` : ""}${s.class_name ? ` (${esc(s.class_name)})` : ""}`}</p>
+    </a></li>`).join("");
+  const emptyText = S.filter === "aktiv" ? "Nincs folyamatban lévő sztori. Ha valaki beküld egyet az oldalon, itt jelenik meg." : "Ebben az állapotban nincs sztori.";
+  return `<div class="wrap">
+    <div class="head"><h1>Sztorik</h1><a class="btn yellow" href="#/sztori/uj">+ Saját ötlet</a></div>
+    <div class="chips" role="group" aria-label="Szűrés állapot szerint">${chips}</div>
+    ${list.length ? `<ul class="list">${items}</ul>` : `<p class="empty">${emptyText}</p>`}
+  </div>`;
+}
+
+function statusSet(current) {
+  return `<fieldset class="statusset"><legend class="vh">Állapot</legend>${STATUSES.map(([k, l]) => `<label class="s-${k}"><input type="radio" name="status" value="${k}" ${current === k ? "checked" : ""}><span>${l}</span></label>`).join("")}</fieldset>`;
+}
+
+function episodeSelect(current) {
+  return `<select id="f-ep"><option value="">Nincs</option>${S.episodes.map(e => `<option value="${esc(e.id)}" ${current === e.id ? "selected" : ""}>${esc(e.title)}</option>`).join("")}</select>`;
+}
+
+function viewStory(s) {
+  const isNew = !s;
+  const own = isNew || s.source === "sajat";
+  const st = s || { status: "otlet", topic: "", details: "", link: "", note: "", episode_id: null };
+  let info = "";
+  if (!own) {
+    const link = safeHref(st.link);
+    const rows = [
+      ["Beküldő", `${esc(st.name || "Névtelen")}${st.class_name ? `, ${esc(st.class_name)}` : ""}`],
+      st.contact ? ["Elérhetőség", isEmail(st.contact) ? `<a href="mailto:${esc(st.contact.trim())}?subject=${encodeURIComponent("Tények++: " + st.topic)}">${esc(st.contact)}</a>` : esc(st.contact)] : null,
+      ["Beküldve", fmtDateTime.format(new Date(st.created_at))],
+      st.link ? ["Link", link ? `<a href="${esc(link)}" target="_blank" rel="noopener noreferrer">${esc(link)}</a>` : esc(st.link)] : null
+    ].filter(Boolean);
+    info = `<div class="info">
+      <dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>
+      ${st.details ? `<p class="body-text">${esc(st.details)}</p>` : ""}
+    </div>`;
+  }
+  return `<div class="wrap">
+    <a class="back" href="#/sztorik">← Sztorik</a>
+    ${own ? `<div class="head"><h1>${isNew ? "Saját ötlet" : "Ötlet szerkesztése"}</h1></div>` : `<p class="kind">${st.kind === "request" ? "Riportkérés" : "Beküldött sztori"}</p><h1 class="detail-title">${esc(st.topic)}</h1>`}
+    <form class="form" id="story-form" data-id="${isNew ? "" : esc(st.id)}" data-own="${own}" novalidate>
+      ${info}
+      ${own ? `<div class="field" id="fw-topic"><label for="f-topic">Téma</label><input id="f-topic" type="text" maxlength="200" autocomplete="off" value="${esc(st.topic)}"><p class="err" hidden></p></div>
+      <div class="field"><label for="f-details">Részletek <small>(nem kötelező)</small></label><textarea id="f-details" maxlength="4000">${esc(st.details || "")}</textarea></div>
+      <div class="field"><label for="f-link">Link <small>(nem kötelező)</small></label><input id="f-link" type="url" inputmode="url" maxlength="500" autocomplete="off" value="${esc(st.link || "")}"></div>` : ""}
+      <div class="field"><span class="lbl">Állapot</span>${statusSet(st.status)}</div>
+      <div class="field"><label for="f-note">Jegyzet a stábnak <small>(nem kötelező)</small></label><textarea id="f-note" maxlength="4000" placeholder="Kit kérdezzünk meg, mikor forgatunk, mi hiányzik még…">${esc(st.note || "")}</textarea></div>
+      <div class="field"><label for="f-ep">Kapcsolódó adás</label>${episodeSelect(st.episode_id)}</div>
+      <div class="bar"><button class="btn" type="submit" id="story-save">${isNew ? "Ötlet mentése" : "Mentés"}</button></div>
+      ${isNew ? "" : `<div class="danger-zone bar"><span class="grow"></span><button class="btn danger" type="button" data-del-story="${esc(st.id)}">Törlés</button></div>`}
+    </form>
+  </div>`;
+}
+
+function go(hash) {
+  if (location.hash === hash) render();
+  else location.hash = hash;
+}
+
+function missing(text) {
+  return `<div class="wrap"><p class="empty" style="margin-top:2rem">${text}</p></div>`;
+}
+
+function render(quiet) {
+  if (!S.user || !S.loaded) return;
+  const seg = location.hash.slice(2).split("/").filter(Boolean);
+  let route = seg[0] || "adasok";
+  let html;
+  let nav = "adasok";
+  const id = seg[1] ? decodeURIComponent(seg[1]) : "";
+  if (route === "adasok") html = viewEpisodes();
+  else if (route === "adas") {
+    if (id === "uj") html = viewEpisodeForm(null);
+    else {
+      const ep = S.episodes.find(e => e.id === id);
+      html = ep ? viewEpisodeForm(ep) : missing("Ez az adás nem létezik, vagy törölték.");
+    }
+  } else if (route === "sztorik") { html = viewStories(); nav = "sztorik"; }
+  else if (route === "sztori") {
+    nav = "sztorik";
+    if (id === "uj") html = viewStory(null);
+    else {
+      const st = S.stories.find(s => s.id === id);
+      html = st ? viewStory(st) : missing("Ez a sztori nem létezik, vagy törölték.");
+    }
+  } else { html = viewEpisodes(); }
+  chrome(true);
+  main.innerHTML = html;
+  document.querySelectorAll("[data-nav]").forEach(a => {
+    if (a.dataset.nav === nav) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
+  });
+  S.dirty = false;
+  wireForms();
+  if (!quiet) {
+    window.scrollTo(0, 0);
+    main.focus({ preventScroll: true });
+  }
+}
+
+function setFieldError(id, message) {
+  const wrap = document.getElementById(id);
+  if (!wrap) return;
+  const err = wrap.querySelector(".err");
+  wrap.classList.toggle("bad", !!message);
+  err.hidden = !message;
+  err.textContent = message || "";
+}
+
+function wireForms() {
+  const ep = document.getElementById("ep-form");
+  if (ep) {
+    const yt = document.getElementById("f-yt");
+    const title = document.getElementById("f-title");
+    const slug = document.getElementById("f-slug");
+    const sum = document.getElementById("f-sum");
+    const pub = document.getElementById("f-pub");
+    const notifyRow = document.getElementById("notify-row");
+    let slugTouched = false;
+    const updSlug = () => {
+      if (!slug) return;
+      if (!slugTouched) {
+        slug.value = uniqueSlug(slugify(title.value));
+        if (slug.value) setFieldError("fw-slug", "");
+      }
+      document.getElementById("slug-url").textContent = slug.value ? `${SITE}#/adas/${slug.value}` : "";
+    };
+    const updSum = () => { document.getElementById("sum-count").textContent = `${sum.value.length}/600`; };
+    const updPreview = () => {
+      const id = ytId(yt.value);
+      document.getElementById("yt-preview").innerHTML = id ? epThumb({ youtube_id: id }) : "";
+    };
+    const updNotify = () => { if (notifyRow) notifyRow.hidden = !pub.checked; };
+    yt.addEventListener("input", () => { updPreview(); setFieldError("fw-yt", ""); });
+    title.addEventListener("input", () => { updSlug(); setFieldError("fw-title", ""); });
+    if (slug) slug.addEventListener("input", () => { slugTouched = true; updSlug(); setFieldError("fw-slug", ""); });
+    sum.addEventListener("input", updSum);
+    pub.addEventListener("change", updNotify);
+    updSlug(); updSum(); updNotify();
+    ep.addEventListener("input", () => { S.dirty = true; });
+    ep.addEventListener("submit", e => { e.preventDefault(); saveEpisode(ep); });
+  }
+  const story = document.getElementById("story-form");
+  if (story) {
+    story.addEventListener("input", () => { S.dirty = true; });
+    story.addEventListener("change", () => { S.dirty = true; });
+    story.addEventListener("submit", e => { e.preventDefault(); saveStory(story); });
+    const topic = document.getElementById("f-topic");
+    if (topic) topic.addEventListener("input", () => setFieldError("fw-topic", ""));
+  }
+}
+
+function uniqueSlug(base) {
+  if (!base) return "";
+  let s = base;
+  let n = 2;
+  while (S.episodes.some(e => e.id === s)) s = `${base}-${n++}`.slice(0, 80);
+  return s;
+}
+
+async function saveEpisode(form) {
+  const isNew = !form.dataset.id;
+  const v = id => (document.getElementById(id)?.value || "").trim();
+  const youtube_id = ytId(v("f-yt"));
+  const title = v("f-title");
+  const id = isNew ? v("f-slug") : form.dataset.id;
+  setFieldError("fw-yt", youtube_id ? "" : "Másold be a videó YouTube-linkjét.");
+  setFieldError("fw-title", title ? "" : "Adj címet az adásnak.");
+  if (isNew) setFieldError("fw-slug", /^[a-z0-9]+([-_][a-z0-9]+)*$/.test(id) ? "" : "Csak kisbetű, szám, kötőjel és alulvonás lehet benne.");
+  const bad = form.querySelector(".field.bad input");
+  if (bad) { bad.focus(); return; }
+  const published = document.getElementById("f-pub").checked;
+  const notify = !!document.getElementById("f-notify")?.checked && published;
+  const row = {
+    title,
+    youtube_id,
+    aired_on: v("f-date") || null,
+    category: v("f-cat") || null,
+    summary: v("f-sum") || null,
+    published
+  };
+  const btn = document.getElementById("ep-save");
+  btn.disabled = true;
+  btn.textContent = "Mentés…";
+  const res = isNew
+    ? await S.sb.from("episodes").insert({ id, ...row })
+    : await S.sb.from("episodes").update(row).eq("id", id);
+  if (res.error) {
+    btn.disabled = false;
+    btn.textContent = isNew ? "Adás mentése" : "Változások mentése";
+    if (res.error.code === "23505") { setFieldError("fw-slug", errText(res.error)); document.getElementById("f-slug").focus(); }
+    else toast(errText(res.error), true);
+    return;
+  }
+  S.dirty = false;
+  toast(isNew ? "Adás elmentve." : "Változások elmentve.");
+  if (notify) await sendNotification(id, true);
+  await reload(true);
+  go(isNew ? "#/adasok" : `#/adas/${encodeURIComponent(id)}`);
+}
+
+async function sendNotification(id, silentConfirm) {
+  const ep = S.episodes.find(e => e.id === id);
+  if (!silentConfirm && ep && ep.notified_at && !confirm("Erről az adásról már ment ki értesítés. Biztosan újra elküldöd mindenkinek?")) return;
+  const btn = document.querySelector(`[data-notify="${CSS.escape(id)}"]`);
+  if (btn) { btn.disabled = true; btn.textContent = "Küldés…"; }
+  try {
+    const { data, error } = await S.sb.functions.invoke("notify-episode", { body: { episodeId: id } });
+    if (error) {
+      let detail = "";
+      try { detail = (await error.context.json()).error || ""; } catch (e) {}
+      throw new Error(detail || error.message);
+    }
+    toast(data.sent ? `Értesítés elküldve ${data.sent} eszközre.` : "Még nincs feliratkozott eszköz, így senki nem kapott értesítést.");
+  } catch (e) {
+    const m = String(e.message || e);
+    toast(/Failed to send a request|not found|404/i.test(m) ? "Az értesítő funkció még nincs telepítve a Supabase-ben." : `Az értesítés nem ment ki: ${m}`, true);
+  }
+  if (btn) { btn.disabled = false; btn.textContent = "Értesítés újraküldése"; }
+  if (!silentConfirm) reload(true);
+}
+
+async function deleteEpisode(id) {
+  const ep = S.episodes.find(e => e.id === id);
+  if (!confirm(`Biztosan törlöd ezt az adást?\n\n${ep ? ep.title : id}\n\nAz oldalról is eltűnik. A YouTube-videót nem törli.`)) return;
+  const { error } = await S.sb.from("episodes").delete().eq("id", id);
+  if (error) { toast(errText(error), true); return; }
+  toast("Adás törölve.");
+  S.dirty = false;
+  await reload(true);
+  go("#/adasok");
+}
+
+async function saveStory(form) {
+  const isNew = !form.dataset.id;
+  const own = form.dataset.own === "true";
+  const v = id => (document.getElementById(id)?.value || "").trim();
+  const row = {
+    status: form.querySelector('input[name="status"]:checked')?.value || "otlet",
+    note: v("f-note") || null,
+    episode_id: v("f-ep") || null
+  };
+  if (own) {
+    row.topic = v("f-topic");
+    row.details = v("f-details") || null;
+    row.link = v("f-link") || null;
+    setFieldError("fw-topic", row.topic ? "" : "Írd le röviden, miről szól.");
+    if (!row.topic) { document.getElementById("f-topic").focus(); return; }
+  }
+  const btn = document.getElementById("story-save");
+  btn.disabled = true;
+  btn.textContent = "Mentés…";
+  const res = isNew
+    ? await S.sb.from("stories").insert({ ...row, source: "sajat", kind: "story" })
+    : await S.sb.from("stories").update(row).eq("id", form.dataset.id);
+  if (res.error) {
+    btn.disabled = false;
+    btn.textContent = isNew ? "Ötlet mentése" : "Mentés";
+    toast(errText(res.error), true);
+    return;
+  }
+  S.dirty = false;
+  toast(isNew ? "Ötlet elmentve." : "Mentve.");
+  await reload(true);
+  go("#/sztorik");
+}
+
+async function deleteStory(id) {
+  const st = S.stories.find(s => s.id === id);
+  if (!confirm(`Biztosan törlöd ezt a sztorit?\n\n${st ? st.topic : ""}\n\nEzt nem lehet visszavonni.`)) return;
+  const { error } = await S.sb.from("stories").delete().eq("id", id);
+  if (error) { toast(errText(error), true); return; }
+  toast("Sztori törölve.");
+  S.dirty = false;
+  await reload(true);
+  go("#/sztorik");
+}
+
+async function enter(user) {
+  S.user = user;
+  const { data: ok, error } = await S.sb.rpc("is_staff");
+  if (error) { viewLogin(errText(error)); return; }
+  if (!ok) { viewNotStaff(); return; }
+  const me = await S.sb.from("staff").select("name").eq("user_id", user.id).maybeSingle();
+  S.staffName = (me.data && me.data.name) || user.email;
+  document.getElementById("who").textContent = S.staffName;
+  try {
+    await loadAll();
+  } catch (e) {
+    chrome(false);
+    main.innerHTML = `<div class="wrap center"><div class="login"><h1>Nem sikerült betölteni</h1><p class="msg">${esc(errText(e))}</p><button class="btn" type="button" data-retry>Újra</button></div></div>`;
+    return;
+  }
+  render();
+}
+
+async function login(form) {
+  const email = form.querySelector("#l-email").value.trim();
+  const password = form.querySelector("#l-pass").value;
+  if (!email || !password) { viewLogin("Add meg az e-mail-címed és a jelszavad."); return; }
+  const btn = form.querySelector("#l-btn");
+  btn.disabled = true;
+  btn.textContent = "Belépés…";
+  const { data, error } = await S.sb.auth.signInWithPassword({ email, password });
+  if (error) { viewLogin(errText(error)); document.getElementById("l-email").value = email; return; }
+  await enter(data.user);
+}
+
+async function logout() {
+  await S.sb.auth.signOut();
+  S.user = null;
+  S.loaded = false;
+  S.episodes = [];
+  S.stories = [];
+  viewLogin();
+}
+
+document.addEventListener("submit", e => {
+  if (e.target.id === "login-form") { e.preventDefault(); login(e.target); }
+});
+
+document.addEventListener("click", e => {
+  const t = e.target;
+  if (t.closest("[data-logout]")) { logout(); return; }
+  if (t.closest("[data-retry]")) { location.reload(); return; }
+  const f = t.closest("[data-filter]");
+  if (f) { S.filter = f.dataset.filter; render(true); return; }
+  const n = t.closest("[data-notify]");
+  if (n) { sendNotification(n.dataset.notify, false); return; }
+  const de = t.closest("[data-del-ep]");
+  if (de) { deleteEpisode(de.dataset.delEp); return; }
+  const ds = t.closest("[data-del-story]");
+  if (ds) { deleteStory(ds.dataset.delStory); return; }
+});
+
+window.addEventListener("hashchange", () => render());
+
+document.addEventListener("error", e => {
+  if (e.target instanceof HTMLImageElement && e.target.closest(".thumb")) e.target.remove();
+}, true);
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && S.loaded && Date.now() - S.lastLoad > 30000) reload(true);
+});
+
+async function start() {
+  if (!CFG.supabaseUrl || !CFG.supabaseKey) { viewSetup(); return; }
+  if (!window.supabase) {
+    main.innerHTML = `<div class="wrap center"><div class="login"><h1>Nem sikerült betölteni</h1><p>Ellenőrizd az internetkapcsolatot, majd próbáld újra.</p><button class="btn" type="button" data-retry>Újra</button></div></div>`;
+    return;
+  }
+  S.sb = window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseKey, { auth: { persistSession: true, autoRefreshToken: true } });
+  const { data } = await S.sb.auth.getSession();
+  if (data.session) await enter(data.session.user);
+  else viewLogin();
+}
+
+start();
+</script>
+</body>
+</html>
