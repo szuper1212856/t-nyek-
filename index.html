@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#080F2B">
+<meta name="robots" content="noindex, nofollow">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Tények++">
+<meta name="apple-mobile-web-app-title" content="Szerkesztőség">
+<title>Szerkesztőség | Tények++</title>
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icons/icon-192.png" type="image/png">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<title>Tények++, a Creascola diákhíradója</title>
-<meta name="description" content="Tények++: a Creascola diákhíradója. Nézd meg a legfrissebb adást, böngészd a korábbiakat, vagy küldj sztorit.">
+<link rel="icon" href="../icons/staff-192.png" type="image/png">
+<link rel="apple-touch-icon" href="../icons/staff-apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
@@ -23,6 +23,7 @@
   --font:"Archivo","Helvetica Neue",Arial,system-ui,sans-serif;
   --bg:#080F2B;
   --surface:#111A42;
+  --surface-2:#18235A;
   --ink:#EEF1FC;
   --muted:#A4AED0;
   --line:#27336B;
@@ -31,1081 +32,1754 @@
   --link:#9DACFF;
   --strap:#FFD21F;
   --on-strap:#0B1533;
-  --band:#2440E6;
-  --on-band:#FFFFFF;
-  --slate-a:#2B48F0;
-  --slate-b:#101C5C;
+  --ok:#5BD9A0;
   --danger:#FF8A93;
+  --nav-h:4.25rem;
   box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
 }
 *,*::before,*::after{box-sizing:inherit}
-html{height:100%;background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
-body{
-  margin:0;
-  min-height:100%;
-  display:flex;
-  flex-direction:column;
-  background:var(--bg);
-  color:var(--ink);
-  font-family:var(--font);
-  font-size:1.0625rem;
-  line-height:1.55;
-}
-img{max-width:100%}
-a{color:var(--link)}
+[hidden]{display:none !important}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100dvh;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:1.0625rem;line-height:1.5;padding-top:env(safe-area-inset-top,0px)}
+body.has-nav{padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,0px) + 1.5rem)}
 h1,h2,h3,p{margin:0}
-h1,h2,h3{text-wrap:balance}
-:focus-visible{outline:3px solid var(--link);outline-offset:3px;border-radius:4px}
-main{flex:1}
-main:focus{outline:none}
-.wrap{width:100%;max-width:72rem;margin-inline:auto;padding-inline:clamp(1rem,4vw,2.5rem)}
+a{color:var(--link)}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--link);outline-offset:2px;border-radius:6px}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.skip{position:absolute;left:1rem;top:-4rem;background:var(--strap);color:var(--on-strap);padding:.6rem .9rem;border-radius:8px;font-weight:700;z-index:10}
-.skip:focus{top:calc(env(safe-area-inset-top,0px) + .5rem)}
+.wrap{width:100%;max-width:46rem;margin-inline:auto;padding-inline:1rem}
+main:focus{outline:none}
 
-.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem 1.5rem;padding-block:1rem}
-.logo{display:inline-flex;align-items:center;gap:.16em;font-weight:900;font-stretch:125%;font-size:1.65rem;letter-spacing:-.02em;line-height:1;color:var(--ink);text-decoration:none;min-height:44px}
-.logo b{background:var(--strap);color:var(--on-strap);padding:.06em .2em .1em;border-radius:5px;font-weight:900;letter-spacing:0}
-.nav{display:flex;flex-wrap:wrap;align-items:center;gap:.15rem;margin-inline:-.65rem 0}
-.nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 .65rem;border-radius:8px;color:var(--ink);text-decoration:none;font-weight:600}
-.nav a:hover{background:color-mix(in srgb,var(--ink) 8%,transparent)}
-.nav a[aria-current="page"]{box-shadow:inset 0 -3px 0 var(--strap)}
-.nav a.cta{background:var(--brand);color:var(--on-brand);margin-left:.5rem;padding:0 .95rem;font-weight:700}
-.nav a.cta:hover{background:color-mix(in srgb,var(--brand) 86%,#000)}
-.nav a.cta[aria-current="page"]{box-shadow:inset 0 -3px 0 var(--strap)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding-block:.85rem}
+.brand{display:flex;align-items:center;gap:.6rem;min-width:0}
+.logo{display:inline-flex;align-items:center;gap:.14em;font-weight:900;font-stretch:125%;font-size:1.3rem;letter-spacing:-.02em;line-height:1;color:var(--ink);text-decoration:none}
+.logo b{background:var(--strap);color:var(--on-strap);padding:.06em .2em .1em;border-radius:5px;letter-spacing:0}
+.tag{padding:.15rem .55rem;border:1.5px solid var(--line);border-radius:999px;font-size:.8rem;font-weight:700;color:var(--muted);white-space:nowrap}
+.who{font-size:.9rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:12rem}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.7rem 1.25rem;border:0;border-radius:10px;background:var(--brand);color:var(--on-brand);font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;min-height:46px;padding:.6rem 1.1rem;border:0;border-radius:10px;background:var(--brand);color:var(--on-brand);font:inherit;font-weight:700;text-decoration:none;cursor:pointer;white-space:nowrap}
 .btn:hover{background:color-mix(in srgb,var(--brand) 86%,#000)}
-.btn.ink{background:#0B1533;color:#FFFFFF}
-.btn.ink:hover{background:#1B2A66}
 .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
 .btn.ghost:hover{background:color-mix(in srgb,var(--ink) 7%,transparent)}
+.btn.small{min-height:40px;padding:.4rem .8rem;font-size:.92rem}
+.btn.danger{background:transparent;color:var(--danger);border:1.5px solid color-mix(in srgb,var(--danger) 45%,transparent)}
+.btn.danger:hover{background:color-mix(in srgb,var(--danger) 12%,transparent)}
+.btn.yellow{background:var(--strap);color:var(--on-strap)}
+.btn.yellow:hover{background:#F2C400}
+.btn[disabled]{opacity:.6;cursor:progress}
+.iconbtn{display:inline-grid;place-items:center;width:40px;height:40px;flex:none;border:0;border-radius:10px;background:transparent;color:var(--muted);font:inherit;font-size:1.25rem;cursor:pointer}
+.iconbtn:hover{background:var(--surface-2);color:var(--ink)}
 
-.screen{position:relative;display:block;container-type:inline-size;aspect-ratio:16/9;border-radius:14px;overflow:hidden;isolation:isolate;background:linear-gradient(135deg,var(--slate-a),var(--slate-b));color:#FFFFFF;text-decoration:none}
-.screen::after{content:"++";position:absolute;right:-.03em;bottom:-.2em;z-index:-1;font-family:var(--font);font-weight:900;font-stretch:125%;font-size:54cqw;line-height:1;color:transparent;-webkit-text-stroke:.012em rgba(255,255,255,.2)}
-.screen .thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
-.screen .no{position:absolute;left:3.5cqw;top:3.5cqw;z-index:1;padding:.2em .7em;border-radius:999px;background:rgba(11,21,51,.72);font-weight:700;font-size:clamp(.78rem,3.3cqw,1rem);line-height:1.5}
-.play{position:absolute;inset:0;display:grid;place-items:center;width:100%;height:100%;padding:0;border:0;background:none;color:inherit;cursor:pointer}
-.disc{display:grid;place-items:center;width:clamp(3.25rem,15cqw,5.75rem);aspect-ratio:1;border-radius:50%;background:#FFFFFF;box-shadow:0 12px 32px rgba(6,12,45,.4);transition:transform .15s ease}
-.disc svg{width:36%;margin-left:7%;fill:#0B1533}
-button.play:hover .disc,a.screen:hover .disc{transform:scale(1.07)}
-button.play:focus-visible{outline:none}
-button.play:focus-visible .disc{outline:4px solid var(--strap);outline-offset:4px}
-.soon{position:absolute;inset:0;display:grid;place-items:center;padding:1rem;text-align:center;font-weight:700;font-size:clamp(.85rem,4cqw,1.2rem)}
-.soon span{padding:.35em .9em;border-radius:999px;background:rgba(11,21,51,.72)}
-.blocked{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:.85rem;padding:1rem;text-align:center;font-weight:700}
-.blocked .btn{background:#FFFFFF;color:#0B1533}
-.blocked .btn:hover{background:#E6EAFA}
+.head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;margin:.75rem 0 1rem}
+.head h1{font-size:2rem;font-weight:900;font-stretch:122%;line-height:1;letter-spacing:-.02em}
+.sub{margin:-.4rem 0 1rem;color:var(--muted);font-size:.92rem}
+.back{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration:none}
 
-.strap-row{display:flex;flex-wrap:wrap;align-items:stretch;font-size:.9rem;font-weight:700;line-height:1.3}
-.strap{background:var(--strap);color:var(--on-strap);padding:.4rem .75rem}
-.strap-date{background:var(--surface);color:var(--ink);padding:.4rem .75rem;font-weight:600}
+.list{display:grid;gap:.6rem;list-style:none;margin:0;padding:0}
+.card{display:block;padding:.85rem 1rem;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:inherit;text-decoration:none}
+a.card:hover{border-color:color-mix(in srgb,var(--link) 60%,var(--line))}
+.card h2,.card h3{font-size:1.05rem;font-weight:800;line-height:1.25;overflow-wrap:anywhere}
+.card.ep{display:grid;grid-template-columns:7.5rem 1fr;gap:.85rem;align-items:center;padding:.7rem}
+.thumb{position:relative;aspect-ratio:16/9;border-radius:9px;overflow:hidden;background:linear-gradient(135deg,#2B48F0,#101C5C)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem .6rem;margin-top:.35rem;font-size:.84rem;color:var(--muted)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:.45rem}
+.card-top time,.card-top .when{font-size:.8rem;color:var(--muted);white-space:nowrap}
+.snip{margin-top:.25rem;color:var(--muted);font-size:.92rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.empty{padding:1.5rem 1.25rem;border:1.5px dashed var(--line);border-radius:14px;color:var(--muted);text-align:center}
+.empty.small{padding:.9rem 1rem;font-size:.92rem;text-align:left}
 
-.home{display:grid;gap:2.75rem;padding-block:.5rem 3.5rem}
-.chyron{position:relative;z-index:2;width:fit-content;max-width:min(46rem,calc(100% - .6rem));margin:-2.25rem 0 0 .6rem;transition:margin .35s ease}
-.chyron .strap-row{box-shadow:0 6px 18px rgba(6,12,45,.18);width:fit-content}
-.band{background:var(--band);color:var(--on-band);padding:.8rem 1rem .95rem;box-shadow:0 10px 28px rgba(6,12,45,.25)}
-.band h1{font-size:clamp(1.45rem,4.4vw,2.7rem);font-weight:800;font-stretch:112%;line-height:1.08;letter-spacing:-.012em}
-.band a{color:inherit;text-decoration:none}
-.band a:hover{text-decoration:underline;text-decoration-thickness:.08em;text-underline-offset:.14em}
-.hero.is-playing .chyron{margin:.9rem 0 0 0}
-.lead{max-width:62ch;margin-top:1.25rem;font-size:1.15rem}
-.textlink{display:inline-flex;align-items:center;min-height:44px;margin-top:.35rem;font-weight:700}
-.textlink.solo{margin-top:.9rem}
+.pill{display:inline-flex;align-items:center;gap:.35rem;padding:.1rem .55rem;border-radius:999px;border:1.5px solid var(--line);color:var(--ink);font-weight:700;font-size:.78rem;line-height:1.5;white-space:nowrap}
+.pill::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--dot,var(--muted))}
+.pill.plain::before{display:none}
+.s-beerkezett{--dot:#FFD21F}
+.s-otlet{--dot:#9DACFF}
+.s-tervezes{--dot:#6FD3FF}
+.s-forgatas{--dot:#FF9F5A}
+.s-vagas{--dot:#D38BFF}
+.s-kesz{--dot:#5BD9A0}
+.s-megjelent{--dot:#FFFFFF}
+.s-elvetve{--dot:#6B7499}
+.hidden-pill{--dot:#FF8A93}
 
-.rundown h2{font-size:1.2rem;font-weight:800;font-stretch:112%;margin-bottom:.6rem}
-.rows{list-style:none;margin:0 0 1.25rem;padding:0;border-top:3px solid var(--ink)}
-.row{display:grid;grid-template-columns:2.4rem 1fr;gap:.85rem;padding:.9rem 0;border-bottom:1px solid var(--line);color:inherit;text-decoration:none}
-.row-no{font-weight:900;font-stretch:125%;font-size:1.55rem;line-height:1.1;color:var(--link)}
-.row-title{display:block;font-weight:700;line-height:1.25}
-.row:hover .row-title{text-decoration:underline;text-underline-offset:.15em}
-.meta{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:.4rem;font-size:.875rem;color:var(--muted)}
-.cat{padding:.05rem .6rem;border:1.5px solid var(--line);border-radius:999px;color:var(--ink);font-weight:600}
+.progress{display:flex;align-items:center;gap:.5rem;margin-top:.55rem;font-size:.8rem;color:var(--muted)}
+.bar{flex:1;height:6px;border-radius:999px;background:var(--line);overflow:hidden}
+.bar span{display:block;height:100%;background:var(--ok);border-radius:999px}
 
-.tipband{background:var(--strap);color:#0B1533}
-.tipband .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.25rem 2rem;padding-block:2.25rem}
-.tipband h2{font-size:clamp(1.5rem,4.5vw,2.4rem);font-weight:900;font-stretch:118%;line-height:1.08;letter-spacing:-.015em}
-.tipband p{max-width:44ch;margin-top:.5rem;font-weight:500}
-
-.page{padding-block:1.5rem 4rem}
-.page-title{font-size:clamp(2.2rem,7.5vw,4.25rem);font-weight:900;font-stretch:125%;line-height:1;letter-spacing:-.025em}
-.page-sub{max-width:56ch;margin-top:.9rem;font-size:1.15rem;color:var(--muted)}
-
-.controls{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1rem;margin-block:1.75rem .75rem}
-.controls .search{flex:1 1 17rem;max-width:26rem}
-.chips{display:flex;flex-wrap:wrap;gap:.4rem}
-.chip{min-height:44px;padding:0 1rem;border:1.5px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
-.chip:hover{border-color:var(--ink)}
+.chips{display:flex;gap:.4rem;overflow-x:auto;margin:0 -1rem 1rem;padding:0 1rem .25rem;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;display:inline-flex;align-items:center;gap:.4rem;min-height:40px;padding:0 .9rem;border:1.5px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:inherit;font-size:.92rem;font-weight:700;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.count{margin-bottom:1.25rem;font-size:.9rem;color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,18.5rem),1fr));gap:2.25rem 1.5rem;list-style:none;margin:0;padding:0}
-.item a{display:block;color:inherit;text-decoration:none}
-.item h2{margin-top:.4rem;font-size:1.25rem;font-weight:800;line-height:1.2}
-.item a:hover h2{text-decoration:underline;text-underline-offset:.15em}
-.item .meta{margin-top:.8rem}
-.item .screen+h2{margin-top:.8rem}
-.empty{padding:2rem 1.25rem;border:1.5px dashed var(--line);border-radius:14px;color:var(--muted)}
+.chip .n{font-weight:600;opacity:.7}
 
-.episode{max-width:54rem}
-.back{display:inline-flex;align-items:center;min-height:44px;margin-bottom:.5rem;font-weight:700}
-.episode .strap-row{margin-top:1.25rem}
-.episode h1{margin-top:.9rem;font-size:clamp(1.75rem,5.2vw,3rem);font-weight:800;font-stretch:112%;line-height:1.08;letter-spacing:-.015em}
-.episode .screen+h1{margin-top:1.4rem}
-.pager{display:grid;gap:.75rem;margin-top:2.5rem;padding-top:1.25rem;border-top:3px solid var(--ink)}
-@media (min-width:40rem){.pager{grid-template-columns:1fr 1fr}.pager .next{text-align:right}}
-.pager a{display:block;padding:.6rem 0;color:inherit;text-decoration:none}
-.pager small{display:block;font-size:.875rem;color:var(--muted)}
-.pager strong{display:block;line-height:1.25}
-.pager a:hover strong{text-decoration:underline;text-underline-offset:.15em}
-
-.people{display:grid;gap:1.25rem;margin-top:2.5rem}
-@media (min-width:62rem){.people{grid-template-columns:1fr 1fr}}
-.person{display:grid;gap:1.25rem;align-content:start;padding:clamp(1.1rem,3vw,1.75rem);border-radius:18px;background:var(--surface);border:1px solid var(--line)}
-@media (min-width:34rem){.person{grid-template-columns:7.5rem 1fr;gap:1.5rem}}
-.mono{position:relative;display:grid;place-items:center;container-type:inline-size;width:7.5rem;aspect-ratio:1;border-radius:14px;overflow:hidden;isolation:isolate;background:linear-gradient(135deg,var(--slate-a),var(--slate-b));color:#FFFFFF;font-weight:900;font-stretch:125%;font-size:2.6rem;letter-spacing:-.03em}
-.mono::after{content:"++";position:absolute;right:-.02em;bottom:-.22em;z-index:-1;font-size:80cqw;line-height:1;color:transparent;-webkit-text-stroke:.012em rgba(255,255,255,.2)}
-.person h2{font-size:clamp(1.6rem,4.5vw,2.1rem);font-weight:900;font-stretch:118%;line-height:1.05;letter-spacing:-.02em}
-.role{margin-top:.4rem;font-weight:700;color:var(--link)}
-.person .bio{max-width:52ch;margin-top:.9rem}
-.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.25rem}
-
-.tip{display:grid;gap:2.5rem;margin-top:2rem}
-@media (min-width:58rem){.tip{grid-template-columns:minmax(0,1.5fr) minmax(16rem,1fr);gap:3.5rem;align-items:start}}
-.form{display:grid;gap:1.15rem}
-.seg{display:grid;grid-template-columns:1fr 1fr;gap:.35rem;margin:0;padding:.3rem;border:1.5px solid var(--line);border-radius:14px;background:var(--surface)}
-.seg label{position:relative;display:block}
-.seg input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
-.seg span{display:grid;place-items:center;min-height:46px;padding:.4rem .5rem;border-radius:10px;text-align:center;font-weight:700;line-height:1.2}
-.seg input:checked+span{background:var(--brand);color:var(--on-brand)}
-.seg input:focus-visible+span{outline:3px solid var(--link);outline-offset:2px}
-.field label{display:block;margin-bottom:.35rem;font-weight:700}
-.field label small{font-weight:500;font-size:.875rem;color:var(--muted)}
-input[type="text"],input[type="search"],input[type="url"],input[type="email"],textarea{width:100%;padding:.75rem .9rem;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit}
-textarea{min-height:9.5rem;resize:vertical}
+.form{display:grid;gap:1.1rem}
+.field label,.field .lbl{display:block;margin-bottom:.35rem;font-weight:700}
+.field small{font-weight:500;color:var(--muted)}
+input[type="text"],input[type="email"],input[type="password"],input[type="url"],input[type="date"],input[type="datetime-local"],input[type="tel"],input[type="search"],textarea,select{width:100%;min-height:48px;padding:.7rem .85rem;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit}
+textarea{min-height:8rem;resize:vertical}
+textarea.tall{min-height:16rem}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 1.15rem) 50%,calc(100% - .8rem) 50%;background-size:.35rem .35rem;background-repeat:no-repeat;padding-right:2.2rem}
 input::placeholder,textarea::placeholder{color:var(--muted);opacity:1}
-input:focus-visible,textarea:focus-visible{outline:3px solid var(--link);outline-offset:1px;border-color:var(--link)}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--link);outline-offset:1px;border-color:var(--link)}
 .field.bad input,.field.bad textarea{border-color:var(--danger)}
-.err{margin-top:.35rem;font-size:.9rem;font-weight:600;color:var(--danger)}
-.hint{font-size:.9rem;color:var(--muted)}
-.status{padding:1rem 1.1rem;border-left:5px solid var(--strap);border-radius:0 10px 10px 0;background:var(--surface)}
-.side{padding:1.4rem;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
-.side h2{font-size:1.2rem;font-weight:800;font-stretch:112%}
-.side p{margin-top:.5rem}
-.side .mail{display:inline-block;margin-top:.75rem;font-weight:700;overflow-wrap:anywhere}
+.err{margin-top:.35rem;font-size:.88rem;font-weight:600;color:var(--danger)}
+.hint{margin-top:.35rem;font-size:.85rem;color:var(--muted)}
+.row2{display:grid;gap:1.1rem}
+@media (min-width:34rem){.row2{grid-template-columns:1fr 1fr}}
+.preview{margin-top:.6rem;max-width:18rem}
+.switch{display:flex;align-items:flex-start;gap:.75rem;padding:.85rem 1rem;border-radius:12px;background:var(--surface);border:1px solid var(--line);cursor:pointer}
+.switch input{appearance:none;flex:none;position:relative;width:2.9rem;height:1.7rem;margin:0;border-radius:999px;background:var(--line);cursor:pointer;transition:background .15s}
+.switch input::after{content:"";position:absolute;top:.2rem;left:.2rem;width:1.3rem;height:1.3rem;border-radius:50%;background:#fff;transition:transform .15s}
+.switch input:checked{background:var(--brand)}
+.switch input:checked::after{transform:translateX(1.2rem)}
+.switch strong{display:block;line-height:1.3}
+.switch span span{display:block;font-size:.85rem;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.actions .grow{flex:1}
+.slug{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88rem;color:var(--muted);overflow-wrap:anywhere}
+.danger-zone{margin-top:.5rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.counter{float:right;font-weight:500;font-size:.82rem;color:var(--muted)}
+.title-input{font-size:1.5rem !important;font-weight:800;font-stretch:112%}
 
-.appcard{display:grid;gap:1rem 2rem;align-items:center;margin-bottom:3.25rem;padding:clamp(1.1rem,3vw,1.6rem);border-radius:18px;background:var(--surface);border:1px solid var(--line)}
-@media (min-width:46rem){.appcard{grid-template-columns:auto 1fr auto}}
-.bell{display:grid;place-items:center;width:3.25rem;height:3.25rem;border-radius:14px;background:var(--strap);color:var(--on-strap)}
-.bell svg{width:1.6rem;height:1.6rem}
-.appcard h2{font-size:1.3rem;font-weight:800;font-stretch:112%;line-height:1.15}
-.appcard p{margin-top:.3rem;color:var(--muted)}
-.appcard .actions{margin-top:0}
-.appmsg{grid-column:1/-1;font-weight:600;color:var(--ink) !important}
-.loading{padding-block:4rem;color:var(--muted);font-weight:600}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.done{display:grid;gap:.75rem;justify-items:start;padding:clamp(1.2rem,3vw,1.75rem);border-radius:16px;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--strap)}
-.done h2{font-size:1.6rem;font-weight:900;font-stretch:118%;line-height:1.1}
-.done:focus{outline:none}
-.btn[disabled]{opacity:.65;cursor:progress}
-.notice{background:var(--strap);color:#0B1533}
-.notice .wrap{display:flex;align-items:center;gap:.75rem;padding-block:.55rem;font-size:.95rem;font-weight:600;line-height:1.35}
-.notice svg{flex:none;width:1.25rem;height:1.25rem}
-.notice p{flex:1}
-.notice strong{font-weight:800}
-.notice.done{background:var(--surface);color:var(--ink);border-bottom:1px solid var(--line)}
-.notice.done svg{color:var(--strap)}
-.notice-x{display:grid;place-items:center;flex:none;width:40px;height:40px;margin-right:-.5rem;border:0;border-radius:8px;background:transparent;color:inherit;font:inherit;font-size:1.35rem;cursor:pointer}
-.notice-x:hover{background:color-mix(in srgb,currentColor 12%,transparent)}
-body.maint-on .nav,body.maint-on .skip{display:none}
-.maint{display:grid;place-items:center;min-height:calc(100dvh - 11rem);padding-block:2.5rem 4rem}
-.maint-card{width:100%;max-width:36rem}
-.maint h1{margin-top:1.1rem;font-size:clamp(2.1rem,8vw,3.6rem);font-weight:900;font-stretch:125%;line-height:1;letter-spacing:-.025em}
-.maint .lead{margin-top:1rem}
-.mbar{height:10px;margin-top:2rem;border-radius:999px;background:var(--line);overflow:hidden}
-.mbar span{display:block;height:100%;border-radius:999px;background:var(--strap);transition:width .6s ease}
-.mleft{display:flex;justify-content:space-between;gap:1rem;margin-top:.6rem;font-size:.92rem;font-weight:600;color:var(--muted)}
-.msteps{display:grid;gap:.5rem;list-style:none;margin:1.75rem 0 0;padding:0}
-.msteps li{display:flex;align-items:center;gap:.7rem;font-weight:600;color:var(--muted)}
-.msteps li::before{content:"";flex:none;width:.8rem;height:.8rem;border-radius:50%;border:2px solid var(--line)}
-.msteps li.now{color:var(--ink)}
-.msteps li.now::before{border-color:var(--strap);background:radial-gradient(circle,var(--strap) 40%,transparent 45%)}
-.msteps li.ok{color:var(--ink)}
-.msteps li.ok::before{border-color:var(--ok,#5BD9A0);background:var(--ok,#5BD9A0)}
-.brandrow{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex:1 1 auto}
-.getapp{display:inline-flex;align-items:center;gap:.45rem;min-height:40px;padding:0 .9rem 0 .75rem;border:0;border-radius:999px;background:var(--strap);color:#0B1533;font:inherit;font-size:.92rem;font-weight:800;cursor:pointer;white-space:nowrap}
-.getapp svg{width:1.15rem;height:1.15rem}
-.getapp:hover{background:#F2C400}
-.getapp:focus-visible{outline:3px solid #FFFFFF;outline-offset:3px}
-.getapp[hidden],body.maint-on .getapp{display:none}
-@media (max-width:22.5rem){.getapp-more{display:none}.brandrow{gap:.5rem}}
-.sheet{width:min(30rem,calc(100% - 2rem));max-height:calc(100dvh - 2rem);margin:auto;padding:0;border:1px solid var(--line);border-radius:20px;background:var(--surface);color:var(--ink)}
-.sheet::backdrop{background:rgba(4,8,26,.72)}
-.sheet-in{display:grid;gap:1rem;padding:1.4rem 1.4rem 1.5rem}
-.sheet-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
-.sheet h2{font-size:1.45rem;font-weight:900;font-stretch:118%;line-height:1.1}
-.sheet-x{display:grid;place-items:center;flex:none;width:40px;height:40px;margin:-.4rem -.5rem 0 0;border:0;border-radius:10px;background:transparent;color:var(--muted);font:inherit;font-size:1.5rem;cursor:pointer}
-.sheet-x:hover{background:var(--surface-2,#18235A);color:var(--ink)}
-.sheet p{color:var(--muted)}
-.steps{display:grid;gap:.75rem;list-style:none;margin:0;padding:0;counter-reset:s}
-.steps li{display:flex;align-items:center;gap:.8rem;counter-increment:s;font-weight:600;line-height:1.35}
-.steps li::before{content:counter(s);display:grid;place-items:center;flex:none;width:2rem;height:2rem;border-radius:50%;background:var(--strap);color:#0B1533;font-weight:900}
-.steps .ico{display:inline-grid;place-items:center;vertical-align:-.3em;width:1.6rem;height:1.6rem;margin:0 .15rem;border-radius:6px;background:var(--bg);color:var(--link)}
-.steps .ico svg{width:1.05rem;height:1.05rem}
-.foot{border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
-.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.4rem 2rem;padding-block:1.4rem}
-.foot strong{color:var(--ink)}
+.statusset{display:flex;flex-wrap:wrap;gap:.4rem;margin:0;padding:0;border:0}
+.statusset label{position:relative}
+.statusset input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.statusset span{display:inline-flex;align-items:center;gap:.4rem;min-height:42px;padding:0 .85rem;border:1.5px solid var(--line);border-radius:999px;font-weight:700;font-size:.92rem}
+.statusset span::before{content:"";width:.55rem;height:.55rem;border-radius:50%;background:var(--dot)}
+.statusset input:checked+span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.statusset input:focus-visible+span{outline:3px solid var(--link);outline-offset:2px}
 
-@media (min-width:60rem){
-  .home{grid-template-columns:minmax(0,1.85fr) minmax(17rem,1fr);gap:3.25rem;align-items:start}
-  .chyron{margin:-3.4rem 0 0 1.5rem}
-}
-@media (prefers-reduced-motion:no-preference){
-  .hero.intro .strap-row{animation:wipe .5s .2s cubic-bezier(.2,.7,.2,1) both}
-  .hero.intro .band{animation:wipe .65s .38s cubic-bezier(.2,.7,.2,1) both}
-}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{transition:none !important;animation:none !important}
-}
-@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.section{display:grid;gap:.85rem;padding:1rem;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.section>h2{display:flex;align-items:center;justify-content:space-between;gap:.5rem;font-size:1.1rem;font-weight:800;font-stretch:110%}
+.section>h2 small{font-size:.85rem;font-weight:600;color:var(--muted)}
+.section .field input,.section .field textarea,.section .field select,.section input[type="text"],.section input[type="url"],.section select{background:var(--bg)}
+.info dl{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;margin:0;font-size:.95rem}
+.info dt{color:var(--muted)}
+.info dd{margin:0;overflow-wrap:anywhere}
+.body-text{white-space:pre-wrap;overflow-wrap:anywhere}
+.kind{font-size:.85rem;font-weight:700;color:var(--strap);text-transform:uppercase;letter-spacing:.06em}
+.detail-title{margin:.35rem 0 1rem;font-size:1.7rem;font-weight:900;font-stretch:115%;line-height:1.1;overflow-wrap:anywhere}
+
+.checks{display:grid;gap:.15rem;list-style:none;margin:0;padding:0}
+.check{display:flex;align-items:center;gap:.6rem;min-height:44px;padding:0 .25rem 0 .5rem;border-radius:10px}
+.check:hover{background:var(--surface-2)}
+.check input{flex:none;width:1.3rem;height:1.3rem;margin:0;accent-color:var(--ok);cursor:pointer}
+.check label{flex:1;cursor:pointer;overflow-wrap:anywhere}
+.check.done label{color:var(--muted);text-decoration:line-through}
+.addrow{display:flex;gap:.5rem}
+.addrow input{flex:1;min-width:0}
+.res{display:flex;align-items:center;gap:.75rem;padding:.55rem .25rem .55rem .65rem;border-radius:12px;background:var(--bg);border:1px solid var(--line)}
+.res .ic{display:grid;place-items:center;width:2.2rem;height:2.2rem;flex:none;border-radius:9px;background:var(--surface-2);font-size:1.05rem}
+.res .txt{flex:1;min-width:0}
+.res .txt a,.res .txt strong{display:block;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.res .txt span{display:block;font-size:.8rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.resform{display:grid;gap:.5rem}
+@media (min-width:34rem){.resform{grid-template-columns:9rem 1fr 1fr auto}}
+
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-bottom:1.1rem}
+@media (min-width:40rem){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{display:block;padding:.85rem 1rem;border-radius:14px;background:var(--surface);border:1px solid var(--line);color:inherit;text-decoration:none}
+.stat b{display:block;font-size:1.9rem;font-weight:900;font-stretch:118%;line-height:1}
+.stat span{display:block;margin-top:.3rem;font-size:.85rem;color:var(--muted);font-weight:600}
+.stat.hot{border-color:var(--strap)}
+.stat.hot b{color:var(--strap)}
+.quick{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+.stack{display:grid;gap:1.1rem}
+.date-tile{display:grid;place-items:center;width:3.2rem;flex:none;padding:.35rem 0;border-radius:10px;background:var(--surface-2);line-height:1.1;text-align:center}
+.date-tile b{font-size:1.3rem;font-weight:900}
+.date-tile span{font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase}
+.card.row{display:flex;align-items:center;gap:.85rem}
+.card.row .grow{flex:1;min-width:0}
+
+.menu{display:grid;list-style:none;margin:0;padding:0;border-radius:16px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.menu li+li{border-top:1px solid var(--line)}
+.menu a,.menu button{display:flex;align-items:center;gap:.85rem;width:100%;min-height:58px;padding:.6rem 1rem;border:0;background:none;color:var(--ink);font:inherit;font-weight:700;text-align:left;text-decoration:none;cursor:pointer}
+.menu a:hover,.menu button:hover{background:var(--surface-2)}
+.menu .ic{display:grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:10px;background:var(--surface-2);font-size:1.1rem}
+.menu small{display:block;font-weight:500;color:var(--muted);font-size:.85rem}
+.menu .n{margin-left:auto;color:var(--muted);font-weight:600}
+
+.mail-preview{white-space:pre-wrap;overflow-wrap:anywhere;padding:1rem;border-radius:12px;background:var(--bg);border:1px solid var(--line);font-size:.95rem}
+.mail-preview strong{display:block;margin-bottom:.6rem}
+.ph{padding:0 .2rem;border-radius:4px;background:color-mix(in srgb,var(--strap) 25%,transparent);color:var(--strap)}
+.msg{padding:.8rem 1rem;border-left:5px solid var(--danger);border-radius:0 10px 10px 0;background:var(--surface-2);font-weight:600}
+.center{min-height:calc(100dvh - 6rem);display:grid;place-items:center;padding-block:2rem}
+.login{width:100%;max-width:24rem;display:grid;gap:1.1rem;padding:1.5rem;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.login h1{font-size:1.6rem;font-weight:900;font-stretch:118%;line-height:1.1}
+.login p{color:var(--muted)}
+.loading{padding-block:3rem;color:var(--muted);font-weight:600;text-align:center}
+
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;padding-bottom:env(safe-area-inset-bottom,0px);background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line)}
+.nav-in{display:grid;grid-template-columns:repeat(5,1fr);max-width:46rem;margin-inline:auto;height:var(--nav-h)}
+.nav a{position:relative;display:grid;place-items:center;align-content:center;gap:.15rem;color:var(--muted);text-decoration:none;font-size:.72rem;font-weight:700}
+.nav a svg{width:1.45rem;height:1.45rem}
+.nav a[aria-current="page"]{color:var(--ink)}
+.nav a[aria-current="page"]::before{content:"";position:absolute;top:0;width:2.2rem;height:3px;border-radius:0 0 3px 3px;background:var(--strap)}
+.badge{position:absolute;top:.5rem;left:calc(50% + .35rem);min-width:1.2rem;height:1.2rem;padding:0 .3rem;border-radius:999px;background:var(--strap);color:var(--on-strap);font-size:.7rem;font-weight:800;line-height:1.2rem;text-align:center}
+
+.toast{position:fixed;left:50%;bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,0px) + .9rem);z-index:30;transform:translate(-50%,1rem);width:max-content;max-width:calc(100% - 2rem);padding:.75rem 1.1rem;border-radius:12px;background:var(--ink);color:var(--bg);font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.bad{background:var(--danger);color:#2A0710}
+.prompter{position:fixed;inset:0;z-index:50;background:#000;color:#FFFFFF}
+.p-scroll{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:pointer}
+.p-scroll::-webkit-scrollbar{display:none}
+.p-text{max-width:min(42rem,100%);margin:0 auto;padding:38vh 1.5rem 75vh;font-size:var(--pfs,2.4rem);font-weight:650;line-height:1.42;letter-spacing:.005em;overflow-wrap:anywhere}
+.p-text.mirror{transform:scaleX(-1)}
+.p-text p{margin:0 0 1.1em}
+.p-sec{margin:1.6em 0 .6em;font-size:.42em;font-weight:800;letter-spacing:.04em;color:#FFD21F}
+.p-note{display:block;margin:0 0 .9em;font-size:.48em;font-weight:500;font-style:italic;line-height:1.4;color:#7C88B5}
+.p-inl{font-size:.55em;font-weight:500;font-style:italic;color:#7C88B5}
+.p-text.only-speech .p-note,.p-text.only-speech .p-inl{display:none}
+.p-end{margin-top:2.5em;font-size:.45em;font-weight:700;color:#5BD9A0}
+.p-eye{position:absolute;left:0;right:0;top:38vh;height:0;pointer-events:none}
+.p-eye::before{content:"";position:absolute;left:.4rem;top:-.55rem;border-left:.75rem solid #FFD21F;border-top:.55rem solid transparent;border-bottom:.55rem solid transparent}
+.p-eye::after{content:"";position:absolute;left:1.4rem;right:1rem;top:0;border-top:1px dashed rgba(255,210,31,.28)}
+.p-top{position:absolute;top:0;left:0;right:0;height:22vh;background:linear-gradient(#000 25%,rgba(0,0,0,0));pointer-events:none}
+.p-bar{position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + .9rem);transform:translateX(-50%);display:flex;align-items:center;gap:.3rem;max-width:calc(100% - 1rem);padding:.35rem;border-radius:16px;background:rgba(17,26,66,.94);border:1px solid #27336B;box-shadow:0 10px 30px rgba(0,0,0,.5);transition:opacity .25s;overflow-x:auto;scrollbar-width:none}
+.p-bar::-webkit-scrollbar{display:none}
+@media (max-width:40rem){.p-bar{flex-wrap:wrap;justify-content:center;width:calc(100% - 1rem);overflow:visible}.p-sep{display:none}}
+.prompter.calm .p-bar{opacity:0;pointer-events:none}
+.p-btn{display:grid;place-items:center;flex:none;min-width:44px;height:44px;padding:0 .55rem;border:0;border-radius:11px;background:transparent;color:#EEF1FC;font:inherit;font-size:1rem;font-weight:800;cursor:pointer;white-space:nowrap}
+.p-btn:hover{background:#18235A}
+.p-btn[aria-pressed="true"]{background:#EEF1FC;color:#080F2B}
+.p-btn.play{min-width:3.6rem;background:#FFD21F;color:#0B1533}
+.p-btn svg{width:1.3rem;height:1.3rem}
+.p-sep{width:1px;height:26px;flex:none;background:#27336B}
+.p-val{flex:none;min-width:2.2rem;font-size:.85rem;font-weight:700;color:#A4AED0;text-align:center}
+.p-count{position:absolute;inset:0;display:grid;place-items:center;font-size:7rem;font-weight:900;color:#FFD21F;pointer-events:none}
+.p-empty{display:grid;place-items:center;gap:1rem;height:100%;padding:2rem;text-align:center;color:#A4AED0}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none !important}}
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Ugrás a tartalomhoz</a>
-<div id="notice"></div>
-
-<header class="wrap top">
-  <div class="brandrow">
-    <a class="logo" href="#/" aria-label="Tények++ főoldal">Tények<b>++</b></a>
-    <button class="getapp" type="button" id="getapp" data-getapp hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10.5 5 5 5-5"/><path d="M5 20h14"/></svg>App<span class="getapp-more"> letöltése</span></button>
+<header class="wrap top" id="top" hidden>
+  <div class="brand">
+    <a class="logo" href="#/" aria-label="Tények++ Szerkesztőség, áttekintés">Tények<b>++</b></a>
+    <span class="tag">Szerkesztőség</span>
   </div>
-  <nav class="nav" aria-label="Fő menü">
-    <a href="#/" data-nav="/">Főoldal</a>
-    <a href="#/adasok" data-nav="/adasok">Adások</a>
-    <a href="#/stab" data-nav="/stab">Stáb</a>
-    <a class="cta" href="#/kuldj-sztorit" data-nav="/kuldj-sztorit">Küldj sztorit</a>
-  </nav>
+  <span class="who" id="who"></span>
 </header>
 
-<main id="main" tabindex="-1"></main>
+<main id="main" tabindex="-1"><div class="wrap"><p class="loading" role="status">Betöltés…</p></div></main>
 
-<dialog class="sheet" id="sheet" aria-labelledby="sheet-title"><div class="sheet-in" id="sheet-in"></div></dialog>
-
-<footer class="foot">
-  <div class="wrap">
-    <p><strong>Tények++</strong>, a Creascola diákhíradója.</p>
-    <p>Diákprojekt, nem áll kapcsolatban egyetlen tévécsatornával sem.</p>
+<nav class="nav" id="nav" aria-label="Fő menü" hidden>
+  <div class="nav-in">
+    <a href="#/" data-nav="attekintes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/></svg>Áttekintés</a>
+    <a href="#/tervek" data-nav="tervek"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m9 12 2 2 4-4"/></svg>Tervek</a>
+    <a href="#/sztorik" data-nav="sztorik"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5h16v11H8.5L4 19.5z"/><path d="M8 9h8M8 12h5"/></svg>Sztorik<span class="badge" id="badge" hidden></span></a>
+    <a href="#/adasok" data-nav="adasok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m10 9.5 4.5 2.5-4.5 2.5z"/></svg>Adások</a>
+    <a href="#/tobb" data-nav="tobb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg>Több</a>
   </div>
-</footer>
+</nav>
 
-<script src="config.js"></script>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="../config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.2/dist/umd/supabase.js"></script>
 <script>
-const EMAIL = "balazs.kiss@creascola.hu";
-
 const CFG = window.TENYEK_CONFIG || {};
-const DB = !!(CFG.supabaseUrl && CFG.supabaseKey);
-const CACHE_KEY = "tenyek-episodes-v1";
+const SITE = new URL("../", location.href).href;
 
-const FALLBACK = [
-  { id: "projectweek", title: "Science Project Week", youtube_id: "4ZmK71TnYvI" },
-  { id: "bubblehub_dok", title: "Bubble hub + DÖK", youtube_id: "RO4DFEYFavw" },
-  { id: "aradi-vertanuk", title: "Aradi vértanúk", youtube_id: "-ELn2qGqOfA" },
-  { id: "erdei-iskola-7-evfolyam", title: "Erdei iskola, 7. évfolyam", youtube_id: "Uu-Bblt1ZDE" }
-];
+const STORY_STATUSES = [["beerkezett", "Beérkezett"], ["otlet", "Ötlet"], ["forgatas", "Forgatás"], ["vagas", "Vágás"], ["kesz", "Kész"], ["elvetve", "Elvetve"]];
+const STORY_LABEL = Object.fromEntries(STORY_STATUSES);
+const STORY_ACTIVE = ["beerkezett", "otlet", "forgatas", "vagas"];
+const PLAN_STATUSES = [["otlet", "Ötlet"], ["tervezes", "Tervezés"], ["forgatas", "Forgatás"], ["vagas", "Vágás"], ["kesz", "Kész"], ["megjelent", "Megjelent"]];
+const PLAN_LABEL = Object.fromEntries(PLAN_STATUSES);
+const KINDS = [["nyersanyag", "Nyersanyag", "🎞️"], ["forgatokonyv", "Forgatókönyv", "📝"], ["zene", "Zene", "🎵"], ["kep", "Kép", "🖼️"], ["grafika", "Grafika", "✨"], ["dokumentum", "Dokumentum", "📄"], ["egyeb", "Egyéb", "🔗"]];
+const KIND_LABEL = Object.fromEntries(KINDS.map(k => [k[0], k[1]]));
+const KIND_ICON = Object.fromEntries(KINDS.map(k => [k[0], k[2]]));
+const DEFAULT_CHECKLIST = ["Téma és szempontok kitalálva", "Interjúalanyok megkeresve", "Forgatási engedély megvan", "Forgatókönyv kész", "Forgatás", "Vágás", "Feltöltés YouTube-ra", "Közzététel az oldalon"];
+const PH_LABEL = { nev: "Címzett neve", tema: "Téma", datum: "Dátum", idopont: "Időpont", helyszin: "Helyszín", link: "Link", alairas: "Aláírás" };
 
-const ALL = "Összes";
-const PLAY_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5v17a1 1 0 0 0 1.5.86l14.5-8.5a1 1 0 0 0 0-1.72L6.5 2.64A1 1 0 0 0 5 3.5z"/></svg>';
-
-const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-
+const main = document.getElementById("main");
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const ytId = v => {
-  if (!v) return "";
-  const s = String(v).trim();
+  const s = String(v || "").trim();
   const m = s.match(/(?:v=|youtu\.be\/|embed\/|shorts\/|live\/)([\w-]{11})/);
   if (m) return m[1];
   return /^[\w-]{11}$/.test(s) ? s : "";
 };
-
-let eps = [];
-let categories = [ALL];
-let dataSig = "";
-let pending = false;
-
-function setEpisodes(rows) {
-  eps = rows.map((r, i) => ({
-    id: r.id,
-    title: r.title,
-    date: r.aired_on || "",
-    category: r.category || "",
-    summary: r.summary || "",
-    yt: ytId(r.youtube_id),
-    no: rows.length - i
-  }));
-  categories = [ALL, ...new Set(eps.map(e => e.category).filter(Boolean))];
-  if (!categories.includes(state.cat)) state.cat = ALL;
-}
-
-function api(path, opts = {}) {
-  return fetch(`${CFG.supabaseUrl.replace(/\/$/, "")}/rest/v1/${path}`, {
-    ...opts,
-    headers: { apikey: CFG.supabaseKey, "Content-Type": "application/json", ...(opts.headers || {}) }
-  });
-}
-
-function useRows(rows, sig) {
-  if (sig === dataSig) return false;
-  dataSig = sig;
-  setEpisodes(rows);
-  return true;
-}
-
-let lastLoad = 0;
-async function loadEpisodes() {
-  if (!DB) return;
-  lastLoad = Date.now();
-  try {
-    const res = await api("episodes?select=id,title,youtube_id,aired_on,category,summary&order=aired_on.desc.nullslast,created_at.desc");
-    if (!res.ok) throw new Error(String(res.status));
-    const rows = await res.json();
-    const sig = JSON.stringify(rows);
-    try { localStorage.setItem(CACHE_KEY, sig); } catch (e) {}
-    const wasPending = pending;
-    pending = false;
-    if (useRows(rows, sig) || wasPending) refreshView();
-  } catch (e) {
-    if (pending) {
-      pending = false;
-      useRows(FALLBACK, JSON.stringify(FALLBACK));
-      refreshView();
-    }
-  }
-}
-
-function boot() {
-  let cached = null;
-  if (DB) {
-    try { cached = localStorage.getItem(CACHE_KEY); } catch (e) {}
-  }
-  if (cached) {
-    try { useRows(JSON.parse(cached), cached); } catch (e) { cached = null; }
-  }
-  if (!DB) useRows(FALLBACK, JSON.stringify(FALLBACK));
-  else if (!cached) pending = true;
-}
-const fmtLong = new Intl.DateTimeFormat("hu-HU", { year: "numeric", month: "long", day: "numeric" });
-const fmtShort = new Intl.DateTimeFormat("hu-HU", { month: "short", day: "numeric" });
-const toDate = s => new Date(s + "T12:00:00");
-const longDate = e => !e.date ? "" : `<time datetime="${esc(e.date)}">${esc(fmtLong.format(toDate(e.date)))}</time>`;
-const shortDate = e => !e.date ? "" : `<time datetime="${esc(e.date)}">${esc(fmtShort.format(toDate(e.date)))}</time>`;
-const catTag = e => (e.category ? `<span class="cat">${esc(e.category)}</span>` : "");
-const epHref = e => `#/adas/${encodeURIComponent(e.id)}`;
-
-const state = { q: "", cat: ALL };
-const main = document.getElementById("main");
-let firstRender = true;
-let introPlayed = false;
-const loadingView = () => `<div class="wrap page"><p class="loading" role="status">Adások betöltése…</p></div>`;
-
-function screen(ep, player) {
-  const thumb = ep.yt ? `<img class="thumb" src="https://i.ytimg.com/vi/${ep.yt}/hqdefault.jpg" alt="" loading="lazy">` : "";
-  const no = `<span class="no">${ep.no}. adás</span>`;
-  let mid = "";
-  if (!ep.yt) mid = `<span class="soon"><span>A videó hamarosan felkerül</span></span>`;
-  else if (player) mid = `<button class="play" type="button" data-play="${esc(ep.id)}" aria-label="Lejátszás: ${esc(ep.title)}"><span class="disc">${PLAY_ICON}</span></button>`;
-  else mid = `<span class="play" aria-hidden="true"><span class="disc">${PLAY_ICON}</span></span>`;
-  return `<div class="screen">${thumb}${no}${mid}</div>`;
-}
-
-function home() {
-  if (pending) return loadingView();
-  if (!eps.length) {
-    return `<div class="wrap page"><h1 class="page-title">Tények++</h1><p class="page-sub">Még nincs feltöltött adás. Addig is küldd el, miről szeretnél riportot látni.</p><p class="actions"><a class="btn" href="#/kuldj-sztorit">Küldj sztorit</a></p></div>`;
-  }
-  const [lead, ...rest] = eps;
-  const rows = rest.slice(0, 5).map(e => `
-    <li><a class="row" href="${epHref(e)}">
-      <span class="row-no" aria-hidden="true">${e.no}</span>
-      <span><span class="row-title">${esc(e.title)}</span>
-      ${e.category || e.date ? `<span class="meta">${catTag(e)}${shortDate(e)}</span>` : ""}</span>
-    </a></li>`).join("");
-  const rundown = rest.length ? `
-    <aside class="rundown" aria-labelledby="rundown-title">
-      <h2 id="rundown-title">Korábbi adások</h2>
-      <ul class="rows">${rows}</ul>
-      <a class="btn ghost" href="#/adasok">Összes adás</a>
-    </aside>` : "";
-  return `
-  <div class="wrap home">
-    <article class="hero${introPlayed ? "" : " intro"}">
-      ${screen(lead, true)}
-      <div class="chyron">
-        <p class="strap-row"><span class="strap">Legfrissebb adás</span>${lead.date ? `<span class="strap-date">${longDate(lead)}</span>` : ""}</p>
-        <div class="band"><h1><a href="${epHref(lead)}">${esc(lead.title)}</a></h1></div>
-      </div>
-      ${lead.summary ? `<p class="lead">${esc(lead.summary)}</p>` : ""}
-      <a class="textlink${lead.summary ? "" : " solo"}" href="${epHref(lead)}">Az adás oldala</a>
-    </article>
-    ${rundown}
-  </div>
-  <div class="wrap" id="appcard-slot">${appCard()}</div>
-  <section class="tipband" aria-labelledby="tipband-title">
-    <div class="wrap">
-      <div>
-        <h2 id="tipband-title">Történt valami, amiről tudnunk kéne?</h2>
-        <p>Küldd el a sztorid, vagy kérd, hogy készítsünk riportot egy témáról.</p>
-      </div>
-      <a class="btn ink" href="#/kuldj-sztorit">Küldj sztorit</a>
-    </div>
-  </section>`;
-}
-
-function filtered() {
-  const q = state.q.trim().toLocaleLowerCase("hu");
-  return eps.filter(e =>
-    (state.cat === ALL || e.category === state.cat) &&
-    (!q || `${e.title} ${e.summary || ""} ${e.category || ""}`.toLocaleLowerCase("hu").includes(q))
-  );
-}
-
-function gridHtml(list) {
-  if (!list.length) return `<p class="empty">Nincs találat. Próbálj más keresőszót.</p>`;
-  return `<ul class="grid">${list.map(e => `
-    <li class="item"><a href="${epHref(e)}">
-      ${screen(e, false)}
-      ${e.category || e.date ? `<p class="meta">${catTag(e)}${longDate(e)}</p>` : ""}
-      <h2>${esc(e.title)}</h2>
-    </a></li>`).join("")}</ul>`;
-}
-
-function refreshGrid() {
-  const list = filtered();
-  const grid = document.getElementById("grid");
-  const count = document.getElementById("count");
-  if (grid) grid.innerHTML = gridHtml(list);
-  if (count) count.textContent = `${list.length} adás`;
-}
-
-function archive() {
-  if (pending) return loadingView();
-  const list = filtered();
-  const chips = categories.map(c => `<button class="chip" type="button" data-cat="${esc(c)}" aria-pressed="${c === state.cat}">${esc(c)}</button>`).join("");
-  return `
-  <div class="wrap page">
-    <h1 class="page-title">Adások</h1>
-    <p class="page-sub">Minden eddigi Tények++ adás egy helyen.</p>
-    <div class="controls">
-      <div class="search">
-        <label class="vh" for="q">Keresés az adások között</label>
-        <input id="q" type="search" placeholder="Keresés az adások között" value="${esc(state.q)}" autocomplete="off">
-      </div>
-      ${categories.length > 2 ? `<div class="chips" role="group" aria-label="Szűrés rovat szerint">${chips}</div>` : ""}
-    </div>
-    <p class="count" id="count" role="status">${list.length} adás</p>
-    <div id="grid">${gridHtml(list)}</div>
-  </div>`;
-}
-
-function episode(ep) {
-  const i = eps.indexOf(ep);
-  const older = eps[i + 1];
-  const newer = eps[i - 1];
-  const yt = ep.yt ? `<a class="textlink" href="https://www.youtube.com/watch?v=${ep.yt}" target="_blank" rel="noopener">Megnyitás a YouTube-on</a>` : "";
-  const pager = older || newer ? `
-    <nav class="pager" aria-label="További adások">
-      ${older ? `<a class="prev" href="${epHref(older)}"><small>Előző adás</small><strong>${esc(older.title)}</strong></a>` : "<span></span>"}
-      ${newer ? `<a class="next" href="${epHref(newer)}"><small>Következő adás</small><strong>${esc(newer.title)}</strong></a>` : ""}
-    </nav>` : "";
-  return `
-  <div class="wrap page">
-    <article class="episode">
-      <a class="back" href="#/adasok">Vissza az adásokhoz</a>
-      ${screen(ep, true)}
-      ${ep.category || ep.date ? `<p class="strap-row">${ep.category ? `<span class="strap">${esc(ep.category)}</span>` : ""}${ep.date ? `<span class="strap-date">${longDate(ep)}</span>` : ""}</p>` : ""}
-      <h1>${esc(ep.title)}</h1>
-      ${ep.summary ? `<p class="lead">${esc(ep.summary)}</p>` : ""}
-      ${yt}
-      ${pager}
-    </article>
-  </div>`;
-}
-
-function staff() {
-  return `
-  <div class="wrap page">
-    <h1 class="page-title">Stáb</h1>
-    <p class="page-sub">A Tények++ a Creascola diákhíradója. Rövid videós adásokban mutatjuk meg, mi történik a suliban.</p>
-    <div class="people">
-      <article class="person">
-        <div class="mono" aria-hidden="true">KB</div>
-        <div>
-          <h2>Kiss Balázs</h2>
-          <p class="role">Szerkesztő és riporter</p>
-          <p class="bio">Ő állítja össze az adásokat, és ő készíti a riportokat. Ha témád van, vagy szerepelnél egy adásban, neki írj.</p>
-          <p class="actions">
-            <a class="btn" href="mailto:${EMAIL}">E-mail küldése</a>
-            <button class="btn ghost" type="button" data-copy>Cím másolása</button>
-          </p>
-        </div>
-      </article>
-      <article class="person">
-        <div class="mono" aria-hidden="true">KO</div>
-        <div>
-          <h2>Kiss Olivér</h2>
-          <p class="role">Operatőr és produkciós asszisztens</p>
-          <p class="bio">Ő áll a kamera mögött, és segít abban, hogy minden forgatás összeálljon.</p>
-        </div>
-      </article>
-    </div>
-  </div>`;
-}
-
-function tip() {
-  return `
-  <div class="wrap page">
-    <h1 class="page-title">Küldj sztorit</h1>
-    <p class="page-sub">Láttál vagy hallottál valamit a suliban? Írd meg, vagy kérd, hogy készítsünk róla riportot.</p>
-    <div class="tip">
-      <div class="form" id="tip-form">
-        <fieldset class="seg">
-          <legend class="vh">Mit szeretnél?</legend>
-          <label><input type="radio" name="kind" value="story" checked><span>Sztorit küldök</span></label>
-          <label><input type="radio" name="kind" value="request"><span>Riportot kérek</span></label>
-        </fieldset>
-        <div class="field" id="fw-name">
-          <label for="f-name">Neved</label>
-          <input id="f-name" type="text" autocomplete="name" maxlength="80" aria-describedby="e-name">
-          <p class="err" id="e-name" hidden></p>
-        </div>
-        <div class="field">
-          <label for="f-class">Osztályod <small>(nem kötelező)</small></label>
-          <input id="f-class" type="text" placeholder="pl. 10.B" autocomplete="off" maxlength="20">
-        </div>
-        <div class="field">
-          <label for="f-contact">Elérhetőséged <small>(nem kötelező, ha vissza kellene írnunk)</small></label>
-          <input id="f-contact" type="text" placeholder="e-mail vagy Instagram" autocomplete="off" maxlength="120">
-        </div>
-        <div class="field" id="fw-topic">
-          <label for="f-topic" id="l-topic">Miről van szó?</label>
-          <input id="f-topic" type="text" placeholder="Egy mondatban" autocomplete="off" maxlength="200" aria-describedby="e-topic">
-          <p class="err" id="e-topic" hidden></p>
-        </div>
-        <div class="field" id="fw-details">
-          <label for="f-details">Részletek</label>
-          <textarea id="f-details" placeholder="Mi történt, mikor, hol, kik voltak ott?" maxlength="4000" aria-describedby="e-details"></textarea>
-          <p class="err" id="e-details" hidden></p>
-        </div>
-        <div class="field">
-          <label for="f-link">Link fotóhoz vagy videóhoz <small>(nem kötelező)</small></label>
-          <input id="f-link" type="url" placeholder="https://" autocomplete="off" inputmode="url" maxlength="500">
-        </div>
-        <div class="hp" aria-hidden="true">
-          <label for="f-website">Weboldal</label>
-          <input id="f-website" type="text" tabindex="-1" autocomplete="off">
-        </div>
-        <div>
-          <button class="btn" type="button" data-send>Beküldés</button>
-        </div>
-        <p class="hint">${DB ? "A beküldött sztorikat csak a szerkesztőség látja." : "A gomb megnyitja a levelezőprogramodat egy kész levéllel. Elküldés előtt még átírhatod."}</p>
-        <div class="status" id="tip-status" role="status" hidden></div>
-      </div>
-      <aside class="side" aria-labelledby="side-title">
-        <h2 id="side-title">Inkább simán írnál?</h2>
-        <p>Minden levél a szerkesztőhöz érkezik.</p>
-        <a class="mail" href="mailto:${EMAIL}">${EMAIL}</a>
-        <p class="actions"><button class="btn ghost" type="button" data-copy>Cím másolása</button></p>
-      </aside>
-    </div>
-  </div>`;
-}
-
-function missing(what) {
-  const text = what === "episode"
-    ? "Ezt az adást nem találjuk. Lehet, hogy átneveztük vagy töröltük."
-    : "Ez az oldal nem létezik. Lehet, hogy elírtad a címet.";
-  return `<div class="wrap page"><h1 class="page-title">Nincs ilyen oldal</h1><p class="page-sub">${text}</p><p class="actions"><a class="btn" href="#/adasok">Vissza az adásokhoz</a></p></div>`;
-}
-
-const MAINT = {
-  start: Date.parse("2026-11-27T23:00:00+01:00"),
-  end: Date.parse("2026-11-28T01:00:00+01:00"),
-  doneUntil: Date.parse("2026-11-29T00:00:00+01:00")
+const slugify = s => String(s || "")
+  .normalize("NFD").replace(/[̀-ͯ]/g, "")
+  .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80).replace(/-+$/g, "");
+const fmtDate = new Intl.DateTimeFormat("hu-HU", { year: "numeric", month: "short", day: "numeric" });
+const fmtDay = new Intl.DateTimeFormat("hu-HU", { month: "long", day: "numeric", weekday: "long" });
+const fmtDateTime = new Intl.DateTimeFormat("hu-HU", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+const fmtTime = new Intl.DateTimeFormat("hu-HU", { hour: "2-digit", minute: "2-digit" });
+const fmtMonth = new Intl.DateTimeFormat("hu-HU", { month: "short" });
+const fmtLongDate = new Intl.DateTimeFormat("hu-HU", { year: "numeric", month: "long", day: "numeric" });
+const dayDate = s => fmtDate.format(new Date(s + "T12:00:00"));
+const pad = n => String(n).padStart(2, "0");
+const isoDay = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const todayIso = () => isoDay(new Date());
+const toLocalInput = iso => {
+  if (!iso) return "";
+  const d = new Date(iso);
+  return `${isoDay(d)}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
 };
-const MAINT_STEPS = ["Rendszer leállítása", "Új adatbázis bekapcsolása", "Értesítések és telepíthető alkalmazás", "Sztoribeküldés a szerkesztőségnek", "Végső ellenőrzés"];
-const MAINT_DISMISS = "tenyek-update-2026-11-28";
-const INFO_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2.5 20h19z"/><path d="M12 10v4.5M12 17.5v.01"/></svg>';
-const CHECK_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="m7.5 12.3 3 3 6-6.3"/></svg>';
+const fromLocalInput = v => v ? new Date(v).toISOString() : null;
+const ago = iso => {
+  const diff = (Date.now() - new Date(iso).getTime()) / 1000;
+  if (diff < 60) return "most";
+  if (diff < 3600) return `${Math.floor(diff / 60)} perce`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)} órája`;
+  if (diff < 86400 * 7) return `${Math.floor(diff / 86400)} napja`;
+  return fmtDate.format(new Date(iso));
+};
+const safeHref = u => /^https?:\/\//i.test(String(u || "").trim()) ? String(u).trim() : "";
+const isEmail = s => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(s || "").trim());
+const uid = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random());
 
-function maintPhase(now = Date.now()) {
-  if (now < MAINT.start) return "before";
-  if (now < MAINT.end) return "during";
-  if (now < MAINT.doneUntil) return "after";
-  return "off";
+const S = {
+  sb: null, user: null, me: "", staff: [],
+  episodes: [], stories: [], plans: [], resources: [], notes: [], contacts: [], templates: [],
+  subs: null, loaded: false, lastLoad: 0, dirty: false,
+  storyFilter: "aktiv", planFilter: "aktiv", resFilter: "osszes", contactQ: ""
+};
+
+let toastTimer;
+function toast(text, bad) {
+  const t = document.getElementById("toast");
+  t.textContent = text;
+  t.classList.toggle("bad", !!bad);
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), bad ? 5000 : 2600);
 }
 
-function renderNotice() {
-  const box = document.getElementById("notice");
-  const phase = maintPhase();
-  let dismissed = false;
-  try { dismissed = localStorage.getItem(MAINT_DISMISS) === "1"; } catch (e) {}
-  if (phase === "before") {
-    box.innerHTML = `<div class="notice" role="status"><div class="wrap">${INFO_ICON}<p><strong>Frissítés ma éjjel:</strong> 23:00 és 01:00 között új funkciókat telepítünk, ez idő alatt az oldal nem érhető el.</p></div></div>`;
-  } else if (phase === "after" && !dismissed) {
-    box.innerHTML = `<div class="notice done" role="status"><div class="wrap">${CHECK_ICON}<p><strong>Elkészült a frissítés!</strong> Mostantól értesítést kérhetsz az új adásokról, és a telefonodra is telepítheted a Tények++-t.</p><button class="notice-x" type="button" data-notice-x aria-label="Értesítés bezárása">×</button></div></div>`;
-  } else {
-    box.innerHTML = "";
+function chrome(on) {
+  document.getElementById("top").hidden = !on;
+  document.getElementById("nav").hidden = !on;
+  document.body.classList.toggle("has-nav", on);
+}
+
+function setBadge() {
+  const n = S.stories.filter(s => s.status === "beerkezett").length;
+  const b = document.getElementById("badge");
+  b.hidden = !n;
+  b.textContent = n > 99 ? "99+" : String(n);
+}
+
+function errText(error) {
+  const m = String((error && (error.message || error.error_description)) || error || "");
+  if (/Invalid login credentials/i.test(m)) return "Hibás e-mail-cím vagy jelszó.";
+  if (/Email not confirmed/i.test(m)) return "Ezt az e-mail-címet még nem erősítették meg.";
+  if (/Failed to fetch|NetworkError|Load failed/i.test(m)) return "Nincs kapcsolat a szerverrel. Ellenőrizd az internetet.";
+  if (error && error.code === "23505") return "Ez az azonosító már foglalt. Adj meg másikat.";
+  if (error && error.code === "42501") return "Ehhez nincs jogosultságod.";
+  if (error && error.code === "42P01") return "Hiányzik egy adatbázistábla. Futtasd le a newsroom.sql-t a Supabase-ben.";
+  return m || "Ismeretlen hiba történt.";
+}
+
+const staffName = id => (S.staff.find(s => s.user_id === id) || {}).name || "";
+const firstName = n => String(n || "").split(" ").slice(-1)[0];
+const planById = id => S.plans.find(p => p.id === id);
+const epById = id => S.episodes.find(e => e.id === id);
+const epUrl = id => `${SITE}#/adas/${encodeURIComponent(id)}`;
+const checkProgress = p => {
+  const list = Array.isArray(p.checklist) ? p.checklist : [];
+  return { done: list.filter(c => c.done).length, all: list.length };
+};
+
+function replaceIn(list, row, key = "id") {
+  const i = list.findIndex(x => x[key] === row[key]);
+  if (i >= 0) list[i] = row; else list.unshift(row);
+}
+function removeFrom(list, id, key = "id") {
+  const i = list.findIndex(x => x[key] === id);
+  if (i >= 0) list.splice(i, 1);
+}
+
+async function dbInsert(table, row) {
+  const r = await S.sb.from(table).insert(row).select().single();
+  if (r.error) throw r.error;
+  return r.data;
+}
+async function dbUpdate(table, id, row, key = "id") {
+  const r = await S.sb.from(table).update(row).eq(key, id).select().single();
+  if (r.error) throw r.error;
+  return r.data;
+}
+async function dbDelete(table, id, key = "id") {
+  const r = await S.sb.from(table).delete().eq(key, id);
+  if (r.error) throw r.error;
+}
+
+function viewSetup() {
+  chrome(false);
+  main.innerHTML = `<div class="wrap center"><div class="login"><h1>Még nincs beállítva</h1><p>Töltsd ki a Supabase adatokat a <strong>config.js</strong> fájlban (az oldal gyökerében), majd töltsd fel újra.</p></div></div>`;
+}
+
+function viewLogin(message) {
+  chrome(false);
+  main.innerHTML = `<div class="wrap center">
+    <form class="login" id="login-form" novalidate>
+      <div><span class="logo">Tények<b>++</b></span></div>
+      <h1>Szerkesztőség</h1>
+      <p>Lépj be a stábfiókoddal.</p>
+      ${message ? `<p class="msg" role="alert">${esc(message)}</p>` : ""}
+      <div class="field"><label for="l-email">E-mail</label><input id="l-email" type="email" autocomplete="username" inputmode="email" required></div>
+      <div class="field"><label for="l-pass">Jelszó</label><input id="l-pass" type="password" autocomplete="current-password" required></div>
+      <button class="btn" type="submit" id="l-btn">Belépés</button>
+    </form>
+  </div>`;
+}
+
+function viewNotStaff() {
+  chrome(false);
+  main.innerHTML = `<div class="wrap center"><div class="login"><h1>Nincs hozzáférésed</h1><p>Ez a fiók nincs hozzáadva a stábhoz. Kérd meg a szerkesztőt, hogy vegyen fel a <strong>staff</strong> táblába.</p><button class="btn ghost" type="button" data-logout>Kilépés</button></div></div>`;
+}
+
+async function loadAll() {
+  const q = (t, build) => build(S.sb.from(t).select("*"));
+  const res = await Promise.all([
+    q("episodes", b => b.order("aired_on", { ascending: false, nullsFirst: false }).order("created_at", { ascending: false })),
+    q("stories", b => b.order("created_at", { ascending: false })),
+    q("plans", b => b.order("created_at", { ascending: false })),
+    q("resources", b => b.order("created_at", { ascending: false })),
+    q("notes", b => b.order("updated_at", { ascending: false })),
+    q("contacts", b => b.order("name")),
+    q("email_templates", b => b.order("created_at")),
+    S.sb.from("staff").select("user_id,name").order("name"),
+    S.sb.rpc("push_count")
+  ]);
+  const [eps, stories, plans, resources, notes, contacts, templates, staff, subs] = res;
+  for (const r of [eps, stories, plans, resources, notes, contacts, templates, staff]) if (r.error) throw r.error;
+  S.episodes = eps.data || [];
+  S.stories = stories.data || [];
+  S.plans = plans.data || [];
+  S.resources = resources.data || [];
+  S.notes = notes.data || [];
+  S.contacts = contacts.data || [];
+  S.templates = templates.data || [];
+  S.staff = staff.data || [];
+  S.subs = subs.error ? null : subs.data;
+  S.loaded = true;
+  S.lastLoad = Date.now();
+  setBadge();
+}
+
+async function reload(quiet) {
+  try {
+    await loadAll();
+    if (!S.dirty) render(true);
+  } catch (e) {
+    if (!quiet) toast(errText(e), true);
   }
 }
 
-function maintLeft(now = Date.now()) {
-  const mins = Math.max(1, Math.ceil((MAINT.end - now) / 60000));
-  const h = Math.floor(mins / 60);
-  const m = mins % 60;
-  return h ? `még ${h} óra${m ? ` ${m} perc` : ""}` : `még ${m} perc`;
+function epThumb(e) {
+  return `<div class="thumb">${e.youtube_id ? `<img src="https://i.ytimg.com/vi/${esc(e.youtube_id)}/mqdefault.jpg" alt="" loading="lazy">` : ""}</div>`;
 }
 
-function maintView() {
-  return `<div class="wrap maint"><section class="maint-card" aria-labelledby="maint-title">
-    <p class="strap-row"><span class="strap">Karbantartás</span><span class="strap-date">23:00 – 01:00</span></p>
-    <h1 id="maint-title">Hamarosan visszajövünk</h1>
-    <p class="lead">Épp új funkciókat telepítünk a Tények++-ra. Az oldal hajnali 1 órakor tér vissza, addig nem érhetők el az adások és a sztoribeküldés.</p>
-    <div class="mbar" role="progressbar" aria-label="A frissítés állapota" aria-valuemin="0" aria-valuemax="100" id="mbar"><span id="mbar-fill"></span></div>
-    <p class="mleft"><span id="mpct"></span><span id="mleft"></span></p>
-    <ul class="msteps" id="msteps"></ul>
-  </section></div>`;
+function dateTile(iso) {
+  const d = new Date(iso);
+  return `<span class="date-tile"><b>${d.getDate()}</b><span>${esc(fmtMonth.format(d).replace(".", ""))}</span></span>`;
 }
 
-function updateMaint() {
-  const fill = document.getElementById("mbar-fill");
-  if (!fill) return;
+function planCard(p) {
+  const pr = checkProgress(p);
+  const pct = pr.all ? Math.round(pr.done / pr.all * 100) : 0;
+  const meta = [];
+  if (p.air_date) meta.push(`Adás: ${dayDate(p.air_date)}`);
+  if (p.shoot_at) meta.push(`Forgatás: ${fmtDateTime.format(new Date(p.shoot_at))}`);
+  if (p.owner_id) meta.push(esc(staffName(p.owner_id)));
+  return `<li><a class="card" href="#/terv/${p.id}">
+    <div class="card-top"><span class="pill s-${p.status}">${PLAN_LABEL[p.status]}</span>${p.episode_id ? `<span class="when">Adás kész</span>` : ""}</div>
+    <h3>${esc(p.title)}</h3>
+    ${meta.length ? `<p class="meta">${meta.join(" · ")}</p>` : ""}
+    ${pr.all ? `<div class="progress"><div class="bar"><span style="width:${pct}%"></span></div>${pr.done}/${pr.all}</div>` : ""}
+  </a></li>`;
+}
+
+function viewOverview() {
   const now = Date.now();
-  const pct = Math.min(99, Math.max(1, Math.floor((now - MAINT.start) / (MAINT.end - MAINT.start) * 100)));
-  fill.style.width = `${pct}%`;
-  document.getElementById("mbar").setAttribute("aria-valuenow", String(pct));
-  document.getElementById("mpct").textContent = `${pct}%`;
-  document.getElementById("mleft").textContent = `Vissza 01:00-kor, ${maintLeft(now)}`;
-  const step = Math.min(MAINT_STEPS.length - 1, Math.floor(pct / (100 / MAINT_STEPS.length)));
-  document.getElementById("msteps").innerHTML = MAINT_STEPS.map((s, i) => `<li class="${i < step ? "ok" : i === step ? "now" : ""}">${s}</li>`).join("");
+  const today = todayIso();
+  const active = S.plans.filter(p => p.status !== "megjelent");
+  const newTips = S.stories.filter(s => s.status === "beerkezett").length;
+  const shoots = S.plans.filter(p => p.shoot_at && new Date(p.shoot_at).getTime() >= now - 3 * 3600 * 1000 && p.status !== "megjelent")
+    .sort((a, b) => new Date(a.shoot_at) - new Date(b.shoot_at)).slice(0, 5);
+  const airs = S.plans.filter(p => p.air_date && p.air_date >= today && p.status !== "megjelent")
+    .sort((a, b) => a.air_date.localeCompare(b.air_date)).slice(0, 5);
+  const myTodos = [];
+  S.plans.filter(p => p.owner_id === S.user.id && p.status !== "megjelent").forEach(p => {
+    (p.checklist || []).forEach((c, i) => { if (!c.done) myTodos.push({ p, c, i }); });
+  });
+  const pinned = S.notes.filter(n => n.pinned).slice(0, 4);
+  const shootHtml = shoots.length ? `<ul class="list">${shoots.map(p => `<li><a class="card row" href="#/terv/${p.id}">${dateTile(p.shoot_at)}<div class="grow"><h3>${esc(p.title)}</h3><p class="meta">${esc(fmtTime.format(new Date(p.shoot_at)))}${p.location ? ` · ${esc(p.location)}` : ""}${p.owner_id ? ` · ${esc(staffName(p.owner_id))}` : ""}</p></div></a></li>`).join("")}</ul>` : `<p class="empty small">Nincs kitűzött forgatás. Egy terv megnyitásával adhatsz meg időpontot.</p>`;
+  const airHtml = airs.length ? `<ul class="list">${airs.map(p => `<li><a class="card row" href="#/terv/${p.id}">${dateTile(p.air_date + "T12:00:00")}<div class="grow"><h3>${esc(p.title)}</h3><p class="meta"><span class="pill s-${p.status}">${PLAN_LABEL[p.status]}</span></p></div></a></li>`).join("")}</ul>` : `<p class="empty small">Nincs adásnapra ütemezett terv.</p>`;
+  const todoHtml = myTodos.length ? `<ul class="checks">${myTodos.slice(0, 8).map(({ p, c, i }) => `<li class="check"><input type="checkbox" id="ov-${p.id}-${i}" data-ov-check="${p.id}" data-i="${i}"><label for="ov-${p.id}-${i}">${esc(c.t)} <small style="color:var(--muted)">· ${esc(p.title)}</small></label></li>`).join("")}</ul>${myTodos.length > 8 ? `<p class="hint">És még ${myTodos.length - 8} teendő a terveidben.</p>` : ""}` : `<p class="empty small">Nincs nyitott teendőd. A tervekben te lehetsz a felelős, és akkor itt látod a feladataidat.</p>`;
+  const noteHtml = pinned.length ? `<ul class="list">${pinned.map(noteCard).join("")}</ul>` : "";
+  return `<div class="wrap">
+    <div class="head"><h1>Szia, ${esc(firstName(S.me))}!</h1></div>
+    <p class="sub">${esc(fmtDay.format(new Date()))}</p>
+    <div class="stats">
+      <a class="stat" href="#/tervek"><b>${active.length}</b><span>folyamatban lévő terv</span></a>
+      <a class="stat${newTips ? " hot" : ""}" href="#/sztorik"><b>${newTips}</b><span>új beküldés</span></a>
+      <a class="stat" href="#/adasok"><b>${S.episodes.length}</b><span>adás az oldalon</span></a>
+      <a class="stat" href="#/adasok"><b>${S.subs ?? "–"}</b><span>feliratkozott eszköz</span></a>
+    </div>
+    <div class="quick">
+      <a class="btn yellow small" href="#/terv/uj">+ Új terv</a>
+      <a class="btn ghost small" href="#/jegyzet/uj">+ Jegyzet</a>
+      <a class="btn ghost small" href="#/level">E-mail írása</a>
+    </div>
+    <div class="stack">
+      <section class="section"><h2>Közelgő forgatások</h2>${shootHtml}</section>
+      <section class="section"><h2>Teendőim <small>${myTodos.length || ""}</small></h2>${todoHtml}</section>
+      <section class="section"><h2>Hamarosan adásba</h2>${airHtml}</section>
+      ${pinned.length ? `<section class="section"><h2>Kitűzött jegyzetek</h2>${noteHtml}</section>` : ""}
+    </div>
+  </div>`;
 }
 
-function route(quiet) {
-  const hash = location.hash;
-  if (maintPhase() === "during") {
-    document.body.classList.add("maint-on");
-    main.innerHTML = maintView();
-    updateMaint();
-    document.title = "Karbantartás | Tények++";
-    document.querySelectorAll("[data-nav]").forEach(a => a.removeAttribute("aria-current"));
-    firstRender = false;
+function viewPlans() {
+  const filters = [["aktiv", "Aktív"], ...PLAN_STATUSES];
+  const count = k => k === "aktiv" ? S.plans.filter(p => p.status !== "megjelent").length : S.plans.filter(p => p.status === k).length;
+  const list = S.plans.filter(p => S.planFilter === "aktiv" ? p.status !== "megjelent" : p.status === S.planFilter)
+    .sort((a, b) => (a.air_date || "9999").localeCompare(b.air_date || "9999") || new Date(b.created_at) - new Date(a.created_at));
+  return `<div class="wrap">
+    <div class="head"><h1>Tervek</h1><a class="btn yellow" href="#/terv/uj">+ Új terv</a></div>
+    <p class="sub">A készülő adások: időpontok, teendők, forgatókönyv és anyagok egy helyen.</p>
+    <div class="chips" role="group" aria-label="Szűrés állapot szerint">${filters.map(([k, l]) => `<button class="chip" type="button" data-pfilter="${k}" aria-pressed="${S.planFilter === k}">${l}<span class="n">${count(k)}</span></button>`).join("")}</div>
+    ${list.length ? `<ul class="list">${list.map(planCard).join("")}</ul>` : `<p class="empty">${S.planFilter === "aktiv" ? "Még nincs készülő adás. Kezdj egy új tervet, vagy alakíts át egy beküldött sztorit." : "Ebben az állapotban nincs terv."}</p>`}
+  </div>`;
+}
+
+function statusSet(list, current, name = "status") {
+  return `<fieldset class="statusset"><legend class="vh">Állapot</legend>${list.map(([k, l]) => `<label class="s-${k}"><input type="radio" name="${name}" value="${k}" ${current === k ? "checked" : ""}><span>${l}</span></label>`).join("")}</fieldset>`;
+}
+
+function staffSelect(id, current) {
+  return `<select id="${id}"><option value="">Nincs kijelölve</option>${S.staff.map(s => `<option value="${esc(s.user_id)}" ${current === s.user_id ? "selected" : ""}>${esc(s.name)}</option>`).join("")}</select>`;
+}
+
+function planSelect(id, current) {
+  const list = S.plans.slice().sort((a, b) => (a.status === "megjelent") - (b.status === "megjelent"));
+  return `<select id="${id}"><option value="">Nincs</option>${list.map(p => `<option value="${esc(p.id)}" ${current === p.id ? "selected" : ""}>${esc(p.title)}${p.status === "megjelent" ? " (megjelent)" : ""}</option>`).join("")}</select>`;
+}
+
+function episodeSelect(id, current) {
+  return `<select id="${id}"><option value="">Nincs</option>${S.episodes.map(e => `<option value="${esc(e.id)}" ${current === e.id ? "selected" : ""}>${esc(e.title)}</option>`).join("")}</select>`;
+}
+
+function checklistHtml(p) {
+  const list = Array.isArray(p.checklist) ? p.checklist : [];
+  const pr = checkProgress(p);
+  return `<h2>Teendők <small>${pr.all ? `${pr.done}/${pr.all}` : ""}</small></h2>
+    ${list.length ? `<ul class="checks">${list.map((c, i) => `<li class="check${c.done ? " done" : ""}"><input type="checkbox" id="ck-${i}" data-check="${i}" ${c.done ? "checked" : ""}><label for="ck-${i}">${esc(c.t)}</label><button class="iconbtn" type="button" data-uncheck-del="${i}" aria-label="Teendő törlése: ${esc(c.t)}">×</button></li>`).join("")}</ul>` : `<p class="empty small">Nincs teendő.</p>`}
+    <div class="addrow"><label class="vh" for="ck-new">Új teendő</label><input id="ck-new" type="text" maxlength="200" placeholder="Új teendő" autocomplete="off"><button class="btn ghost small" type="button" data-check-add>Hozzáadás</button></div>`;
+}
+
+function resourceItem(r, showContext) {
+  const href = safeHref(r.url);
+  let ctx = "";
+  if (showContext) {
+    if (r.plan_id) ctx = (planById(r.plan_id) || {}).title || "";
+    else if (r.episode_id) ctx = (epById(r.episode_id) || {}).title || "";
+    else ctx = "Általános";
+  }
+  const sub = [KIND_LABEL[r.kind], ctx, r.note].filter(Boolean).map(esc).join(" · ");
+  return `<li class="res">
+    <span class="ic" aria-hidden="true">${KIND_ICON[r.kind] || "🔗"}</span>
+    <div class="txt">${href ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(r.label)}</a>` : `<strong>${esc(r.label)}</strong>`}<span>${sub || esc(r.url || "")}</span></div>
+    <button class="iconbtn" type="button" data-res-del="${r.id}" aria-label="Anyag törlése: ${esc(r.label)}">×</button>
+  </li>`;
+}
+
+function resourcesHtml(scope) {
+  const list = S.resources.filter(r => scope.plan_id ? r.plan_id === scope.plan_id : scope.episode_id ? r.episode_id === scope.episode_id : true);
+  return `<h2>Anyagok <small>${list.length || ""}</small></h2>
+    ${list.length ? `<ul class="list">${list.map(r => resourceItem(r, false)).join("")}</ul>` : `<p class="empty small">Linkeld ide a nyersanyagot (Drive, iCloud), a zenét, a forgatókönyvet vagy bármit, ami az adáshoz kell.</p>`}
+    <div class="resform" data-res-scope='${esc(JSON.stringify(scope))}'>
+      <label class="vh" for="rs-kind">Típus</label><select id="rs-kind">${KINDS.map(k => `<option value="${k[0]}">${k[2]} ${k[1]}</option>`).join("")}</select>
+      <label class="vh" for="rs-label">Megnevezés</label><input id="rs-label" type="text" maxlength="160" placeholder="Megnevezés" autocomplete="off">
+      <label class="vh" for="rs-url">Link</label><input id="rs-url" type="url" inputmode="url" maxlength="1000" placeholder="https://" autocomplete="off">
+      <button class="btn ghost small" type="button" data-res-add>Hozzáadás</button>
+    </div>`;
+}
+
+function noteCard(n) {
+  const plan = n.plan_id ? planById(n.plan_id) : null;
+  const meta = [`${ago(n.updated_at)}${n.updated_by ? `, ${esc(staffName(n.updated_by))}` : ""}`];
+  if (plan) meta.push(esc(plan.title));
+  return `<li><a class="card" href="#/jegyzet/${n.id}">
+    <div class="card-top"><h3>${n.pinned ? "📌 " : ""}${esc(n.title)}</h3></div>
+    ${n.body ? `<p class="snip">${esc(n.body)}</p>` : ""}
+    <p class="meta">${meta.join(" · ")}</p>
+  </a></li>`;
+}
+
+function viewPlan(p) {
+  const isNew = !p;
+  const x = p || { title: "", status: "otlet", air_date: "", shoot_at: null, location: "", owner_id: S.user.id, outline: "", checklist: [] };
+  const linkedStories = isNew ? [] : S.stories.filter(s => s.plan_id === x.id);
+  const linkedNotes = isNew ? [] : S.notes.filter(n => n.plan_id === x.id);
+  const ep = x.episode_id ? epById(x.episode_id) : null;
+  return `<div class="wrap">
+    <a class="back" href="#/tervek">← Tervek</a>
+    <form class="form" id="plan-form" data-id="${isNew ? "" : esc(x.id)}" novalidate>
+      <div class="field" id="fw-ptitle"><label class="vh" for="f-ptitle">Cím</label><input class="title-input" id="f-ptitle" type="text" maxlength="160" placeholder="Az adás címe" autocomplete="off" value="${esc(x.title)}"><p class="err" hidden></p></div>
+      ${statusSet(PLAN_STATUSES, x.status)}
+      <section class="section">
+        <h2>Időpontok és felelős</h2>
+        <div class="row2">
+          <div class="field"><label for="f-air">Adás tervezett napja</label><input id="f-air" type="date" value="${esc(x.air_date || "")}"></div>
+          <div class="field"><label for="f-shoot">Forgatás</label><input id="f-shoot" type="datetime-local" value="${esc(toLocalInput(x.shoot_at))}"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="f-loc">Helyszín</label><input id="f-loc" type="text" maxlength="160" placeholder="pl. aula, 204-es terem" autocomplete="off" value="${esc(x.location || "")}"></div>
+          <div class="field"><label for="f-owner">Felelős</label>${staffSelect("f-owner", x.owner_id)}</div>
+        </div>
+      </section>
+      ${isNew ? `<label class="switch"><input type="checkbox" id="f-defcheck" checked><span><strong>Alap teendőlista</strong><span>${DEFAULT_CHECKLIST.length} lépés a témától a közzétételig. Később szerkesztheted.</span></span></label>` : `<section class="section" id="checklist">${checklistHtml(x)}</section>`}
+      <section class="section">
+        <h2>Forgatókönyv és vázlat${isNew ? "" : `<button class="btn yellow small" type="button" data-prompter="${esc(x.id)}">▶ Felolvasó</button>`}</h2>
+        <div class="field"><label class="vh" for="f-outline">Forgatókönyv és vázlat</label><textarea class="tall" id="f-outline" maxlength="20000" placeholder="Szia, itt a Tények++!&#10;[B-roll: az aula reggel]&#10;# Interjú&#10;Mióta tanít a Creascolában?">${esc(x.outline || "")}</textarea>
+        <p class="hint">A Felolvasó nagy betűkkel mutatja, amit mondanod kell. A [szögletes zárójelbe] írt részek halvány rendezői megjegyzések, a # kezdetű sorok fejezetcímek.</p></div>
+      </section>
+      <div class="actions"><button class="btn" type="submit" id="plan-save">${isNew ? "Terv létrehozása" : "Mentés"}</button>${isNew ? "" : `<a class="btn ghost" href="#/level?terv=${x.id}">E-mail írása</a>`}</div>
+      ${isNew ? "" : `
+      <section class="section" id="resources">${resourcesHtml({ plan_id: x.id })}</section>
+      <section class="section">
+        <h2>Jegyzetek <small>${linkedNotes.length || ""}</small></h2>
+        ${linkedNotes.length ? `<ul class="list">${linkedNotes.map(noteCard).join("")}</ul>` : ""}
+        <div><a class="btn ghost small" href="#/jegyzet/uj?terv=${x.id}">+ Jegyzet ehhez a tervhez</a></div>
+      </section>
+      ${linkedStories.length ? `<section class="section"><h2>Beküldött sztorik</h2><ul class="list">${linkedStories.map(s => `<li><a class="card" href="#/sztori/${s.id}"><h3>${esc(s.topic)}</h3><p class="meta">${esc(s.name || "Saját ötlet")}${s.class_name ? ` (${esc(s.class_name)})` : ""}</p></a></li>`).join("")}</ul></section>` : ""}
+      <section class="section">
+        <h2>Közzététel</h2>
+        ${ep ? `<p>Ebből a tervből elkészült adás: <a href="#/adas/${encodeURIComponent(ep.id)}">${esc(ep.title)}</a></p>` : `<p class="hint" style="margin:0">Ha kész a videó és fent van YouTube-on, tedd ki az oldalra. A terv állapota „Megjelent” lesz.</p><div><a class="btn yellow" href="#/adas/uj?terv=${x.id}">Adás közzététele</a></div>`}
+      </section>
+      <div class="danger-zone actions"><span class="grow"></span><button class="btn danger" type="button" data-del-plan="${esc(x.id)}">Terv törlése</button></div>`}
+    </form>
+  </div>`;
+}
+
+function viewEpisodes() {
+  const items = S.episodes.map(e => `
+    <li><a class="card ep" href="#/adas/${encodeURIComponent(e.id)}">
+      ${epThumb(e)}
+      <div>
+        <h3>${esc(e.title)}</h3>
+        <p class="meta">
+          ${e.published ? "" : `<span class="pill hidden-pill">Rejtett</span>`}
+          <span>${e.aired_on ? dayDate(e.aired_on) : "Nincs dátum"}</span>
+          ${e.category ? `<span>· ${esc(e.category)}</span>` : ""}
+          ${e.notified_at ? `<span>· Értesítés kiment</span>` : ""}
+        </p>
+      </div>
+    </a></li>`).join("");
+  const stats = [`${S.episodes.length} adás`];
+  if (S.subs !== null) stats.push(`${S.subs} feliratkozott eszköz`);
+  return `<div class="wrap">
+    <div class="head"><h1>Adások</h1><a class="btn yellow" href="#/adas/uj">+ Új adás</a></div>
+    <p class="sub">${stats.join(" · ")}</p>
+    ${S.episodes.length ? `<ul class="list">${items}</ul>` : `<p class="empty">Még nincs adás. Adj hozzá egyet a YouTube-linkjével.</p>`}
+  </div>`;
+}
+
+function viewEpisodeForm(ep, fromPlan) {
+  const isNew = !ep;
+  const e = ep || { id: "", title: fromPlan ? fromPlan.title : "", youtube_id: "", aired_on: (fromPlan && fromPlan.air_date) || todayIso(), category: "", summary: "", published: true, notified_at: null };
+  const cats = [...new Set(S.episodes.map(x => x.category).filter(Boolean))];
+  const showNotify = !e.notified_at;
+  return `<div class="wrap">
+    <a class="back" href="${fromPlan ? `#/terv/${fromPlan.id}` : "#/adasok"}">← ${fromPlan ? esc(fromPlan.title) : "Adások"}</a>
+    <div class="head"><h1>${isNew ? "Új adás" : "Adás szerkesztése"}</h1></div>
+    <form class="form" id="ep-form" data-id="${esc(e.id)}" data-plan="${fromPlan ? esc(fromPlan.id) : ""}" novalidate>
+      <div class="field" id="fw-yt">
+        <label for="f-yt">YouTube-link</label>
+        <input id="f-yt" type="url" inputmode="url" autocomplete="off" placeholder="https://www.youtube.com/watch?v=…" value="${e.youtube_id ? `https://www.youtube.com/watch?v=${esc(e.youtube_id)}` : ""}">
+        <p class="err" hidden></p>
+        <div class="preview" id="yt-preview">${e.youtube_id ? epThumb(e) : ""}</div>
+      </div>
+      <div class="field" id="fw-title">
+        <label for="f-title">Cím</label>
+        <input id="f-title" type="text" maxlength="160" autocomplete="off" value="${esc(e.title)}">
+        <p class="err" hidden></p>
+      </div>
+      ${isNew ? `<div class="field" id="fw-slug">
+        <label for="f-slug">Azonosító <small>(az adás címe az oldalon)</small></label>
+        <input id="f-slug" type="text" maxlength="80" autocomplete="off" autocapitalize="off" spellcheck="false" value="">
+        <p class="hint slug" id="slug-url"></p>
+        <p class="err" hidden></p>
+      </div>` : `<div class="field"><span class="lbl">Az adás címe az oldalon</span><a class="slug" href="${esc(epUrl(e.id))}" target="_blank" rel="noopener">${esc(epUrl(e.id))}</a></div>`}
+      <div class="row2">
+        <div class="field"><label for="f-date">Adás dátuma <small>(nem kötelező)</small></label><input id="f-date" type="date" value="${esc(e.aired_on || "")}"></div>
+        <div class="field"><label for="f-cat">Rovat <small>(nem kötelező)</small></label><input id="f-cat" type="text" maxlength="40" list="cats" autocomplete="off" value="${esc(e.category || "")}"><datalist id="cats">${cats.map(c => `<option value="${esc(c)}">`).join("")}</datalist></div>
+      </div>
+      <div class="field">
+        <label for="f-sum">Leírás <small>(nem kötelező)</small><span class="counter" id="sum-count"></span></label>
+        <textarea id="f-sum" maxlength="600" placeholder="Egy-két mondat az adásról">${esc(e.summary || "")}</textarea>
+      </div>
+      <label class="switch"><input type="checkbox" id="f-pub" ${e.published ? "checked" : ""}><span><strong>Közzétéve</strong><span>Kikapcsolva csak a stáb látja.</span></span></label>
+      ${showNotify ? `<label class="switch" id="notify-row"><input type="checkbox" id="f-notify" ${isNew ? "checked" : ""}><span><strong>Értesítés a nézőknek mentéskor</strong><span>${S.subs !== null ? `${S.subs} feliratkozott eszköz kapja meg.` : "Minden feliratkozott eszköz megkapja."}</span></span></label>` : ""}
+      <div class="actions">
+        <button class="btn" type="submit" id="ep-save">${isNew ? "Adás mentése" : "Változások mentése"}</button>
+        ${isNew ? "" : `<a class="btn ghost" href="${esc(epUrl(e.id))}" target="_blank" rel="noopener">Megnézem</a>`}
+      </div>
+      ${isNew ? "" : `<section class="section" id="resources">${resourcesHtml({ episode_id: e.id })}</section>
+      <div class="danger-zone actions">
+        ${e.published ? `<button class="btn ghost" type="button" data-notify="${esc(e.id)}">${e.notified_at ? "Értesítés újraküldése" : "Értesítés küldése"}</button>` : ""}
+        <span class="grow"></span>
+        <button class="btn danger" type="button" data-del-ep="${esc(e.id)}">Adás törlése</button>
+      </div>
+      ${e.notified_at ? `<p class="hint">Értesítés kiment: ${fmtDateTime.format(new Date(e.notified_at))}</p>` : ""}`}
+    </form>
+  </div>`;
+}
+
+function storyCounts() {
+  const c = { aktiv: 0 };
+  STORY_STATUSES.forEach(([k]) => { c[k] = 0; });
+  S.stories.forEach(s => {
+    c[s.status] = (c[s.status] || 0) + 1;
+    if (STORY_ACTIVE.includes(s.status)) c.aktiv++;
+  });
+  return c;
+}
+
+function viewStories() {
+  const c = storyCounts();
+  const filters = [["aktiv", "Aktív"], ...STORY_STATUSES];
+  const list = S.stories.filter(s => S.storyFilter === "aktiv" ? STORY_ACTIVE.includes(s.status) : s.status === S.storyFilter);
+  const items = list.map(s => `
+    <li><a class="card" href="#/sztori/${s.id}">
+      <div class="card-top"><span class="pill s-${s.status}">${STORY_LABEL[s.status]}</span><time datetime="${esc(s.created_at)}">${ago(s.created_at)}</time></div>
+      <h3>${esc(s.topic)}</h3>
+      ${s.details ? `<p class="snip">${esc(s.details)}</p>` : ""}
+      <p class="meta">${s.source === "sajat" ? "Saját ötlet" : `${s.kind === "request" ? "Riportkérés" : "Beküldött sztori"}${s.name ? ` · ${esc(s.name)}` : ""}${s.class_name ? ` (${esc(s.class_name)})` : ""}`}${s.plan_id && planById(s.plan_id) ? ` · Tervben` : ""}</p>
+    </a></li>`).join("");
+  const emptyText = S.storyFilter === "aktiv" ? "Nincs folyamatban lévő sztori. Ha valaki beküld egyet az oldalon, itt jelenik meg." : "Ebben az állapotban nincs sztori.";
+  return `<div class="wrap">
+    <div class="head"><h1>Sztorik</h1><a class="btn yellow" href="#/sztori/uj">+ Saját ötlet</a></div>
+    <div class="chips" role="group" aria-label="Szűrés állapot szerint">${filters.map(([k, l]) => `<button class="chip" type="button" data-filter="${k}" aria-pressed="${S.storyFilter === k}">${l}<span class="n">${c[k] || 0}</span></button>`).join("")}</div>
+    ${list.length ? `<ul class="list">${items}</ul>` : `<p class="empty">${emptyText}</p>`}
+  </div>`;
+}
+
+function viewStory(s) {
+  const isNew = !s;
+  const own = isNew || s.source === "sajat";
+  const st = s || { status: "otlet", topic: "", details: "", link: "", note: "", episode_id: null, plan_id: null };
+  let info = "";
+  if (!own) {
+    const link = safeHref(st.link);
+    const rows = [
+      ["Beküldő", `${esc(st.name || "Névtelen")}${st.class_name ? `, ${esc(st.class_name)}` : ""}`],
+      st.contact ? ["Elérhetőség", isEmail(st.contact) ? `<a href="mailto:${esc(st.contact.trim())}?subject=${encodeURIComponent("Tények++: " + st.topic)}">${esc(st.contact)}</a>` : esc(st.contact)] : null,
+      ["Beküldve", fmtDateTime.format(new Date(st.created_at))],
+      st.link ? ["Link", link ? `<a href="${esc(link)}" target="_blank" rel="noopener noreferrer">${esc(link)}</a>` : esc(st.link)] : null
+    ].filter(Boolean);
+    info = `<div class="section info">
+      <dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>
+      ${st.details ? `<p class="body-text">${esc(st.details)}</p>` : ""}
+    </div>`;
+  }
+  const plan = st.plan_id ? planById(st.plan_id) : null;
+  return `<div class="wrap">
+    <a class="back" href="#/sztorik">← Sztorik</a>
+    ${own ? `<div class="head"><h1>${isNew ? "Saját ötlet" : "Ötlet szerkesztése"}</h1></div>` : `<p class="kind">${st.kind === "request" ? "Riportkérés" : "Beküldött sztori"}</p><h1 class="detail-title">${esc(st.topic)}</h1>`}
+    <form class="form" id="story-form" data-id="${isNew ? "" : esc(st.id)}" data-own="${own}" novalidate>
+      ${info}
+      ${!isNew ? `<div class="section">${plan ? `<p>Ebből terv lett: <a href="#/terv/${plan.id}">${esc(plan.title)}</a></p>` : `<p class="hint" style="margin:0">Ha foglalkoztok vele, csinálj belőle tervet: kap teendőlistát, időpontokat és helyet a forgatókönyvnek.</p><div><button class="btn yellow small" type="button" data-story-plan="${esc(st.id)}">Terv készítése belőle</button></div>`}</div>` : ""}
+      ${own ? `<div class="field" id="fw-topic"><label for="f-topic">Téma</label><input id="f-topic" type="text" maxlength="200" autocomplete="off" value="${esc(st.topic)}"><p class="err" hidden></p></div>
+      <div class="field"><label for="f-details">Részletek <small>(nem kötelező)</small></label><textarea id="f-details" maxlength="4000">${esc(st.details || "")}</textarea></div>
+      <div class="field"><label for="f-link">Link <small>(nem kötelező)</small></label><input id="f-link" type="url" inputmode="url" maxlength="500" autocomplete="off" value="${esc(st.link || "")}"></div>` : ""}
+      <div class="field"><span class="lbl">Állapot</span>${statusSet(STORY_STATUSES, st.status)}</div>
+      <div class="field"><label for="f-note">Jegyzet a stábnak <small>(nem kötelező)</small></label><textarea id="f-note" maxlength="4000" placeholder="Kit kérdezzünk meg, mikor forgatunk, mi hiányzik még…">${esc(st.note || "")}</textarea></div>
+      <div class="field"><label for="f-ep">Kapcsolódó adás</label>${episodeSelect("f-ep", st.episode_id)}</div>
+      <div class="actions"><button class="btn" type="submit" id="story-save">${isNew ? "Ötlet mentése" : "Mentés"}</button></div>
+      ${isNew ? "" : `<div class="danger-zone actions"><span class="grow"></span><button class="btn danger" type="button" data-del-story="${esc(st.id)}">Törlés</button></div>`}
+    </form>
+  </div>`;
+}
+
+function viewMore() {
+  const rows = [
+    ["#/jegyzetek", "🗒️", "Jegyzetek", "Közös ötletek, kérdéslisták, megbeszélések", S.notes.length],
+    ["#/sablonok", "✉️", "E-mail sablonok", "Levelek tanároknak: engedély, interjú, köszönet", S.templates.length],
+    ["#/kapcsolatok", "👥", "Kapcsolatok", "Tanárok és interjúalanyok elérhetősége", S.contacts.length],
+    ["#/anyagok", "🎞️", "Anyagok", "Nyersanyagok, zenék, grafikák minden adáshoz", S.resources.length]
+  ];
+  return `<div class="wrap">
+    <div class="head"><h1>Több</h1></div>
+    <ul class="menu">${rows.map(([h, i, t, s, n]) => `<li><a href="${h}"><span class="ic" aria-hidden="true">${i}</span><span>${t}<small>${s}</small></span><span class="n">${n}</span></a></li>`).join("")}</ul>
+    <p class="sub" style="margin:1.5rem 0 .6rem">Fiók</p>
+    <ul class="menu">
+      <li><a href="${esc(SITE)}" target="_blank" rel="noopener"><span class="ic" aria-hidden="true">🌐</span><span>A Tények++ oldal megnyitása</span></a></li>
+      <li><button type="button" data-logout><span class="ic" aria-hidden="true">↩︎</span><span>Kilépés<small>${esc(S.me)}</small></span></button></li>
+    </ul>
+  </div>`;
+}
+
+function viewNotes() {
+  const list = S.notes.slice().sort((a, b) => (b.pinned - a.pinned) || new Date(b.updated_at) - new Date(a.updated_at));
+  return `<div class="wrap">
+    <a class="back" href="#/tobb">← Több</a>
+    <div class="head"><h1>Jegyzetek</h1><a class="btn yellow" href="#/jegyzet/uj">+ Új jegyzet</a></div>
+    ${list.length ? `<ul class="list">${list.map(noteCard).join("")}</ul>` : `<p class="empty">Ide írhattok közös jegyzeteket: ötletlistát, interjúkérdéseket, megbeszélések összefoglalóját. Mindketten látjátok és szerkeszthetitek.</p>`}
+  </div>`;
+}
+
+function viewNote(n, presetPlan) {
+  const isNew = !n;
+  const x = n || { title: "", body: "", pinned: false, plan_id: presetPlan || null };
+  const back = x.plan_id && isNew ? `#/terv/${x.plan_id}` : "#/jegyzetek";
+  return `<div class="wrap">
+    <a class="back" href="${back}">← ${x.plan_id && isNew ? "Terv" : "Jegyzetek"}</a>
+    <form class="form" id="note-form" data-id="${isNew ? "" : esc(x.id)}" novalidate>
+      <div class="field" id="fw-ntitle"><label class="vh" for="f-ntitle">Cím</label><input class="title-input" id="f-ntitle" type="text" maxlength="160" placeholder="Jegyzet címe" autocomplete="off" value="${esc(x.title)}"><p class="err" hidden></p></div>
+      <div class="field"><label class="vh" for="f-nbody">Szöveg</label><textarea class="tall" id="f-nbody" maxlength="20000" placeholder="Írj ide bármit…">${esc(x.body || "")}</textarea></div>
+      <div class="field"><label for="f-nplan">Kapcsolódó terv</label>${planSelect("f-nplan", x.plan_id)}</div>
+      <label class="switch"><input type="checkbox" id="f-npin" ${x.pinned ? "checked" : ""}><span><strong>Kitűzés</strong><span>A kitűzött jegyzetek az Áttekintésen is megjelennek.</span></span></label>
+      ${isNew ? "" : `<p class="hint">Utoljára módosította: ${esc(staffName(x.updated_by) || "ismeretlen")}, ${fmtDateTime.format(new Date(x.updated_at))}</p>`}
+      <div class="actions"><button class="btn" type="submit" id="note-save">${isNew ? "Jegyzet mentése" : "Mentés"}</button><span class="grow"></span>${isNew ? "" : `<button class="btn danger" type="button" data-del-note="${esc(x.id)}">Törlés</button>`}</div>
+    </form>
+  </div>`;
+}
+
+function viewContacts() {
+  const q = S.contactQ.trim().toLocaleLowerCase("hu");
+  const list = S.contacts.filter(c => !q || `${c.name} ${c.role || ""} ${c.email || ""}`.toLocaleLowerCase("hu").includes(q));
+  return `<div class="wrap">
+    <a class="back" href="#/tobb">← Több</a>
+    <div class="head"><h1>Kapcsolatok</h1><a class="btn yellow" href="#/kapcsolat/uj">+ Új</a></div>
+    ${S.contacts.length > 4 ? `<div class="field" style="margin-bottom:1rem"><label class="vh" for="c-q">Keresés</label><input id="c-q" type="search" placeholder="Keresés név, szerep vagy e-mail alapján" value="${esc(S.contactQ)}" autocomplete="off"></div>` : ""}
+    <div id="contact-list">${contactListHtml(list)}</div>
+  </div>`;
+}
+
+function contactListHtml(list) {
+  if (!S.contacts.length) return `<p class="empty">Vedd fel a tanárokat és az interjúalanyokat, így egy koppintással írhatsz nekik sablonból.</p>`;
+  if (!list.length) return `<p class="empty">Nincs találat.</p>`;
+  return `<ul class="list">${list.map(c => `<li><a class="card" href="#/kapcsolat/${c.id}"><h3>${esc(c.name)}</h3><p class="meta">${[c.role, c.email].filter(Boolean).map(esc).join(" · ") || "Nincs megadva elérhetőség"}</p></a></li>`).join("")}</ul>`;
+}
+
+function viewContact(c) {
+  const isNew = !c;
+  const x = c || { name: "", role: "", email: "", phone: "", note: "" };
+  return `<div class="wrap">
+    <a class="back" href="#/kapcsolatok">← Kapcsolatok</a>
+    <div class="head"><h1>${isNew ? "Új kapcsolat" : esc(x.name)}</h1></div>
+    <form class="form" id="contact-form" data-id="${isNew ? "" : esc(x.id)}" novalidate>
+      ${isNew ? "" : `<div class="actions">${isEmail(x.email) ? `<a class="btn yellow small" href="#/level?kontakt=${x.id}">E-mail sablonból</a><a class="btn ghost small" href="mailto:${esc(x.email.trim())}">Üres e-mail</a>` : ""}${x.phone ? `<a class="btn ghost small" href="tel:${esc(x.phone.replace(/[^\d+]/g, ""))}">Hívás</a>` : ""}</div>`}
+      <div class="field" id="fw-cname"><label for="f-cname">Név</label><input id="f-cname" type="text" maxlength="120" autocomplete="off" placeholder="pl. Kovács Anna tanárnő" value="${esc(x.name)}"><p class="err" hidden></p></div>
+      <div class="field"><label for="f-crole">Szerep <small>(nem kötelező)</small></label><input id="f-crole" type="text" maxlength="120" autocomplete="off" placeholder="pl. osztályfőnök, 9.A · igazgatóhelyettes" value="${esc(x.role || "")}"></div>
+      <div class="row2">
+        <div class="field" id="fw-cemail"><label for="f-cemail">E-mail</label><input id="f-cemail" type="email" inputmode="email" maxlength="200" autocomplete="off" value="${esc(x.email || "")}"><p class="err" hidden></p></div>
+        <div class="field"><label for="f-cphone">Telefon <small>(nem kötelező)</small></label><input id="f-cphone" type="tel" inputmode="tel" maxlength="40" autocomplete="off" value="${esc(x.phone || "")}"></div>
+      </div>
+      <div class="field"><label for="f-cnote">Megjegyzés <small>(nem kötelező)</small></label><textarea id="f-cnote" maxlength="2000" placeholder="pl. hétfőn és szerdán ér rá, a tanáriban található">${esc(x.note || "")}</textarea></div>
+      <div class="actions"><button class="btn" type="submit" id="contact-save">${isNew ? "Kapcsolat mentése" : "Mentés"}</button><span class="grow"></span>${isNew ? "" : `<button class="btn danger" type="button" data-del-contact="${esc(x.id)}">Törlés</button>`}</div>
+    </form>
+  </div>`;
+}
+
+function viewTemplates() {
+  return `<div class="wrap">
+    <a class="back" href="#/tobb">← Több</a>
+    <div class="head"><h1>E-mail sablonok</h1><a class="btn yellow" href="#/sablon/uj">+ Új sablon</a></div>
+    <p class="sub">Válassz sablont, és kitöltjük a címzettel és a terv adataival. A levelet a saját leveleződ nyitja meg.</p>
+    ${S.templates.length ? `<ul class="list">${S.templates.map(t => `<li class="card"><h3>${esc(t.name)}</h3><p class="meta">${esc(t.subject)}</p><div class="actions" style="margin-top:.75rem"><a class="btn small" href="#/level?sablon=${t.id}">Levél írása</a><a class="btn ghost small" href="#/sablon/${t.id}">Szerkesztés</a></div></li>`).join("")}</ul>` : `<p class="empty">Még nincs sablon.</p>`}
+  </div>`;
+}
+
+function viewTemplate(t) {
+  const isNew = !t;
+  const x = t || { name: "", subject: "", body: "Kedves {{nev}}!\n\n\n\nÜdvözlettel:\n{{alairas}}\nTények++ szerkesztőség" };
+  return `<div class="wrap">
+    <a class="back" href="#/sablonok">← Sablonok</a>
+    <div class="head"><h1>${isNew ? "Új sablon" : "Sablon szerkesztése"}</h1></div>
+    <form class="form" id="tpl-form" data-id="${isNew ? "" : esc(x.id)}" novalidate>
+      <div class="field" id="fw-tname"><label for="f-tname">Sablon neve</label><input id="f-tname" type="text" maxlength="120" autocomplete="off" value="${esc(x.name)}"><p class="err" hidden></p></div>
+      <div class="field" id="fw-tsubj"><label for="f-tsubj">Tárgy</label><input id="f-tsubj" type="text" maxlength="300" autocomplete="off" value="${esc(x.subject)}"><p class="err" hidden></p></div>
+      <div class="field" id="fw-tbody"><label for="f-tbody">Szöveg</label><textarea class="tall" id="f-tbody" maxlength="10000">${esc(x.body)}</textarea><p class="err" hidden></p>
+        <p class="hint">Helyettesíthető mezők: ${Object.keys(PH_LABEL).map(k => `<span class="ph">{{${k}}}</span>`).join(" ")}. A {{alairas}} a te neved lesz, a téma, dátum, időpont, helyszín és link a kiválasztott tervből töltődik ki.</p>
+      </div>
+      <div class="actions"><button class="btn" type="submit" id="tpl-save">Mentés</button>${isNew ? "" : `<a class="btn ghost" href="#/level?sablon=${x.id}">Levél írása</a>`}<span class="grow"></span>${isNew ? "" : `<button class="btn danger" type="button" data-del-tpl="${esc(x.id)}">Törlés</button>`}</div>
+    </form>
+  </div>`;
+}
+
+function placeholders(t) {
+  const set = [];
+  `${t.subject}\n${t.body}`.replace(/\{\{\s*(\w+)\s*\}\}/g, (_, k) => { if (!set.includes(k)) set.push(k); });
+  return set;
+}
+
+function planValues(p) {
+  if (!p) return {};
+  const v = { tema: p.title };
+  if (p.shoot_at) {
+    const d = new Date(p.shoot_at);
+    v.datum = fmtLongDate.format(d);
+    v.idopont = fmtTime.format(d);
+  } else if (p.air_date) {
+    v.datum = fmtLongDate.format(new Date(p.air_date + "T12:00:00"));
+  }
+  if (p.location) v.helyszin = p.location;
+  if (p.episode_id) v.link = epUrl(p.episode_id);
+  return v;
+}
+
+function viewCompose(params) {
+  const tpl = S.templates.find(t => t.id === params.get("sablon")) || S.templates[0];
+  const contact = S.contacts.find(c => c.id === params.get("kontakt"));
+  const plan = planById(params.get("terv"));
+  if (!tpl) return `<div class="wrap"><a class="back" href="#/sablonok">← Sablonok</a><p class="empty" style="margin-top:1rem">Előbb hozz létre egy e-mail sablont.</p></div>`;
+  return `<div class="wrap">
+    <a class="back" href="${plan ? `#/terv/${plan.id}` : "#/sablonok"}">← ${plan ? esc(plan.title) : "Sablonok"}</a>
+    <div class="head"><h1>E-mail írása</h1></div>
+    <form class="form" id="compose" novalidate>
+      <div class="field"><label for="m-tpl">Sablon</label><select id="m-tpl">${S.templates.map(t => `<option value="${t.id}" ${t.id === tpl.id ? "selected" : ""}>${esc(t.name)}</option>`).join("")}</select></div>
+      <div class="row2">
+        <div class="field"><label for="m-contact">Címzett a kapcsolatok közül</label><select id="m-contact"><option value="">Kézzel adom meg</option>${S.contacts.map(c => `<option value="${c.id}" ${contact && contact.id === c.id ? "selected" : ""}>${esc(c.name)}</option>`).join("")}</select></div>
+        <div class="field"><label for="m-to">E-mail-cím</label><input id="m-to" type="email" inputmode="email" autocomplete="off" value="${esc(contact ? contact.email || "" : "")}"></div>
+      </div>
+      <div class="field"><label for="m-plan">Terv <small>(kitölti a témát, időpontot, helyszínt)</small></label>${planSelect("m-plan", plan ? plan.id : "")}</div>
+      <section class="section" id="m-fields"></section>
+      <div class="field"><span class="lbl">Előnézet</span><div class="mail-preview" id="m-preview"></div></div>
+      <div class="actions"><a class="btn" id="m-open" href="#">Megnyitás levelezőben</a><button class="btn ghost" type="button" data-copy-mail>Szöveg másolása</button></div>
+      <p class="hint">A levél a saját levelezőprogramodban nyílik meg; ott még átírhatod, mielőtt elküldöd.</p>
+    </form>
+  </div>`;
+}
+
+function wireCompose() {
+  const form = document.getElementById("compose");
+  if (!form) return;
+  const vals = {};
+  const tplSel = document.getElementById("m-tpl");
+  const cSel = document.getElementById("m-contact");
+  const pSel = document.getElementById("m-plan");
+  const to = document.getElementById("m-to");
+  const fieldsBox = document.getElementById("m-fields");
+  const auto = () => {
+    const c = S.contacts.find(x => x.id === cSel.value);
+    const out = { alairas: S.me, ...planValues(planById(pSel.value)) };
+    if (c) out.nev = c.name;
+    return out;
+  };
+  const current = () => S.templates.find(t => t.id === tplSel.value);
+  const buildFields = () => {
+    const keys = placeholders(current()).filter(k => k !== "alairas");
+    const a = auto();
+    keys.forEach(k => { if (a[k] !== undefined) vals[k] = a[k]; });
+    fieldsBox.hidden = !keys.length;
+    fieldsBox.innerHTML = `<h2>Kitöltendő mezők</h2>${keys.map(k => `<div class="field"><label for="ph-${k}">${esc(PH_LABEL[k] || k)}</label><input id="ph-${k}" data-ph="${k}" type="text" autocomplete="off" value="${esc(vals[k] || "")}"></div>`).join("")}`;
+    preview();
+  };
+  const fill = (str, html) => str.replace(/\{\{\s*(\w+)\s*\}\}/g, (_, k) => {
+    const v = k === "alairas" ? (vals.alairas || S.me) : vals[k];
+    if (v) return html ? esc(v) : v;
+    return html ? `<span class="ph">{{${k}}}</span>` : `{{${k}}}`;
+  });
+  const preview = () => {
+    const t = current();
+    const subject = fill(t.subject, false);
+    const body = fill(t.body, false);
+    document.getElementById("m-preview").innerHTML = `<strong>${fill(esc(t.subject), true)}</strong>${fill(esc(t.body), true)}`;
+    const addr = to.value.trim();
+    document.getElementById("m-open").href = `mailto:${encodeURIComponent(addr).replace(/%40/g, "@")}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    form.dataset.text = `${subject}\n\n${body}`;
+  };
+  vals.alairas = S.me;
+  tplSel.addEventListener("change", buildFields);
+  cSel.addEventListener("change", () => {
+    const c = S.contacts.find(x => x.id === cSel.value);
+    if (c) { to.value = c.email || ""; vals.nev = c.name; }
+    buildFields();
+  });
+  pSel.addEventListener("change", () => {
+    Object.assign(vals, planValues(planById(pSel.value)));
+    buildFields();
+  });
+  to.addEventListener("input", preview);
+  fieldsBox.addEventListener("input", e => {
+    const k = e.target.dataset.ph;
+    if (k) { vals[k] = e.target.value; preview(); }
+  });
+  buildFields();
+}
+
+function viewLibrary() {
+  const filters = [["osszes", "Összes", ""], ...KINDS];
+  const list = S.resources.filter(r => S.resFilter === "osszes" || r.kind === S.resFilter);
+  return `<div class="wrap">
+    <a class="back" href="#/tobb">← Több</a>
+    <div class="head"><h1>Anyagok</h1></div>
+    <p class="sub">Minden link egy helyen. Az általános anyagok (intró, outró, logó, zenék) ide kerülnek, az adásokhoz tartozók a tervnél is látszanak.</p>
+    <section class="section" id="resources" style="margin-bottom:1rem">${resourcesHtml({}).replace(/<h2>[\s\S]*?<\/h2>[\s\S]*?(?=<div class="resform")/, "<h2>Általános anyag hozzáadása</h2>")}</section>
+    <div class="chips" role="group" aria-label="Szűrés típus szerint">${filters.map(([k, l]) => `<button class="chip" type="button" data-rfilter="${k}" aria-pressed="${S.resFilter === k}">${l}</button>`).join("")}</div>
+    ${list.length ? `<ul class="list">${list.map(r => resourceItem(r, true)).join("")}</ul>` : `<p class="empty">Nincs anyag ebben a kategóriában.</p>`}
+  </div>`;
+}
+
+function missing(text, back) {
+  return `<div class="wrap"><a class="back" href="${back}">← Vissza</a><p class="empty" style="margin-top:1rem">${text}</p></div>`;
+}
+
+function parseHash() {
+  const raw = location.hash.slice(1) || "/";
+  const [path, query] = raw.split("?");
+  const seg = path.split("/").filter(Boolean).map(s => { try { return decodeURIComponent(s); } catch (e) { return s; } });
+  return { seg, params: new URLSearchParams(query || "") };
+}
+
+function go(hash) {
+  if (location.hash === hash) render();
+  else location.hash = hash;
+}
+
+const PROMPT_KEY = "tenyek-felolvaso";
+const P = { raf: 0, playing: false, speed: 40, size: 2.4, mirror: false, only: false, acc: 0, last: 0, calmT: 0, lock: null, planId: "" };
+try { Object.assign(P, JSON.parse(localStorage.getItem(PROMPT_KEY) || "{}"), { raf: 0, playing: false, acc: 0, last: 0, calmT: 0, lock: null, planId: "" }); } catch (e) {}
+
+function promptSave() {
+  try { localStorage.setItem(PROMPT_KEY, JSON.stringify({ speed: P.speed, size: P.size, mirror: P.mirror, only: P.only })); } catch (e) {}
+}
+
+function scriptHtml(text) {
+  const out = [];
+  let para = [];
+  const inline = s => esc(s).replace(/\[([^\]]+)\]/g, '<span class="p-inl">[$1]</span>');
+  const flush = () => { if (para.length) { out.push(`<p>${para.join("<br>")}</p>`); para = []; } };
+  String(text || "").split(/\r?\n/).forEach(raw => {
+    const line = raw.trim();
+    if (!line) { flush(); return; }
+    if (/^#+\s*/.test(line)) { flush(); out.push(`<h2 class="p-sec">${esc(line.replace(/^#+\s*/, ""))}</h2>`); return; }
+    if (/^\[[^\]]*\]$/.test(line)) { flush(); out.push(`<span class="p-note">${esc(line)}</span>`); return; }
+    para.push(inline(line));
+  });
+  flush();
+  return out.join("");
+}
+
+const PI = {
+  close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  play: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg>',
+  pause: '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>',
+  top: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14"/><path d="m7 13 5-5 5 5"/><path d="M12 8v11"/></svg>'
+};
+
+function viewPrompter(p) {
+  const empty = !String(p.outline || "").trim();
+  return `<div class="prompter" id="prompter" role="dialog" aria-label="Felolvasó: ${esc(p.title)}">
+    ${empty ? `<div class="p-empty"><p>Ehhez a tervhez még nincs forgatókönyv.</p><a class="btn" href="#/terv/${p.id}">Vissza a tervhez</a></div>` : `
+    <div class="p-scroll" id="p-scroll"><div class="p-text${P.mirror ? " mirror" : ""}${P.only ? " only-speech" : ""}" id="p-text" style="--pfs:${P.size}rem">${scriptHtml(p.outline)}<p class="p-end">Vége.</p></div></div>
+    <div class="p-top"></div>
+    <div class="p-eye" aria-hidden="true"></div>
+    <div class="p-bar" id="p-bar">
+      <a class="p-btn" href="#/terv/${p.id}" aria-label="Kilépés a felolvasóból">${PI.close}</a>
+      <span class="p-sep"></span>
+      <button class="p-btn" type="button" data-p="restart" aria-label="Vissza az elejére">${PI.top}</button>
+      <button class="p-btn" type="button" data-p="slower" aria-label="Lassabb">−</button>
+      <button class="p-btn play" type="button" data-p="play" id="p-play" aria-label="Indítás">${PI.play}</button>
+      <button class="p-btn" type="button" data-p="faster" aria-label="Gyorsabb">+</button>
+      <span class="p-val" id="p-speed" aria-live="polite"></span>
+      <span class="p-sep"></span>
+      <button class="p-btn" type="button" data-p="smaller" aria-label="Kisebb betű">A−</button>
+      <button class="p-btn" type="button" data-p="bigger" aria-label="Nagyobb betű">A+</button>
+      <span class="p-sep"></span>
+      <button class="p-btn" type="button" data-p="only" aria-pressed="${P.only}">Csak szöveg</button>
+      <button class="p-btn" type="button" data-p="mirror" aria-pressed="${P.mirror}">Tükör</button>
+    </div>`}
+  </div>`;
+}
+
+function promptUi() {
+  const sp = document.getElementById("p-speed");
+  if (sp) sp.textContent = `${Math.round(P.speed / 10)}×`;
+  const btn = document.getElementById("p-play");
+  if (btn) { btn.innerHTML = P.playing ? PI.pause : PI.play; btn.setAttribute("aria-label", P.playing ? "Szünet" : "Indítás"); }
+  const t = document.getElementById("p-text");
+  if (t) {
+    t.style.setProperty("--pfs", `${P.size}rem`);
+    t.classList.toggle("mirror", P.mirror);
+    t.classList.toggle("only-speech", P.only);
+  }
+  document.querySelectorAll("[data-p='only']").forEach(b => b.setAttribute("aria-pressed", String(P.only)));
+  document.querySelectorAll("[data-p='mirror']").forEach(b => b.setAttribute("aria-pressed", String(P.mirror)));
+}
+
+function promptShowBar() {
+  const pr = document.getElementById("prompter");
+  if (!pr) return;
+  pr.classList.remove("calm");
+  clearTimeout(P.calmT);
+  if (P.playing) P.calmT = setTimeout(() => pr.classList.add("calm"), 2200);
+}
+
+function promptTick(ts) {
+  const box = document.getElementById("p-scroll");
+  if (!box || !P.playing) { P.raf = 0; return; }
+  const dt = P.last ? Math.min(0.1, (ts - P.last) / 1000) : 0;
+  P.last = ts;
+  P.acc += P.speed * dt;
+  const step = Math.floor(P.acc);
+  if (step >= 1) { box.scrollTop += step; P.acc -= step; }
+  if (box.scrollTop + box.clientHeight >= box.scrollHeight - 2) { promptPlay(false); return; }
+  P.raf = requestAnimationFrame(promptTick);
+}
+
+async function promptWake(on) {
+  try {
+    if (on && "wakeLock" in navigator && !P.lock) {
+      P.lock = await navigator.wakeLock.request("screen");
+      P.lock.addEventListener("release", () => { P.lock = null; });
+    } else if (!on && P.lock) {
+      await P.lock.release();
+      P.lock = null;
+    }
+  } catch (e) {}
+}
+
+function promptPlay(on) {
+  P.playing = on;
+  P.last = 0;
+  P.acc = 0;
+  cancelAnimationFrame(P.raf);
+  P.raf = on ? requestAnimationFrame(promptTick) : 0;
+  promptUi();
+  promptShowBar();
+}
+
+function promptStop() {
+  if (!P.planId) return;
+  P.playing = false;
+  cancelAnimationFrame(P.raf);
+  P.raf = 0;
+  clearTimeout(P.calmT);
+  promptWake(false);
+  P.planId = "";
+}
+
+function promptAction(a) {
+  if (a === "play") promptPlay(!P.playing);
+  else if (a === "faster") P.speed = Math.min(200, P.speed + 10);
+  else if (a === "slower") P.speed = Math.max(10, P.speed - 10);
+  else if (a === "bigger") P.size = Math.min(5, +(P.size + 0.2).toFixed(1));
+  else if (a === "smaller") P.size = Math.max(1.4, +(P.size - 0.2).toFixed(1));
+  else if (a === "mirror") P.mirror = !P.mirror;
+  else if (a === "only") P.only = !P.only;
+  else if (a === "restart") { promptPlay(false); const box = document.getElementById("p-scroll"); if (box) box.scrollTop = 0; }
+  promptSave();
+  promptUi();
+  promptShowBar();
+}
+
+function render(quiet) {
+  if (!S.user || !S.loaded) return;
+  const { seg, params } = parseHash();
+  const r = seg[0] || "";
+  const id = seg[1] || "";
+  if (r === "olvaso") {
+    const p = planById(id);
+    if (quiet && P.planId === id && document.getElementById("prompter")) return;
+    promptStop();
+    chrome(false);
+    if (!p) { main.innerHTML = missing("Ez a terv nem létezik, vagy törölték.", "#/tervek"); chrome(true); return; }
+    main.innerHTML = viewPrompter(p);
+    P.planId = id;
+    promptUi();
+    promptShowBar();
+    promptWake(true);
+    const box = document.getElementById("p-scroll");
+    if (box) box.addEventListener("wheel", () => { if (P.playing) promptShowBar(); }, { passive: true });
     return;
   }
-  document.body.classList.remove("maint-on");
-  if (hash && !hash.startsWith("#/")) return;
-  const seg = hash.slice(2).split("/").filter(Boolean);
-  let html, title = "", key = "";
-  if (!seg.length) { html = home(); key = "/"; }
-  else if (seg[0] === "adasok") { html = archive(); title = "Adások"; key = "/adasok"; }
-  else if (seg[0] === "adas") {
-    let id = seg[1] || "";
-    try { id = decodeURIComponent(id); } catch (e) {}
-    const ep = eps.find(e => e.id === id);
-    html = pending ? loadingView() : ep ? episode(ep) : missing("episode");
-    title = pending ? "Adás" : ep ? ep.title : "Nincs ilyen oldal";
-    key = "/adasok";
-  }
-  else if (seg[0] === "stab") { html = staff(); title = "Stáb"; key = "/stab"; }
-  else if (seg[0] === "kuldj-sztorit") { html = tip(); title = "Küldj sztorit"; key = "/kuldj-sztorit"; }
-  else { html = missing(); title = "Nincs ilyen oldal"; }
+  promptStop();
+  let html;
+  let nav = "attekintes";
+  if (r === "" || r === "attekintes") html = viewOverview();
+  else if (r === "tervek") { nav = "tervek"; html = viewPlans(); }
+  else if (r === "terv") { nav = "tervek"; html = id === "uj" ? viewPlan(null) : planById(id) ? viewPlan(planById(id)) : missing("Ez a terv nem létezik, vagy törölték.", "#/tervek"); }
+  else if (r === "sztorik") { nav = "sztorik"; html = viewStories(); }
+  else if (r === "sztori") { nav = "sztorik"; const st = S.stories.find(s => s.id === id); html = id === "uj" ? viewStory(null) : st ? viewStory(st) : missing("Ez a sztori nem létezik, vagy törölték.", "#/sztorik"); }
+  else if (r === "adasok") { nav = "adasok"; html = viewEpisodes(); }
+  else if (r === "adas") { nav = "adasok"; html = id === "uj" ? viewEpisodeForm(null, planById(params.get("terv"))) : epById(id) ? viewEpisodeForm(epById(id)) : missing("Ez az adás nem létezik, vagy törölték.", "#/adasok"); }
+  else if (r === "tobb") { nav = "tobb"; html = viewMore(); }
+  else if (r === "jegyzetek") { nav = "tobb"; html = viewNotes(); }
+  else if (r === "jegyzet") { nav = "tobb"; const n = S.notes.find(x => x.id === id); html = id === "uj" ? viewNote(null, params.get("terv")) : n ? viewNote(n) : missing("Ez a jegyzet nem létezik, vagy törölték.", "#/jegyzetek"); }
+  else if (r === "kapcsolatok") { nav = "tobb"; html = viewContacts(); }
+  else if (r === "kapcsolat") { nav = "tobb"; const c = S.contacts.find(x => x.id === id); html = id === "uj" ? viewContact(null) : c ? viewContact(c) : missing("Ez a kapcsolat nem létezik, vagy törölték.", "#/kapcsolatok"); }
+  else if (r === "sablonok") { nav = "tobb"; html = viewTemplates(); }
+  else if (r === "sablon") { nav = "tobb"; const t = S.templates.find(x => x.id === id); html = id === "uj" ? viewTemplate(null) : t ? viewTemplate(t) : missing("Ez a sablon nem létezik, vagy törölték.", "#/sablonok"); }
+  else if (r === "level") { nav = "tobb"; html = viewCompose(params); }
+  else if (r === "anyagok") { nav = "tobb"; html = viewLibrary(); }
+  else html = viewOverview();
+  chrome(true);
   main.innerHTML = html;
-  if (main.querySelector(".hero")) introPlayed = true;
-  document.title = title ? `${title} | Tények++` : "Tények++, a Creascola diákhíradója";
   document.querySelectorAll("[data-nav]").forEach(a => {
-    if (a.dataset.nav === key) a.setAttribute("aria-current", "page");
+    if (a.dataset.nav === nav) a.setAttribute("aria-current", "page");
     else a.removeAttribute("aria-current");
   });
-  if (!firstRender && !quiet) {
+  S.dirty = false;
+  wireForms();
+  wireCompose();
+  if (!quiet) {
     window.scrollTo(0, 0);
     main.focus({ preventScroll: true });
   }
-  firstRender = false;
 }
 
-function routeKey() {
-  return (location.hash.slice(2).split("/").filter(Boolean)[0]) || "";
+function setFieldError(id, message) {
+  const wrap = document.getElementById(id);
+  if (!wrap) return;
+  const err = wrap.querySelector(".err");
+  wrap.classList.toggle("bad", !!message);
+  if (err) { err.hidden = !message; err.textContent = message || ""; }
 }
 
-function refreshView() {
-  if (document.querySelector(".screen[data-playing]")) return;
-  if (["", "adasok", "adas"].includes(routeKey())) route(true);
+function busy(btn, on, label) {
+  if (!btn) return;
+  if (on) { btn.dataset.label = btn.textContent; btn.disabled = true; btn.textContent = label || "Mentés…"; }
+  else { btn.disabled = false; btn.textContent = btn.dataset.label || btn.textContent; }
 }
 
-function blocked(box, ep) {
-  box.removeAttribute("data-playing");
-  box.innerHTML = `<span class="no">${ep.no}. adás</span><div class="blocked"><p>Ezen az oldalon nem indul el a videó.</p><a class="btn" href="https://www.youtube.com/watch?v=${ep.yt}" target="_blank" rel="noopener">Megnyitás a YouTube-on</a></div>`;
+function wireForms() {
+  document.querySelectorAll("#main form").forEach(f => {
+    if (f.id === "compose") return;
+    f.addEventListener("input", e => { if (!e.target.closest(".resform, .addrow, .checks")) S.dirty = true; });
+    f.addEventListener("change", e => { if (!e.target.closest(".resform, .addrow, .checks")) S.dirty = true; });
+  });
+  const ep = document.getElementById("ep-form");
+  if (ep) {
+    const yt = document.getElementById("f-yt");
+    const title = document.getElementById("f-title");
+    const slug = document.getElementById("f-slug");
+    const sum = document.getElementById("f-sum");
+    const pub = document.getElementById("f-pub");
+    const notifyRow = document.getElementById("notify-row");
+    let slugTouched = false;
+    const updSlug = () => {
+      if (!slug) return;
+      if (!slugTouched) {
+        slug.value = uniqueSlug(slugify(title.value));
+        if (slug.value) setFieldError("fw-slug", "");
+      }
+      document.getElementById("slug-url").textContent = slug.value ? epUrl(slug.value) : "";
+    };
+    const updSum = () => { document.getElementById("sum-count").textContent = `${sum.value.length}/600`; };
+    const updPreview = () => {
+      const id = ytId(yt.value);
+      document.getElementById("yt-preview").innerHTML = id ? epThumb({ youtube_id: id }) : "";
+    };
+    const updNotify = () => { if (notifyRow) notifyRow.hidden = !pub.checked; };
+    yt.addEventListener("input", () => { updPreview(); setFieldError("fw-yt", ""); });
+    title.addEventListener("input", () => { updSlug(); setFieldError("fw-title", ""); });
+    if (slug) slug.addEventListener("input", () => { slugTouched = true; updSlug(); setFieldError("fw-slug", ""); });
+    sum.addEventListener("input", updSum);
+    pub.addEventListener("change", updNotify);
+    updSlug(); updSum(); updNotify();
+    ep.addEventListener("submit", e => { e.preventDefault(); saveEpisode(ep); });
+  }
+  const bind = (id, fn) => { const f = document.getElementById(id); if (f) f.addEventListener("submit", e => { e.preventDefault(); fn(f); }); };
+  bind("story-form", saveStory);
+  bind("plan-form", savePlan);
+  bind("note-form", saveNote);
+  bind("contact-form", saveContact);
+  bind("tpl-form", saveTemplate);
+  const cq = document.getElementById("c-q");
+  if (cq) cq.addEventListener("input", () => {
+    S.contactQ = cq.value;
+    const q = cq.value.trim().toLocaleLowerCase("hu");
+    document.getElementById("contact-list").innerHTML = contactListHtml(S.contacts.filter(c => !q || `${c.name} ${c.role || ""} ${c.email || ""}`.toLocaleLowerCase("hu").includes(q)));
+  });
+  const ckNew = document.getElementById("ck-new");
+  if (ckNew) ckNew.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); addCheck(); } });
+  const rsUrl = document.getElementById("rs-url");
+  if (rsUrl) rsUrl.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); addResource(); } });
 }
 
-function play(btn) {
-  const ep = eps.find(e => e.id === btn.dataset.play);
-  if (!ep || !ep.yt) return;
-  const box = btn.closest(".screen");
-  const hero = box.closest(".hero");
-  if (hero) hero.classList.add("is-playing");
-  if (location.protocol !== "http:" && location.protocol !== "https:") {
-    blocked(box, ep);
+function uniqueSlug(base) {
+  if (!base) return "";
+  let s = base;
+  let n = 2;
+  while (S.episodes.some(e => e.id === s)) s = `${base}-${n++}`.slice(0, 80);
+  return s;
+}
+
+const val = id => (document.getElementById(id)?.value || "").trim();
+
+async function savePlan(form) {
+  const isNew = !form.dataset.id;
+  const title = val("f-ptitle");
+  setFieldError("fw-ptitle", title ? "" : "Adj címet a tervnek.");
+  if (!title) { document.getElementById("f-ptitle").focus(); return; }
+  const row = {
+    title,
+    status: form.querySelector('input[name="status"]:checked')?.value || "otlet",
+    air_date: val("f-air") || null,
+    shoot_at: fromLocalInput(val("f-shoot")),
+    location: val("f-loc") || null,
+    owner_id: val("f-owner") || null,
+    outline: document.getElementById("f-outline").value || null
+  };
+  if (isNew) row.checklist = document.getElementById("f-defcheck").checked ? DEFAULT_CHECKLIST.map(t => ({ id: uid(), t, done: false })) : [];
+  const btn = document.getElementById("plan-save");
+  busy(btn, true);
+  try {
+    const saved = isNew ? await dbInsert("plans", row) : await dbUpdate("plans", form.dataset.id, row);
+    replaceIn(S.plans, saved);
+    S.dirty = false;
+    toast(isNew ? "Terv létrehozva." : "Mentve.");
+    go(`#/terv/${saved.id}`);
+  } catch (e) {
+    busy(btn, false);
+    toast(errText(e), true);
+  }
+}
+
+function currentPlan() {
+  const f = document.getElementById("plan-form");
+  return f && f.dataset.id ? planById(f.dataset.id) : null;
+}
+
+async function saveChecklist(p, list) {
+  const prev = p.checklist;
+  p.checklist = list;
+  const box = document.getElementById("checklist");
+  if (box) box.innerHTML = checklistHtml(p);
+  const ckNew = document.getElementById("ck-new");
+  if (ckNew) ckNew.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); addCheck(); } });
+  try {
+    const saved = await dbUpdate("plans", p.id, { checklist: list });
+    p.updated_at = saved.updated_at;
+  } catch (e) {
+    p.checklist = prev;
+    if (box) box.innerHTML = checklistHtml(p);
+    toast(errText(e), true);
+  }
+}
+
+function addCheck() {
+  const p = currentPlan();
+  const input = document.getElementById("ck-new");
+  const t = input.value.trim();
+  if (!p || !t) { input.focus(); return; }
+  saveChecklist(p, [...(p.checklist || []), { id: uid(), t: t.slice(0, 200), done: false }]).then(() => document.getElementById("ck-new")?.focus());
+}
+
+async function addResource() {
+  const box = document.querySelector(".resform");
+  if (!box) return;
+  const scope = JSON.parse(box.dataset.resScope || "{}");
+  const label = val("rs-label");
+  const url = val("rs-url");
+  if (!label && !url) { document.getElementById("rs-label").focus(); return; }
+  const row = { kind: val("rs-kind") || "egyeb", label: label || url.replace(/^https?:\/\//, "").slice(0, 160), url: url || null, plan_id: scope.plan_id || null, episode_id: scope.episode_id || null };
+  try {
+    const saved = await dbInsert("resources", row);
+    S.resources.unshift(saved);
+    toast("Anyag hozzáadva.");
+    refreshResources(scope);
+  } catch (e) {
+    toast(errText(e), true);
+  }
+}
+
+function refreshResources(scope) {
+  if (location.hash.startsWith("#/anyagok")) { const keep = S.dirty; render(true); S.dirty = keep; return; }
+  const sec = document.getElementById("resources");
+  if (sec) sec.innerHTML = resourcesHtml(scope);
+  const rsUrl = document.getElementById("rs-url");
+  if (rsUrl) rsUrl.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); addResource(); } });
+}
+
+async function deleteResource(id) {
+  const r = S.resources.find(x => x.id === id);
+  if (!r || !confirm(`Törlöd ezt az anyagot a listából?\n\n${r.label}\n\nMagát a fájlt nem törli.`)) return;
+  try {
+    await dbDelete("resources", id);
+    removeFrom(S.resources, id);
+    refreshResources(r.plan_id ? { plan_id: r.plan_id } : r.episode_id ? { episode_id: r.episode_id } : {});
+  } catch (e) { toast(errText(e), true); }
+}
+
+async function deletePlan(id) {
+  const p = planById(id);
+  if (!p || !confirm(`Biztosan törlöd ezt a tervet?\n\n${p.title}\n\nA teendőlista, a forgatókönyv és a hozzá tartozó anyaglinkek is törlődnek. A jegyzetek és sztorik megmaradnak.`)) return;
+  try {
+    await dbDelete("plans", id);
+    toast("Terv törölve.");
+    S.dirty = false;
+    await reload(true);
+    go("#/tervek");
+  } catch (e) { toast(errText(e), true); }
+}
+
+async function storyToPlan(storyId) {
+  const s = S.stories.find(x => x.id === storyId);
+  if (!s) return;
+  const lines = [];
+  if (s.details) lines.push(s.details);
+  if (s.name || s.contact) lines.push("", `Beküldő: ${[s.name, s.class_name, s.contact].filter(Boolean).join(", ")}`);
+  if (s.link) lines.push(`Link: ${s.link}`);
+  try {
+    const plan = await dbInsert("plans", { title: s.topic.slice(0, 160), status: "otlet", owner_id: S.user.id, outline: lines.join("\n") || null, checklist: DEFAULT_CHECKLIST.map(t => ({ id: uid(), t, done: false })) });
+    S.plans.unshift(plan);
+    const upd = await dbUpdate("stories", s.id, { plan_id: plan.id, status: s.status === "beerkezett" ? "otlet" : s.status });
+    replaceIn(S.stories, upd);
+    setBadge();
+    if (s.link && safeHref(s.link)) {
+      const r = await dbInsert("resources", { plan_id: plan.id, kind: "egyeb", label: "Beküldött link", url: s.link });
+      S.resources.unshift(r);
+    }
+    toast("Terv létrehozva a sztoriból.");
+    go(`#/terv/${plan.id}`);
+  } catch (e) { toast(errText(e), true); }
+}
+
+async function saveEpisode(form) {
+  const isNew = !form.dataset.id;
+  const youtube_id = ytId(val("f-yt"));
+  const title = val("f-title");
+  const id = isNew ? val("f-slug") : form.dataset.id;
+  setFieldError("fw-yt", youtube_id ? "" : "Másold be a videó YouTube-linkjét.");
+  setFieldError("fw-title", title ? "" : "Adj címet az adásnak.");
+  if (isNew) setFieldError("fw-slug", /^[a-z0-9]+([-_][a-z0-9]+)*$/.test(id) ? "" : "Csak kisbetű, szám, kötőjel és alulvonás lehet benne.");
+  const bad = form.querySelector(".field.bad input");
+  if (bad) { bad.focus(); return; }
+  const published = document.getElementById("f-pub").checked;
+  const notify = !!document.getElementById("f-notify")?.checked && published;
+  const row = { title, youtube_id, aired_on: val("f-date") || null, category: val("f-cat") || null, summary: val("f-sum") || null, published };
+  const btn = document.getElementById("ep-save");
+  busy(btn, true);
+  const res = isNew ? await S.sb.from("episodes").insert({ id, ...row }) : await S.sb.from("episodes").update(row).eq("id", id);
+  if (res.error) {
+    busy(btn, false);
+    if (res.error.code === "23505") { setFieldError("fw-slug", errText(res.error)); document.getElementById("f-slug").focus(); }
+    else toast(errText(res.error), true);
     return;
   }
-  box.dataset.playing = ep.id;
-  box.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${ep.yt}?autoplay=1&rel=0" title="${esc(ep.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+  const planId = form.dataset.plan;
+  if (isNew && planId) {
+    try {
+      await dbUpdate("plans", planId, { episode_id: id, status: "megjelent" });
+      await S.sb.from("resources").update({ episode_id: id }).eq("plan_id", planId).is("episode_id", null);
+    } catch (e) {}
+  }
+  S.dirty = false;
+  toast(isNew ? "Adás elmentve." : "Változások elmentve.");
+  if (notify) await sendNotification(id, true);
+  await reload(true);
+  go(isNew ? (planId ? `#/terv/${planId}` : "#/adasok") : `#/adas/${encodeURIComponent(id)}`);
 }
 
-document.addEventListener("securitypolicyviolation", e => {
-  const directive = e.effectiveDirective || e.violatedDirective || "";
-  if (!/frame-src|child-src|default-src/.test(directive)) return;
-  if (!/youtube/i.test(e.blockedURI || "")) return;
-  document.querySelectorAll(".screen[data-playing]").forEach(box => {
-    const ep = eps.find(x => x.id === box.dataset.playing);
-    if (ep) blocked(box, ep);
-  });
-});
-
-async function copyEmail(btn) {
-  let ok = false;
+async function sendNotification(id, silentConfirm) {
+  const ep = epById(id);
+  if (!silentConfirm && ep && ep.notified_at && !confirm("Erről az adásról már ment ki értesítés. Biztosan újra elküldöd mindenkinek?")) return;
+  const btn = document.querySelector(`[data-notify="${CSS.escape(id)}"]`);
+  if (btn) { btn.disabled = true; btn.textContent = "Küldés…"; }
   try {
-    await navigator.clipboard.writeText(EMAIL);
-    ok = true;
+    const { data, error } = await S.sb.functions.invoke("notify-episode", { body: { episodeId: id } });
+    if (error) {
+      const status = error.context && error.context.status;
+      let detail = "";
+      try {
+        const text = await error.context.text();
+        try { detail = JSON.parse(text).error || text; } catch (e) { detail = text; }
+      } catch (e) {}
+      if (status === 404) throw new Error("Az értesítő funkció nincs telepítve a Supabase-ben.");
+      if (!status) throw new Error("Nem sikerült elérni az értesítő funkciót. Ellenőrizd az internetet.");
+      throw new Error(detail || `Hiba (${status})`);
+    }
+    toast(data.sent ? `Értesítés elküldve ${data.sent} eszközre.` : "Még nincs feliratkozott eszköz, így senki nem kapott értesítést.");
   } catch (e) {
+    toast(`Az értesítés nem ment ki: ${String(e.message || e)}`, true);
+  }
+  if (btn) { btn.disabled = false; btn.textContent = "Értesítés újraküldése"; }
+  if (!silentConfirm) reload(true);
+}
+
+async function deleteEpisode(id) {
+  const ep = epById(id);
+  if (!confirm(`Biztosan törlöd ezt az adást?\n\n${ep ? ep.title : id}\n\nAz oldalról is eltűnik. A YouTube-videót nem törli.`)) return;
+  const { error } = await S.sb.from("episodes").delete().eq("id", id);
+  if (error) { toast(errText(error), true); return; }
+  toast("Adás törölve.");
+  S.dirty = false;
+  await reload(true);
+  go("#/adasok");
+}
+
+async function saveStory(form) {
+  const isNew = !form.dataset.id;
+  const own = form.dataset.own === "true";
+  const row = {
+    status: form.querySelector('input[name="status"]:checked')?.value || "otlet",
+    note: val("f-note") || null,
+    episode_id: val("f-ep") || null
+  };
+  if (own) {
+    row.topic = val("f-topic");
+    row.details = val("f-details") || null;
+    row.link = val("f-link") || null;
+    setFieldError("fw-topic", row.topic ? "" : "Írd le röviden, miről szól.");
+    if (!row.topic) { document.getElementById("f-topic").focus(); return; }
+  }
+  const btn = document.getElementById("story-save");
+  busy(btn, true);
+  try {
+    const saved = isNew ? await dbInsert("stories", { ...row, source: "sajat", kind: "story" }) : await dbUpdate("stories", form.dataset.id, row);
+    replaceIn(S.stories, saved);
+    setBadge();
+    S.dirty = false;
+    toast(isNew ? "Ötlet elmentve." : "Mentve.");
+    go("#/sztorik");
+  } catch (e) {
+    busy(btn, false);
+    toast(errText(e), true);
+  }
+}
+
+async function deleteStory(id) {
+  const st = S.stories.find(s => s.id === id);
+  if (!confirm(`Biztosan törlöd ezt a sztorit?\n\n${st ? st.topic : ""}\n\nEzt nem lehet visszavonni.`)) return;
+  try {
+    await dbDelete("stories", id);
+    removeFrom(S.stories, id);
+    setBadge();
+    toast("Sztori törölve.");
+    S.dirty = false;
+    go("#/sztorik");
+  } catch (e) { toast(errText(e), true); }
+}
+
+async function saveNote(form) {
+  const isNew = !form.dataset.id;
+  const title = val("f-ntitle");
+  setFieldError("fw-ntitle", title ? "" : "Adj címet a jegyzetnek.");
+  if (!title) { document.getElementById("f-ntitle").focus(); return; }
+  const row = { title, body: document.getElementById("f-nbody").value || null, plan_id: val("f-nplan") || null, pinned: document.getElementById("f-npin").checked };
+  const btn = document.getElementById("note-save");
+  busy(btn, true);
+  try {
+    const saved = isNew ? await dbInsert("notes", row) : await dbUpdate("notes", form.dataset.id, row);
+    replaceIn(S.notes, saved);
+    S.dirty = false;
+    toast("Jegyzet mentve.");
+    go(isNew && saved.plan_id ? `#/terv/${saved.plan_id}` : "#/jegyzetek");
+  } catch (e) {
+    busy(btn, false);
+    toast(errText(e), true);
+  }
+}
+
+async function deleteRow(table, list, id, message, back) {
+  if (!confirm(message)) return;
+  try {
+    await dbDelete(table, id);
+    removeFrom(list, id);
+    S.dirty = false;
+    toast("Törölve.");
+    go(back);
+  } catch (e) { toast(errText(e), true); }
+}
+
+async function saveContact(form) {
+  const isNew = !form.dataset.id;
+  const name = val("f-cname");
+  const email = val("f-cemail");
+  setFieldError("fw-cname", name ? "" : "Add meg a nevet.");
+  setFieldError("fw-cemail", !email || isEmail(email) ? "" : "Ez nem tűnik érvényes e-mail-címnek.");
+  const bad = form.querySelector(".field.bad input");
+  if (bad) { bad.focus(); return; }
+  const row = { name, role: val("f-crole") || null, email: email || null, phone: val("f-cphone") || null, note: val("f-cnote") || null };
+  const btn = document.getElementById("contact-save");
+  busy(btn, true);
+  try {
+    const saved = isNew ? await dbInsert("contacts", row) : await dbUpdate("contacts", form.dataset.id, row);
+    replaceIn(S.contacts, saved);
+    S.contacts.sort((a, b) => a.name.localeCompare(b.name, "hu"));
+    S.dirty = false;
+    toast("Kapcsolat mentve.");
+    go(`#/kapcsolat/${saved.id}`);
+  } catch (e) {
+    busy(btn, false);
+    toast(errText(e), true);
+  }
+}
+
+async function saveTemplate(form) {
+  const isNew = !form.dataset.id;
+  const row = { name: val("f-tname"), subject: val("f-tsubj"), body: document.getElementById("f-tbody").value.trim() };
+  setFieldError("fw-tname", row.name ? "" : "Adj nevet a sablonnak.");
+  setFieldError("fw-tsubj", row.subject ? "" : "Add meg a levél tárgyát.");
+  setFieldError("fw-tbody", row.body ? "" : "Írd meg a levél szövegét.");
+  const bad = form.querySelector(".field.bad input, .field.bad textarea");
+  if (bad) { bad.focus(); return; }
+  const btn = document.getElementById("tpl-save");
+  busy(btn, true);
+  try {
+    const saved = isNew ? await dbInsert("email_templates", row) : await dbUpdate("email_templates", form.dataset.id, row);
+    replaceIn(S.templates, saved);
+    if (isNew) { S.templates.splice(S.templates.indexOf(saved), 1); S.templates.push(saved); }
+    S.dirty = false;
+    toast("Sablon mentve.");
+    go("#/sablonok");
+  } catch (e) {
+    busy(btn, false);
+    toast(errText(e), true);
+  }
+}
+
+async function copyText(text, btn) {
+  let ok = false;
+  try { await navigator.clipboard.writeText(text); ok = true; } catch (e) {
     const t = document.createElement("textarea");
-    t.value = EMAIL;
-    t.setAttribute("readonly", "");
-    t.style.position = "fixed";
-    t.style.opacity = "0";
-    document.body.appendChild(t);
-    t.select();
+    t.value = text; t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
+    document.body.appendChild(t); t.select();
     try { ok = document.execCommand("copy"); } catch (e2) {}
     t.remove();
   }
-  if (!btn.dataset.label) btn.dataset.label = btn.textContent;
-  btn.textContent = ok ? "Cím kimásolva" : EMAIL;
-  clearTimeout(btn._t);
-  btn._t = setTimeout(() => { btn.textContent = btn.dataset.label; }, 2200);
+  toast(ok ? "Kimásolva." : "Nem sikerült a másolás.", !ok);
 }
 
-function setError(name, message) {
-  const wrap = document.getElementById(`fw-${name}`);
-  const err = document.getElementById(`e-${name}`);
-  const input = document.getElementById(`f-${name}`);
-  wrap.classList.toggle("bad", !!message);
-  err.hidden = !message;
-  err.textContent = message || "";
-  if (message) input.setAttribute("aria-invalid", "true");
-  else input.removeAttribute("aria-invalid");
-}
-
-function updateKind() {
-  const request = document.querySelector('input[name="kind"]:checked').value === "request";
-  document.getElementById("l-topic").textContent = request ? "Miről készítsünk riportot?" : "Miről van szó?";
-  document.getElementById("f-details").placeholder = request ? "Miért érdekes, és kit érdemes megkérdezni?" : "Mi történt, mikor, hol, kik voltak ott?";
-}
-
-function mailUrl(p) {
-  const subject = `[Tények++] ${p.kind === "request" ? "Riportkérés" : "Sztori"}: ${p.topic}`;
-  const lines = [`Név: ${p.name}`];
-  if (p.class_name) lines.push(`Osztály: ${p.class_name}`);
-  if (p.contact) lines.push(`Elérhetőség: ${p.contact}`);
-  lines.push("", p.kind === "request" ? "Erről kérek riportot:" : "A sztori:", p.details);
-  if (p.link) lines.push("", `Link: ${p.link}`);
-  return `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
-}
-
-function openMail(url) {
-  const a = document.createElement("a");
-  a.href = url;
-  a.style.display = "none";
-  document.body.appendChild(a);
-  try { a.click(); } catch (e) {}
-  a.remove();
-}
-
-function showSent() {
-  const form = document.getElementById("tip-form");
-  if (!form) return;
-  form.innerHTML = `<div class="done" tabindex="-1" role="status"><h2>Megkaptuk, köszönjük!</h2><p>A szerkesztőség átnézi a beküldésed. Ha adás lesz belőle, itt az oldalon fogod látni.</p><button class="btn ghost" type="button" data-again>Új beküldés</button></div>`;
-  form.querySelector(".done").focus();
-}
-
-async function send(btn) {
-  const val = id => document.getElementById(id).value.trim();
-  const request = document.querySelector('input[name="kind"]:checked').value === "request";
-  const p = {
-    kind: request ? "request" : "story",
-    name: val("f-name"),
-    class_name: val("f-class") || null,
-    contact: val("f-contact") || null,
-    topic: val("f-topic"),
-    details: val("f-details"),
-    link: val("f-link") || null
-  };
-  setError("name", p.name ? "" : "Írd be a neved.");
-  setError("topic", p.topic ? "" : "Írd le egy mondatban, miről van szó.");
-  setError("details", p.details.length >= 10 ? "" : "Írj legalább pár szót a részletekről.");
-  const firstBad = document.querySelector(".field.bad input, .field.bad textarea");
-  const status = document.getElementById("tip-status");
-  if (firstBad) {
-    status.hidden = true;
-    firstBad.focus();
+async function enter(user) {
+  S.user = user;
+  const { data: ok, error } = await S.sb.rpc("is_staff");
+  if (error) { viewLogin(errText(error)); return; }
+  if (!ok) { viewNotStaff(); return; }
+  try {
+    await loadAll();
+  } catch (e) {
+    chrome(false);
+    main.innerHTML = `<div class="wrap center"><div class="login"><h1>Nem sikerült betölteni</h1><p class="msg">${esc(errText(e))}</p><button class="btn" type="button" data-retry>Újra</button></div></div>`;
     return;
   }
-  if (val("f-website")) { showSent(); return; }
-  const url = mailUrl(p);
-  if (!DB) {
-    status.innerHTML = `Megnyitottuk a levelezőt a kész levéllel, már csak el kell küldened. Ha nem történt semmi, <a href="${esc(url)}">nyisd meg innen</a>, vagy írj közvetlenül a <strong>${EMAIL}</strong> címre.`;
-    status.hidden = false;
-    openMail(url);
-    return;
-  }
-  btn.disabled = true;
-  btn.textContent = "Küldés…";
-  status.hidden = true;
-  try {
-    const res = await api("stories", { method: "POST", headers: { Prefer: "return=minimal" }, body: JSON.stringify(p) });
-    if (!res.ok) throw new Error(String(res.status));
-    showSent();
-  } catch (e) {
-    btn.disabled = false;
-    btn.textContent = "Beküldés";
-    status.innerHTML = `Most nem sikerült elküldeni. Próbáld újra pár perc múlva, vagy <a href="${esc(url)}">küldd el e-mailben</a>.`;
-    status.hidden = false;
-  }
+  S.me = staffName(user.id) || user.email;
+  document.getElementById("who").textContent = S.me;
+  render();
 }
 
-const BELL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>';
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-const isStandalone = () => window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
-const canPush = DB && !!CFG.vapidPublicKey && "serviceWorker" in navigator && "PushManager" in window && "Notification" in window && (location.protocol === "https:" || location.hostname === "localhost");
-const app = { install: null, subscribed: false, busy: false, msg: "" };
-
-function appCard() {
-  const iosGuide = isIOS && !isStandalone() && !canPush;
-  if (!canPush && !app.install && !iosGuide) return "";
-  let text = "Kapj értesítést a telefonodra, amikor új adás jelenik meg.";
-  const buttons = [];
-  if (iosGuide) {
-    text = "iPhone-on add hozzá az oldalt a főképernyőhöz: koppints a Megosztás gombra, majd a „Főképernyőhöz adás” pontra. Onnan megnyitva tudsz értesítést kérni.";
-  } else if (canPush) {
-    if (Notification.permission === "denied") {
-      text = "Az értesítések le vannak tiltva ezen az eszközön. A böngésző vagy a telefon beállításaiban tudod újra engedélyezni.";
-    } else if (app.subscribed) {
-      text = "Bekapcsoltad: szólunk, amikor új adás jelenik meg.";
-      buttons.push(`<button class="btn ghost" type="button" data-push-off ${app.busy ? "disabled" : ""}>Értesítések kikapcsolása</button>`);
-    } else {
-      buttons.push(`<button class="btn" type="button" data-push-on ${app.busy ? "disabled" : ""}>Értesítést kérek</button>`);
-    }
-  }
-  if (app.install && !isStandalone()) buttons.push(`<button class="btn ghost" type="button" data-install>Telepítés a telefonra</button>`);
-  return `<section class="appcard" aria-labelledby="app-title">
-    <span class="bell">${BELL}</span>
-    <div><h2 id="app-title">Ne maradj le a következő adásról</h2><p>${text}</p></div>
-    ${buttons.length ? `<div class="actions">${buttons.join("")}</div>` : ""}
-    ${app.msg ? `<p class="appmsg" role="status">${esc(app.msg)}</p>` : ""}
-  </section>`;
+async function login(form) {
+  const email = form.querySelector("#l-email").value.trim();
+  const password = form.querySelector("#l-pass").value;
+  if (!email || !password) { viewLogin("Add meg az e-mail-címed és a jelszavad."); return; }
+  const btn = form.querySelector("#l-btn");
+  busy(btn, true, "Belépés…");
+  const { data, error } = await S.sb.auth.signInWithPassword({ email, password });
+  if (error) { viewLogin(errText(error)); document.getElementById("l-email").value = email; return; }
+  await enter(data.user);
 }
 
-function updateAppCard() {
-  const slot = document.getElementById("appcard-slot");
-  if (slot) slot.innerHTML = appCard();
+async function logout() {
+  await S.sb.auth.signOut();
+  Object.assign(S, { user: null, loaded: false, episodes: [], stories: [], plans: [], resources: [], notes: [], contacts: [], templates: [] });
+  viewLogin();
 }
 
-function b64ToBytes(b64) {
-  const pad = "=".repeat((4 - (b64.length % 4)) % 4);
-  const raw = atob((b64 + pad).replace(/-/g, "+").replace(/_/g, "/"));
-  return Uint8Array.from(raw, c => c.charCodeAt(0));
-}
-
-function swReady() {
-  return Promise.race([
-    navigator.serviceWorker.ready,
-    new Promise((_, reject) => setTimeout(() => reject(new Error("sw timeout")), 10000))
-  ]);
-}
-
-async function pushOn() {
-  app.busy = true;
-  app.msg = "";
-  updateAppCard();
-  try {
-    const perm = await Notification.requestPermission();
-    if (perm !== "granted") throw new Error("denied");
-    const reg = await swReady();
-    let sub = await reg.pushManager.getSubscription();
-    if (!sub) sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: b64ToBytes(CFG.vapidPublicKey) });
-    const j = sub.toJSON();
-    const res = await api("rpc/push_subscribe", { method: "POST", body: JSON.stringify({ p_endpoint: j.endpoint, p_p256dh: j.keys.p256dh, p_auth: j.keys.auth }) });
-    if (!res.ok) throw new Error(String(res.status));
-    app.subscribed = true;
-    app.msg = "Kész! Az első értesítés a következő adásnál érkezik.";
-  } catch (e) {
-    app.msg = Notification.permission === "denied" ? "" : "Nem sikerült bekapcsolni az értesítéseket. Próbáld újra később.";
-  }
-  app.busy = false;
-  updateAppCard();
-}
-
-async function pushOff() {
-  app.busy = true;
-  app.msg = "";
-  updateAppCard();
-  try {
-    const reg = await swReady();
-    const sub = await reg.pushManager.getSubscription();
-    if (sub) {
-      await api("rpc/push_unsubscribe", { method: "POST", body: JSON.stringify({ p_endpoint: sub.endpoint }) });
-      await sub.unsubscribe();
-    }
-    app.subscribed = false;
-    app.msg = "Kikapcsoltad az értesítéseket.";
-  } catch (e) {
-    app.msg = "Nem sikerült kikapcsolni. Próbáld újra később.";
-  }
-  app.busy = false;
-  updateAppCard();
-}
-
-const SHARE_ICON = '<span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7.5 7.5 4.5-4.5 4.5 4.5"/><path d="M6 11H5v10h14V11h-1"/></svg></span>';
-const PLUS_ICON = '<span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></svg></span>';
-
-function updateGetApp() {
-  const btn = document.getElementById("getapp");
-  if (btn) btn.hidden = isStandalone() || !(isIOS || app.install);
-}
-
-function openGetApp() {
-  if (app.install) { installApp(); return; }
-  const sheet = document.getElementById("sheet");
-  document.getElementById("sheet-in").innerHTML = `
-    <div class="sheet-head"><h2 id="sheet-title">Tények++ a telefonodon</h2><button class="sheet-x" type="button" data-sheet-x aria-label="Bezárás">×</button></div>
-    <p>Add hozzá a főképernyőhöz, és úgy nyílik meg, mint egy app. Utána értesítést is kérhetsz az új adásokról.</p>
-    <ol class="steps">
-      <li><span>Koppints a ${SHARE_ICON} Megosztás gombra a böngésző alján vagy tetején.</span></li>
-      <li><span>Görgess le, és válaszd a ${PLUS_ICON} „Főképernyőhöz adás” pontot.</span></li>
-      <li><span>Koppints a „Hozzáadás” gombra, majd nyisd meg a Tények++ ikont.</span></li>
-    </ol>
-    <button class="btn" type="button" data-sheet-x>Rendben</button>`;
-  try { sheet.showModal(); } catch (e) { sheet.setAttribute("open", ""); }
-}
-
-function closeGetApp() {
-  const sheet = document.getElementById("sheet");
-  try { sheet.close(); } catch (e) { sheet.removeAttribute("open"); }
-}
-
-async function installApp() {
-  const ev = app.install;
-  if (!ev) return;
-  app.install = null;
-  try {
-    ev.prompt();
-    await ev.userChoice;
-  } catch (e) {}
-  updateAppCard();
-  updateGetApp();
-}
+document.addEventListener("submit", e => {
+  if (e.target.id === "login-form") { e.preventDefault(); login(e.target); }
+});
 
 document.addEventListener("click", e => {
-  if (e.target.closest("[data-getapp]")) { openGetApp(); return; }
-  if (e.target.closest("[data-sheet-x]") || e.target.id === "sheet") { closeGetApp(); return; }
-  const playBtn = e.target.closest("[data-play]");
-  if (playBtn) { play(playBtn); return; }
-  const chip = e.target.closest("[data-cat]");
-  if (chip) {
-    state.cat = chip.dataset.cat;
-    document.querySelectorAll("[data-cat]").forEach(c => c.setAttribute("aria-pressed", String(c === chip)));
-    refreshGrid();
+  const t = e.target;
+  const on = sel => t.closest(sel);
+  let el;
+  if (on("[data-logout]")) { logout(); return; }
+  if ((el = on("[data-p]"))) { promptAction(el.dataset.p); return; }
+  if (on("#p-scroll")) { promptPlay(!P.playing); return; }
+  if ((el = on("[data-prompter]"))) {
+    const p = planById(el.dataset.prompter);
+    const ta = document.getElementById("f-outline");
+    if (p && ta && ta.value !== (p.outline || "")) {
+      el.disabled = true;
+      dbUpdate("plans", p.id, { outline: ta.value || null }).then(saved => { replaceIn(S.plans, saved); S.dirty = false; go(`#/olvaso/${p.id}`); }).catch(err => { el.disabled = false; toast(errText(err), true); });
+    } else if (p) { S.dirty = false; go(`#/olvaso/${p.id}`); }
     return;
   }
-  const copyBtn = e.target.closest("[data-copy]");
-  if (copyBtn) { copyEmail(copyBtn); return; }
-  const sendBtn = e.target.closest("[data-send]");
-  if (sendBtn) { send(sendBtn); return; }
-  if (e.target.closest("[data-again]")) { route(true); return; }
-  if (e.target.closest("[data-push-on]")) { pushOn(); return; }
-  if (e.target.closest("[data-push-off]")) { pushOff(); return; }
-  if (e.target.closest("[data-install]")) { installApp(); return; }
-  if (e.target.closest("[data-notice-x]")) {
-    try { localStorage.setItem(MAINT_DISMISS, "1"); } catch (err) {}
-    renderNotice();
-  }
-});
-
-document.addEventListener("input", e => {
-  if (e.target.id === "q") {
-    state.q = e.target.value;
-    refreshGrid();
+  if (on("[data-retry]")) { location.reload(); return; }
+  if ((el = on("[data-filter]"))) { S.storyFilter = el.dataset.filter; render(true); return; }
+  if ((el = on("[data-pfilter]"))) { S.planFilter = el.dataset.pfilter; render(true); return; }
+  if ((el = on("[data-rfilter]"))) { S.resFilter = el.dataset.rfilter; render(true); return; }
+  if ((el = on("[data-notify]"))) { sendNotification(el.dataset.notify, false); return; }
+  if ((el = on("[data-del-ep]"))) { deleteEpisode(el.dataset.delEp); return; }
+  if ((el = on("[data-del-story]"))) { deleteStory(el.dataset.delStory); return; }
+  if ((el = on("[data-del-plan]"))) { deletePlan(el.dataset.delPlan); return; }
+  if ((el = on("[data-story-plan]"))) { el.disabled = true; storyToPlan(el.dataset.storyPlan); return; }
+  if ((el = on("[data-del-note]"))) { const n = S.notes.find(x => x.id === el.dataset.delNote); deleteRow("notes", S.notes, el.dataset.delNote, `Biztosan törlöd ezt a jegyzetet?\n\n${n ? n.title : ""}`, "#/jegyzetek"); return; }
+  if ((el = on("[data-del-contact]"))) { const c = S.contacts.find(x => x.id === el.dataset.delContact); deleteRow("contacts", S.contacts, el.dataset.delContact, `Biztosan törlöd ezt a kapcsolatot?\n\n${c ? c.name : ""}`, "#/kapcsolatok"); return; }
+  if ((el = on("[data-del-tpl]"))) { const x = S.templates.find(y => y.id === el.dataset.delTpl); deleteRow("email_templates", S.templates, el.dataset.delTpl, `Biztosan törlöd ezt a sablont?\n\n${x ? x.name : ""}`, "#/sablonok"); return; }
+  if (on("[data-check-add]")) { addCheck(); return; }
+  if ((el = on("[data-uncheck-del]"))) {
+    const p = currentPlan();
+    if (p) saveChecklist(p, p.checklist.filter((_, i) => i !== Number(el.dataset.uncheckDel)));
     return;
   }
-  const field = e.target.closest(".field.bad");
-  if (field && e.target.value.trim()) setError(field.id.replace("fw-", ""), "");
-});
-
-document.addEventListener("change", e => {
-  if (e.target.name === "kind") updateKind();
-});
-
-document.addEventListener("error", e => {
-  if (e.target instanceof HTMLImageElement && e.target.classList.contains("thumb")) e.target.remove();
-}, true);
-
-window.addEventListener("hashchange", () => route());
-
-let lastPhase = maintPhase();
-function checkMaint() {
-  const phase = maintPhase();
-  if (phase !== lastPhase) {
-    const was = lastPhase;
-    lastPhase = phase;
-    renderNotice();
-    route(true);
-    if (was === "during") loadEpisodes();
-  } else if (phase === "during") {
-    updateMaint();
+  if (on("[data-res-add]")) { addResource(); return; }
+  if ((el = on("[data-res-del]"))) { deleteResource(el.dataset.resDel); return; }
+  if ((el = on("[data-copy-mail]"))) { copyText(document.getElementById("compose").dataset.text || "", el); return; }
+  if ((el = on("#m-open"))) {
+    if (!document.getElementById("m-to").value.trim()) { e.preventDefault(); toast("Add meg a címzett e-mail-címét.", true); document.getElementById("m-to").focus(); }
+    return;
   }
-}
-setInterval(checkMaint, 10000);
-document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") checkMaint(); });
-
-window.addEventListener("beforeinstallprompt", e => {
-  e.preventDefault();
-  app.install = e;
-  updateAppCard();
-  updateGetApp();
 });
 
-window.addEventListener("appinstalled", () => {
-  app.install = null;
-  updateAppCard();
-  updateGetApp();
+document.addEventListener("change", async e => {
+  const t = e.target;
+  if (t.matches("[data-check]")) {
+    const p = currentPlan();
+    if (!p) return;
+    const i = Number(t.dataset.check);
+    saveChecklist(p, p.checklist.map((c, j) => j === i ? { ...c, done: t.checked } : c));
+    return;
+  }
+  if (t.matches("[data-ov-check]")) {
+    const p = planById(t.dataset.ovCheck);
+    if (!p) return;
+    const i = Number(t.dataset.i);
+    const list = p.checklist.map((c, j) => j === i ? { ...c, done: t.checked } : c);
+    const prev = p.checklist;
+    p.checklist = list;
+    t.closest(".check").classList.toggle("done", t.checked);
+    try { await dbUpdate("plans", p.id, { checklist: list }); toast("Kipipálva."); }
+    catch (err) { p.checklist = prev; t.checked = !t.checked; toast(errText(err), true); }
+  }
+});
+
+window.addEventListener("hashchange", () => render());
+
+document.addEventListener("keydown", e => {
+  if (!P.planId || !document.getElementById("p-scroll")) return;
+  const k = e.key;
+  if (k === " " || k === "Enter") { e.preventDefault(); promptAction("play"); }
+  else if (k === "ArrowUp") { e.preventDefault(); promptAction("slower"); }
+  else if (k === "ArrowDown") { e.preventDefault(); promptAction("faster"); }
+  else if (k === "+" || k === "=") promptAction("bigger");
+  else if (k === "-") promptAction("smaller");
+  else if (k === "Escape") go(`#/terv/${P.planId}`);
 });
 
 document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "visible" && Date.now() - lastLoad > 60000) loadEpisodes();
+  if (document.visibilityState === "visible" && P.planId) promptWake(true);
 });
 
-if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
-  navigator.serviceWorker.register("sw.js").then(async reg => {
-    if (!canPush) return;
-    const sub = await reg.pushManager.getSubscription();
-    if (sub && Notification.permission === "granted") {
-      app.subscribed = true;
-      updateAppCard();
-    }
-  }).catch(() => {});
+document.addEventListener("error", e => {
+  if (e.target instanceof HTMLImageElement && e.target.closest(".thumb")) e.target.remove();
+}, true);
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && S.loaded && Date.now() - S.lastLoad > 30000) reload(true);
+});
+
+async function start() {
+  if (!CFG.supabaseUrl || !CFG.supabaseKey) { viewSetup(); return; }
+  if (!window.supabase) {
+    main.innerHTML = `<div class="wrap center"><div class="login"><h1>Nem sikerült betölteni</h1><p>Ellenőrizd az internetkapcsolatot, majd próbáld újra.</p><button class="btn" type="button" data-retry>Újra</button></div></div>`;
+    return;
+  }
+  S.sb = window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseKey, { auth: { persistSession: true, autoRefreshToken: true } });
+  const { data } = await S.sb.auth.getSession();
+  if (data.session) await enter(data.session.user);
+  else viewLogin();
 }
 
-boot();
-updateGetApp();
-renderNotice();
-route();
-loadEpisodes();
+start();
 </script>
 </body>
 </html>
