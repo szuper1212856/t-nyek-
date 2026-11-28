@@ -254,6 +254,9 @@ body.maint-on .nav,body.maint-on .skip{display:none}
 .steps li::before{content:counter(s);display:grid;place-items:center;flex:none;width:2rem;height:2rem;border-radius:50%;background:var(--strap);color:#0B1533;font-weight:900}
 .steps .ico{display:inline-grid;place-items:center;vertical-align:-.3em;width:1.6rem;height:1.6rem;margin:0 .15rem;border-radius:6px;background:var(--bg);color:var(--link)}
 .steps .ico svg{width:1.05rem;height:1.05rem}
+.sheet .bigbell{display:grid;place-items:center;width:3.5rem;height:3.5rem;border-radius:16px;background:var(--strap);color:#0B1533}
+.sheet .bigbell svg{width:1.9rem;height:1.9rem}
+.sheet-actions{display:grid;gap:.5rem}
 .foot{border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
 .foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.4rem 2rem;padding-block:1.4rem}
 .foot strong{color:var(--ink)}
@@ -995,6 +998,44 @@ function openGetApp() {
   try { sheet.showModal(); } catch (e) { sheet.setAttribute("open", ""); }
 }
 
+const PUSH_ASK_KEY = "tenyek-push-ask";
+
+function shouldAskPush() {
+  if (!canPush || !isStandalone() || app.subscribed) return false;
+  if (maintPhase() === "before" || maintPhase() === "during") return false;
+  if (Notification.permission === "denied") return false;
+  let last = 0;
+  try { last = Number(localStorage.getItem(PUSH_ASK_KEY) || 0); } catch (e) {}
+  return Date.now() - last > 7 * 86400000;
+}
+
+function openPushSheet() {
+  const sheet = document.getElementById("sheet");
+  if (!sheet || sheet.open) return;
+  document.getElementById("sheet-in").innerHTML = `
+    <div class="sheet-head"><span class="bigbell">${BELL}</span><button class="sheet-x" type="button" data-sheet-later aria-label="Bezárás">×</button></div>
+    <h2 id="sheet-title">Ne maradj le egy adásról sem</h2>
+    <p>Kapcsold be az értesítéseket, és szólunk, amikor új Tények++ adás jelenik meg. Bármikor kikapcsolhatod.</p>
+    <div class="sheet-actions">
+      <button class="btn" type="button" data-sheet-push autofocus>Értesítést kérek</button>
+      <button class="btn ghost" type="button" data-sheet-later>Most nem</button>
+    </div>`;
+  try { sheet.showModal(); } catch (e) { sheet.setAttribute("open", ""); }
+}
+
+async function sheetPushOn(btn) {
+  btn.disabled = true;
+  btn.textContent = "Bekapcsolás…";
+  await pushOn();
+  try { localStorage.setItem(PUSH_ASK_KEY, String(Date.now())); } catch (e) {}
+  const ok = app.subscribed;
+  document.getElementById("sheet-in").innerHTML = `
+    <div class="sheet-head"><span class="bigbell">${BELL}</span><button class="sheet-x" type="button" data-sheet-x aria-label="Bezárás">×</button></div>
+    <h2 id="sheet-title">${ok ? "Kész, bekapcsoltad!" : "Most nem sikerült"}</h2>
+    <p>${ok ? "Az első értesítés a következő adásnál érkezik." : Notification.permission === "denied" ? "Az értesítések le vannak tiltva. A telefon beállításaiban, a Tények++ alatt tudod engedélyezni." : "Próbáld újra később a főoldal alján lévő gombbal."}</p>
+    <button class="btn" type="button" data-sheet-x>Rendben</button>`;
+}
+
 function closeGetApp() {
   const sheet = document.getElementById("sheet");
   try { sheet.close(); } catch (e) { sheet.removeAttribute("open"); }
@@ -1014,6 +1055,13 @@ async function installApp() {
 
 document.addEventListener("click", e => {
   if (e.target.closest("[data-getapp]")) { openGetApp(); return; }
+  const sp = e.target.closest("[data-sheet-push]");
+  if (sp) { sheetPushOn(sp); return; }
+  if (e.target.closest("[data-sheet-later]")) {
+    try { localStorage.setItem(PUSH_ASK_KEY, String(Date.now())); } catch (err) {}
+    closeGetApp();
+    return;
+  }
   if (e.target.closest("[data-sheet-x]") || e.target.id === "sheet") { closeGetApp(); return; }
   const playBtn = e.target.closest("[data-play]");
   if (playBtn) { play(playBtn); return; }
@@ -1100,6 +1148,7 @@ if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
       app.subscribed = true;
       updateAppCard();
     }
+    if (shouldAskPush()) setTimeout(() => { if (shouldAskPush()) openPushSheet(); }, 900);
   }).catch(() => {});
 }
 
